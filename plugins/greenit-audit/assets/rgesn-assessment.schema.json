@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://greenit-rncp39388.local/schemas/rgesn-assessment.schema.json",
+  "title": "Évaluation RGESN",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "assessment"
+  ],
+  "properties": {
+    "assessment": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "status",
+          "evidence",
+          "action",
+          "owner",
+          "due"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[1-9]\\.[0-9]{1,2}$"
+          },
+          "status": {
+            "enum": [
+              "validé",
+              "en cours",
+              "non validé",
+              "non applicable"
+            ]
+          },
+          "evidence": {
+            "type": "string"
+          },
+          "action": {
+            "type": "string"
+          },
+          "owner": {
+            "type": "string"
+          },
+          "due": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

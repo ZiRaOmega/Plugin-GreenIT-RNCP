@@ -1,0 +1,28 @@
+{
+  "name": "greenit-rncp39388",
+  "description": "Bundle de plugins pour audits GreenIT, livrables documentaires et preuves RNCP39388.",
+  "owner": {
+    "name": "ZiRaOmega"
+  },
+  "version": "0.1.2",
+  "plugins": [
+    {
+      "name": "greenit-studio",
+      "source": "./plugins/greenit-studio",
+      "description": "Documents, diaporamas, vidéos, images et analyse de codebase.",
+      "category": "content"
+    },
+    {
+      "name": "greenit-audit",
+      "source": "./plugins/greenit-audit",
+      "description": "Audit GreenIT, normes, calculs ACV, rapport et soutenance.",
+      "category": "greenit"
+    },
+    {
+      "name": "greenit-engineering",
+      "source": "./plugins/greenit-engineering",
+      "description": "Refactor, fix, proposition, brainstorm, benchmark et revue GreenIT.",
+      "category": "engineering"
+    }
+  ]
+}

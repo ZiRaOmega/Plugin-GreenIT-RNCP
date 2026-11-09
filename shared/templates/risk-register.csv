@@ -1,0 +1,6 @@
+risque,probabilite,impact,mitigation,proprietaire
+Donnees serveur manquantes,haute,haut,hypotheses + sensibilite,tech lead
+PUE inconnu,haute,moyen,demander a l'hebergeur,achats
+Effet rebond,moyenne,moyen,suivre les usages,greenit
+Greenwashing,moyenne,haut,sources + limites,chef de projet
+Perte de donnees,faible,haut,backups + versionning,ops

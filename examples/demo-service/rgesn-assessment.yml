@@ -1,0 +1,469 @@
+assessment:
+- id: '1.1'
+  status: validé
+  evidence: Note de cadrage et objectifs dans le rapport.
+  action: ''
+  owner: ''
+  due: ''
+- id: '1.2'
+  status: en cours
+  evidence: UF et scénarios définis ; cibles utilisatrices à préciser.
+  action: Compléter le profil des utilisateurs.
+  owner: Équipe projet
+  due: '2026-12-01'
+- id: '1.3'
+  status: validé
+  evidence: Référent GreenIT nommé dans l’équipe.
+  action: ''
+  owner: ''
+  due: ''
+- id: '1.4'
+  status: en cours
+  evidence: Objectifs chiffrés partiels.
+  action: Ajouter un objectif de réduction.
+  owner: Équipe projet
+  due: '2026-12-15'
+- id: '1.5'
+  status: non validé
+  evidence: Absence de preuve dans les artefacts fournis (screening).
+  action: Fournir une preuve ou documenter l’écart.
+  owner: Équipe projet
+  due: '2026-12-15'
+- id: '1.6'
+  status: en cours
+  evidence: Données de présence minimisées, mais durée de conservation à formaliser.
+  action: Documenter la durée.
+  owner: DPO
+  due: '2026-12-01'
+- id: '1.7'
+  status: non applicable
+  evidence: Pas de mécanisme de chiffrement spécifique au service.
+  action: ''
+  owner: ''
+  due: ''
+- id: '1.8'
+  status: validé
+  evidence: Code de démonstration publiable.
+  action: ''
+  owner: ''
+  due: ''
+- id: '1.9'
+  status: non validé
+  evidence: Absence de preuve dans les artefacts fournis (screening).
+  action: Fournir une preuve ou documenter l’écart.
+  owner: Équipe projet
+  due: '2026-12-15'
+- id: '1.10'
+  status: non validé
+  evidence: Absence de preuve dans les artefacts fournis (screening).
+  action: Fournir une preuve ou documenter l’écart.
+  owner: Équipe projet
+  due: '2026-12-15'
+- id: '2.1'
+  status: en cours
+  evidence: Matériel décrit dans audit.yml.
+  action: Compléter les specs serveur.
+  owner: Équipe projet
+  due: '2026-12-01'
+- id: '2.2'
+  status: en cours
+  evidence: Application web responsive.
+  action: Tester sur ancien smartphone.
+  owner: QA
+  due: '2026-12-01'
+- id: '2.3'
+  status: validé
+  evidence: Fonctionne en 4G.
+  action: ''
+  owner: ''
+  due: ''
+- id: '2.4'
+  status: non validé
+  evidence: Absence de preuve dans les artefacts fournis (screening).
+  action: Fournir une preuve ou documenter l’écart.
+  owner: Équipe projet
+  due: '2026-12-15'
+- id: '2.5'
+  status: non validé
+  evidence: Absence de preuve dans les artefacts fournis (screening).
+  action: Fournir une preuve ou documenter l’écart.
+  owner: Équipe projet
+  due: '2026-12-15'
+- id: '2.6'
+  status: en cours
+  evidence: Revue de code informelle.
+  action: Formaliser une revue GreenIT.
+  owner: Tech lead
+  due: '2026-12-15'
+- id: '2.7'
+  status: validé
+  evidence: Stratégie de sobriété documentée.
+  action: ''
+  owner: ''
+  due: ''
+- id: '2.8'
+  status: non validé
+  evidence: Absence de preuve dans les artefacts fournis (screening).
+  action: Fournir une preuve ou documenter l’écart.
+  owner: Équipe projet
+  due: '2026-12-15'
+- id: '2.9'
+  status: non validé
+  evidence: Absence de preuve dans les artefacts fournis (screening).
+  action: Fournir une preuve ou documenter l’écart.
+  owner: Équipe projet
+  due: '2026-12-15'
+- id: '2.10'
+  status: non validé
+  evidence: Absence de preuve dans les artefacts fournis (screening).
+  action: Fournir une preuve ou documenter l’écart.
+  owner: Équipe projet
+  due: '2026-12-15'
+- id: '3.1'
+  status: non validé
+  evidence: Architecture monolithique simple, pas de composants mutualisés.
+  action: Étudier un hébergement mutualisé.
+  owner: Architecte
+  due: '2027-01-15'
+- id: '3.2'
+  status: non validé
+  evidence: Absence de preuve dans les artefacts fournis (screening).
+  action: Fournir une preuve ou documenter l’écart.
+  owner: Équipe projet
+  due: '2026-12-15'
+- id: '3.3'
+  status: non validé
+  evidence: Absence de preuve dans les artefacts fournis (screening).
+  action: Fournir une preuve ou documenter l’écart.
+  owner: Équipe projet
+  due: '2026-12-15'
+- id: '3.4'
+  status: non validé
+  evidence: Absence de preuve dans les artefacts fournis (screening).
+  action: Fournir une preuve ou documenter l’écart.
+  owner: Équipe projet
+  due: '2026-12-15'
+- id: '3.5'
+  status: non validé
+  evidence: Absence de preuve dans les artefacts fournis (screening).
+  action: Fournir une preuve ou documenter l’écart.
+  owner: Équipe projet
+  due: '2026-12-15'
+- id: '3.6'
+  status: non validé
+  evidence: Absence de preuve dans les artefacts fournis (screening).
+  action: Fournir une preuve ou documenter l’écart.
+  owner: Équipe projet
+  due: '2026-12-15'
+- id: '3.7'
+  status: non validé
+  evidence: Absence de preuve dans les artefacts fournis (screening).
+  action: Fournir une preuve ou documenter l’écart.
+  owner: Équipe projet
+  due: '2026-12-15'
+- id: '4.1'
+  status: non validé
+  evidence: Images décoratives et non optimisées.
+  action: Supprimer ou compresser.
+  owner: Frontend
+  due: '2026-12-01'
+- id: '4.2'
+  status: non validé
+  evidence: Attributs alt manquants.
+  action: Ajouter les alternatives.
+  owner: Frontend
+  due: '2026-12-01'
+- id: '4.3'
+  status: en cours
+  evidence: Parcours court mais polling.
+  action: Supprimer le polling.
+  owner: Frontend
+  due: '2026-12-01'
+- id: '4.4'
+  status: non validé
+  evidence: Absence de preuve dans les artefacts fournis (screening).
+  action: Fournir une preuve ou documenter l’écart.
+  owner: Équipe projet
+  due: '2026-12-15'
+- id: '4.5'
+  status: non validé
+  evidence: Absence de preuve dans les artefacts fournis (screening).
+  action: Fournir une preuve ou documenter l’écart.
+  owner: Équipe projet
+  due: '2026-12-15'
+- id: '4.6'
+  status: non validé
+  evidence: Absence de preuve dans les artefacts fournis (screening).
+  action: Fournir une preuve ou documenter l’écart.
+  owner: Équipe projet
+  due: '2026-12-15'
+- id: '4.7'
+  status: non validé
+  evidence: Absence de preuve dans les artefacts fournis (screening).
+  action: Fournir une preuve ou documenter l’écart.
+  owner: Équipe projet
+  due: '2026-12-15'
+- id: '4.8'
+  status: non validé
+  evidence: Absence de preuve dans les artefacts fournis (screening).
+  action: Fournir une preuve ou documenter l’écart.
+  owner: Équipe projet
+  due: '2026-12-15'
+- id: '4.9'
+  status: non validé
+  evidence: Polling toutes les 5 s.
+  action: Remplacer par une action utilisateur.
+  owner: Frontend
+  due: '2026-12-01'
+- id: '4.10'
+  status: non validé
+  evidence: Absence de preuve dans les artefacts fournis (screening).
+  action: Fournir une preuve ou documenter l’écart.
+  owner: Équipe projet
+  due: '2026-12-15'
+- id: '4.11'
+  status: non validé
+  evidence: Absence de preuve dans les artefacts fournis (screening).
+  action: Fournir une preuve ou documenter l’écart.
+  owner: Équipe projet
+  due: '2026-12-15'
+- id: '4.12'
+  status: non validé
+  evidence: Absence de preuve dans les artefacts fournis (screening).
+  action: Fournir une preuve ou documenter l’écart.
+  owner: Équipe projet
+  due: '2026-12-15'
+- id: '4.13'
+  status: non validé
+  evidence: Absence de preuve dans les artefacts fournis (screening).
+  action: Fournir une preuve ou documenter l’écart.
+  owner: Équipe projet
+  due: '2026-12-15'
+- id: '4.14'
+  status: non validé
+  evidence: Absence de preuve dans les artefacts fournis (screening).
+  action: Fournir une preuve ou documenter l’écart.
+  owner: Équipe projet
+  due: '2026-12-15'
+- id: '4.15'
+  status: non validé
+  evidence: Absence de preuve dans les artefacts fournis (screening).
+  action: Fournir une preuve ou documenter l’écart.
+  owner: Équipe projet
+  due: '2026-12-15'
+- id: '5.1'
+  status: non validé
+  evidence: Images PNG lourdes.
+  action: Convertir en WebP/AVIF.
+  owner: Contenu
+  due: '2026-12-01'
+- id: '5.2'
+  status: non validé
+  evidence: Pas de résolutions multiples.
+  action: Ajouter srcset.
+  owner: Frontend
+  due: '2026-12-15'
+- id: '5.3'
+  status: non applicable
+  evidence: Pas de vidéo.
+  action: ''
+  owner: ''
+  due: ''
+- id: '5.4'
+  status: non validé
+  evidence: Absence de preuve dans les artefacts fournis (screening).
+  action: Fournir une preuve ou documenter l’écart.
+  owner: Équipe projet
+  due: '2026-12-15'
+- id: '5.5'
+  status: non validé
+  evidence: Absence de preuve dans les artefacts fournis (screening).
+  action: Fournir une preuve ou documenter l’écart.
+  owner: Équipe projet
+  due: '2026-12-15'
+- id: '5.6'
+  status: non validé
+  evidence: Absence de preuve dans les artefacts fournis (screening).
+  action: Fournir une preuve ou documenter l’écart.
+  owner: Équipe projet
+  due: '2026-12-15'
+- id: '5.7'
+  status: non validé
+  evidence: Absence de preuve dans les artefacts fournis (screening).
+  action: Fournir une preuve ou documenter l’écart.
+  owner: Équipe projet
+  due: '2026-12-15'
+- id: '5.8'
+  status: non validé
+  evidence: Absence de preuve dans les artefacts fournis (screening).
+  action: Fournir une preuve ou documenter l’écart.
+  owner: Équipe projet
+  due: '2026-12-15'
+- id: '6.1'
+  status: non validé
+  evidence: JS non minifié.
+  action: Minifier.
+  owner: Frontend
+  due: '2026-12-01'
+- id: '6.2'
+  status: non validé
+  evidence: Pas de cache.
+  action: Ajouter Cache-Control.
+  owner: Backend
+  due: '2026-12-01'
+- id: '6.3'
+  status: non validé
+  evidence: Pas de compression.
+  action: Activer gzip/brotli.
+  owner: Backend
+  due: '2026-12-01'
+- id: '6.4'
+  status: non validé
+  evidence: DOM trop profond.
+  action: Simplifier le HTML.
+  owner: Frontend
+  due: '2026-12-15'
+- id: '6.5'
+  status: en cours
+  evidence: Requêtes limitées mais pas de budget.
+  action: Définir un budget de poids.
+  owner: Tech lead
+  due: '2026-12-15'
+- id: '6.6'
+  status: non validé
+  evidence: Absence de preuve dans les artefacts fournis (screening).
+  action: Fournir une preuve ou documenter l’écart.
+  owner: Équipe projet
+  due: '2026-12-15'
+- id: '6.7'
+  status: non validé
+  evidence: Absence de preuve dans les artefacts fournis (screening).
+  action: Fournir une preuve ou documenter l’écart.
+  owner: Équipe projet
+  due: '2026-12-15'
+- id: '7.1'
+  status: non validé
+  evidence: SELECT * dans l’API.
+  action: Sélectionner les colonnes utiles.
+  owner: Backend
+  due: '2026-12-01'
+- id: '7.2'
+  status: non validé
+  evidence: Absence de preuve dans les artefacts fournis (screening).
+  action: Fournir une preuve ou documenter l’écart.
+  owner: Équipe projet
+  due: '2026-12-15'
+- id: '7.3'
+  status: non validé
+  evidence: Pas d’index sur la table de présence.
+  action: Ajouter un index.
+  owner: Backend
+  due: '2026-12-01'
+- id: '7.4'
+  status: non validé
+  evidence: Absence de preuve dans les artefacts fournis (screening).
+  action: Fournir une preuve ou documenter l’écart.
+  owner: Équipe projet
+  due: '2026-12-15'
+- id: '8.1'
+  status: non validé
+  evidence: Absence de preuve dans les artefacts fournis (screening).
+  action: Fournir une preuve ou documenter l’écart.
+  owner: Équipe projet
+  due: '2026-12-15'
+- id: '8.2'
+  status: non validé
+  evidence: Absence de preuve dans les artefacts fournis (screening).
+  action: Fournir une preuve ou documenter l’écart.
+  owner: Équipe projet
+  due: '2026-12-15'
+- id: '8.3'
+  status: en cours
+  evidence: Hébergement France, PUE non documenté.
+  action: Demander le PUE.
+  owner: Achats
+  due: '2027-01-15'
+- id: '8.4'
+  status: non validé
+  evidence: Absence de preuve dans les artefacts fournis (screening).
+  action: Fournir une preuve ou documenter l’écart.
+  owner: Équipe projet
+  due: '2026-12-15'
+- id: '8.5'
+  status: non validé
+  evidence: Absence de preuve dans les artefacts fournis (screening).
+  action: Fournir une preuve ou documenter l’écart.
+  owner: Équipe projet
+  due: '2026-12-15'
+- id: '8.6'
+  status: non validé
+  evidence: Absence de preuve dans les artefacts fournis (screening).
+  action: Fournir une preuve ou documenter l’écart.
+  owner: Équipe projet
+  due: '2026-12-15'
+- id: '8.7'
+  status: non validé
+  evidence: Absence de preuve dans les artefacts fournis (screening).
+  action: Fournir une preuve ou documenter l’écart.
+  owner: Équipe projet
+  due: '2026-12-15'
+- id: '8.8'
+  status: non applicable
+  evidence: Pas de redondance multi-site.
+  action: ''
+  owner: ''
+  due: ''
+- id: '8.9'
+  status: non validé
+  evidence: Absence de preuve dans les artefacts fournis (screening).
+  action: Fournir une preuve ou documenter l’écart.
+  owner: Équipe projet
+  due: '2026-12-15'
+- id: '8.10'
+  status: non validé
+  evidence: Absence de preuve dans les artefacts fournis (screening).
+  action: Fournir une preuve ou documenter l’écart.
+  owner: Équipe projet
+  due: '2026-12-15'
+- id: '9.1'
+  status: non applicable
+  evidence: Pas d’IA.
+  action: ''
+  owner: ''
+  due: ''
+- id: '9.2'
+  status: non applicable
+  evidence: Pas d’IA.
+  action: ''
+  owner: ''
+  due: ''
+- id: '9.3'
+  status: non applicable
+  evidence: Pas d’IA.
+  action: ''
+  owner: ''
+  due: ''
+- id: '9.4'
+  status: non applicable
+  evidence: Pas d’IA.
+  action: ''
+  owner: ''
+  due: ''
+- id: '9.5'
+  status: non applicable
+  evidence: Pas d’IA.
+  action: ''
+  owner: ''
+  due: ''
+- id: '9.6'
+  status: non applicable
+  evidence: Pas d’IA.
+  action: ''
+  owner: ''
+  due: ''
+- id: '9.7'
+  status: non applicable
+  evidence: Pas d’IA.
+  action: ''
+  owner: ''
+  due: ''

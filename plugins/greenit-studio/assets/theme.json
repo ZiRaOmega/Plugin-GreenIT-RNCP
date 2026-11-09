@@ -1,0 +1,30 @@
+{
+  "colors": {
+    "green_900": "#1B4332",
+    "green_800": "#2D6A4F",
+    "green_700": "#40916C",
+    "green_600": "#52B788",
+    "green_500": "#74C69D",
+    "green_400": "#95D5B2",
+    "green_300": "#B7E4C7",
+    "green_200": "#D8F3DC",
+    "accent": "#E9C46A",
+    "alert": "#C1121F",
+    "text": "#1F2933",
+    "bg": "#F7F5EF",
+    "muted": "#5C6B73"
+  },
+  "fonts": {
+    "body": "Liberation Sans",
+    "mono": "Liberation Mono"
+  },
+  "sizes": {
+    "slide_title": 30,
+    "slide_body": 18,
+    "slide_source": 9,
+    "doc_body": 10.5,
+    "doc_h1": 22,
+    "doc_h2": 16,
+    "doc_h3": 13
+  }
+}

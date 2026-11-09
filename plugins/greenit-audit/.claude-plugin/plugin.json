@@ -1,0 +1,23 @@
+{
+  "name": "greenit-audit",
+  "displayName": "GreenIT Audit",
+  "version": "0.1.2",
+  "description": "Audit GreenIT français : RGESN, GR491, RWEB, ACV ISO 14040/44, ADPe/ADPf, calculs, rapport, soutenance et preuves RNCP39388.",
+  "author": {
+    "name": "ZiRaOmega"
+  },
+  "license": "ViewOnly-1.0",
+  "keywords": [
+    "greenit",
+    "rgesn",
+    "gr491",
+    "acv",
+    "adpe",
+    "adpf",
+    "rncp39388"
+  ],
+  "dependencies": [
+    "greenit-studio",
+    "greenit-engineering"
+  ]
+}

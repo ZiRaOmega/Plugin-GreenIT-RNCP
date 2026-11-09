@@ -1,0 +1,501 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://greenit-rncp39388.local/schemas/audit.schema.json",
+  "title": "Audit GreenIT — schéma de saisie",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "project",
+    "functional_unit",
+    "scope",
+    "stack",
+    "hardware",
+    "constraints",
+    "inventory",
+    "assumptions",
+    "quality"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "project": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "client",
+        "version",
+        "date",
+        "authors",
+        "context"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "client": {
+          "type": "string"
+        },
+        "version": {
+          "type": "string"
+        },
+        "date": {
+          "type": "string",
+          "format": "date"
+        },
+        "authors": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1
+        },
+        "context": {
+          "type": "string"
+        }
+      }
+    },
+    "functional_unit": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "description",
+        "users",
+        "period_days",
+        "unit",
+        "scenarios"
+      ],
+      "properties": {
+        "description": {
+          "type": "string",
+          "minLength": 1
+        },
+        "users": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "period_days": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "unit": {
+          "type": "string"
+        },
+        "scenarios": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "id",
+              "description",
+              "actor",
+              "count_per_user",
+              "duration_s",
+              "requests",
+              "data_kb",
+              "device",
+              "network",
+              "server_time_ms"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "description": {
+                "type": "string"
+              },
+              "actor": {
+                "type": "string"
+              },
+              "count_per_user": {
+                "type": "number",
+                "minimum": 0
+              },
+              "duration_s": {
+                "type": "number",
+                "minimum": 0
+              },
+              "requests": {
+                "type": "number",
+                "minimum": 0
+              },
+              "data_kb": {
+                "type": "number",
+                "minimum": 0
+              },
+              "device": {
+                "type": "string"
+              },
+              "network": {
+                "type": "string"
+              },
+              "server_time_ms": {
+                "type": "number",
+                "minimum": 0
+              }
+            }
+          }
+        }
+      }
+    },
+    "scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "tiers",
+        "lifecycle_stages",
+        "included",
+        "excluded",
+        "cut_off_rules",
+        "allocation_method",
+        "include_embodied",
+        "include_end_of_life",
+        "geography",
+        "grid_intensity_gco2e_per_kwh",
+        "grid_source_id"
+      ],
+      "properties": {
+        "tiers": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 3
+          },
+          "minItems": 1
+        },
+        "lifecycle_stages": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1
+        },
+        "included": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "excluded": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "cut_off_rules": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "allocation_method": {
+          "type": "string"
+        },
+        "include_embodied": {
+          "type": "boolean"
+        },
+        "include_end_of_life": {
+          "type": "boolean"
+        },
+        "geography": {
+          "type": "string"
+        },
+        "grid_intensity_gco2e_per_kwh": {
+          "type": "number",
+          "minimum": 0
+        },
+        "grid_source_id": {
+          "type": "string"
+        }
+      }
+    },
+    "stack": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "frontend",
+        "backend",
+        "database",
+        "hosting",
+        "ci_cd",
+        "third_parties"
+      ],
+      "properties": {
+        "frontend": {
+          "type": "string"
+        },
+        "backend": {
+          "type": "string"
+        },
+        "database": {
+          "type": "string"
+        },
+        "hosting": {
+          "type": "string"
+        },
+        "ci_cd": {
+          "type": "string"
+        },
+        "third_parties": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "hardware": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "user_devices",
+        "servers",
+        "network"
+      ],
+      "properties": {
+        "user_devices": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "servers": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "network": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "constraints": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "budget_eur",
+        "deadline",
+        "security",
+        "rgpd",
+        "accessibility"
+      ],
+      "properties": {
+        "budget_eur": {
+          "type": "number",
+          "minimum": 0
+        },
+        "deadline": {
+          "type": "string"
+        },
+        "security": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "rgpd": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "accessibility": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "inventory": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "items"
+      ],
+      "properties": {
+        "items": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "id",
+              "label",
+              "category",
+              "tier",
+              "stage",
+              "quantity",
+              "hours",
+              "gb",
+              "factor_id",
+              "allocation_share",
+              "pue",
+              "data_quality",
+              "source_id",
+              "notes"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "label": {
+                "type": "string"
+              },
+              "category": {
+                "enum": [
+                  "device",
+                  "server",
+                  "network",
+                  "development",
+                  "maintenance",
+                  "decommissioning"
+                ]
+              },
+              "tier": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 3
+              },
+              "stage": {
+                "type": "string"
+              },
+              "quantity": {
+                "type": "number",
+                "minimum": 0
+              },
+              "hours": {
+                "type": "number",
+                "minimum": 0
+              },
+              "gb": {
+                "type": "number",
+                "minimum": 0
+              },
+              "factor_id": {
+                "type": "string"
+              },
+              "allocation_share": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              },
+              "pue": {
+                "type": "number",
+                "minimum": 1
+              },
+              "data_quality": {
+                "enum": [
+                  "measured",
+                  "specific",
+                  "generic",
+                  "assumption"
+                ]
+              },
+              "source_id": {
+                "type": "string"
+              },
+              "notes": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "assumptions": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "statement",
+          "value",
+          "unit",
+          "source_id",
+          "confidence",
+          "impact_if_wrong"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "statement": {
+            "type": "string"
+          },
+          "value": {
+            "type": "number"
+          },
+          "unit": {
+            "type": "string"
+          },
+          "source_id": {
+            "type": "string"
+          },
+          "confidence": {
+            "enum": [
+              "high",
+              "medium",
+              "low"
+            ]
+          },
+          "impact_if_wrong": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "owner": {
+            "type": "string"
+          },
+          "due": {
+            "type": "string"
+          },
+          "evidence": {
+            "type": "string"
+          },
+          "evidence_status": {
+            "enum": [
+              "preuve",
+              "sans preuve",
+              "convention"
+            ]
+          }
+        }
+      }
+    },
+    "quality": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "limitations",
+        "coverage"
+      ],
+      "properties": {
+        "limitations": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1
+        },
+        "coverage": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

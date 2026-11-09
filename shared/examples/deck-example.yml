@@ -1,0 +1,310 @@
+meta:
+  title: Audit GreenIT — Service d’émargement
+  subtitle: ACV screening, RGESN et plan d’action
+  client: Zone01 Normandie
+  date: '2026-11-09'
+  version: '1.0'
+  authors:
+  - Équipe GreenIT RNCP39388
+  footer: Audit GreenIT — Zone01 Normandie
+slides:
+- layout: title
+  title: Audit GreenIT — Service d’émargement
+  subtitle: ACV screening, RGESN et plan d’action
+  notes: Bonjour à toutes et à tous. Nous présentons l’audit GreenIT du service d’émargement
+    de Zone01. Notre démarche est une ACV screening, c’est-à-dire une analyse de cycle
+    de vie simplifiée, construite pour prioriser des actions et non pour certifier
+    un service. Nous allons vous montrer les chiffres, les hypothèses, les limites
+    et le plan d’action. Le service est fictif, mais la méthode est celle que nous
+    appliquerions à un vrai projet. Nous avons volontairement conservé des imperfections
+    dans le code pour montrer le diagnostic, la mesure avant/après et l’amélioration.
+    Nous prendrons environ quinze minutes, puis cinq minutes de questions. Nous allons
+    suivre ce fil du cadrage jusqu’aux preuves, sans sauter d’étape. Nous commençons
+    par le contexte et la méthode. Le plan de la présentation est simple et progressif.
+- layout: metrics
+  kicker: Synthèse
+  title: Trois chiffres pour décider
+  source: Calculs de l’audit ; [S26], [S42]
+  cards:
+  - value: 1.76 kg
+    label: CO2e / semaine
+    detail: '±30 % : 1.23–2.29 kg'
+  - value: 63.6 %
+    label: du GWP vient du serveur
+    detail: Hébergement mutualisé, PUE 1,5 supposé
+  - value: 39.6 %
+    label: de preuves RGESN
+    detail: 100.0 % statués ; score 15.0/100 non significatif
+  notes: 'Trois chiffres résument la situation. Le service émet environ 1,76 kilogramme
+    de CO2 équivalent par semaine. Le serveur représente 64 % du GWP et le développement
+    32 %. La couverture RGESN est de 39.6 %, avec un score de 15.0 sur 100 : 100.0
+    % des critères ont un statut, mais seulement 39.6 % ont une preuve, donc le score
+    est non significatif. Notre décision est de mesurer le serveur et l’hébergement
+    avant de promettre une réduction globale. Nous préférons afficher une fourchette
+    et une couverture plutôt qu’un chiffre unique qui donnerait une fausse impression
+    de précision. Ce message est important : un audit honnête commence par dire ce
+    qu’il ne sait pas. Cette synthèse sera détaillée dans les sections suivantes,
+    avec les calculs et les sources. Le détail des calculs est fourni en annexe. Nous
+    cherchons une décision, pas un chiffre spectaculaire. Nous allons maintenant dérouler
+    les preuves. Le reste du dossier détaille chaque calcul.'
+- layout: bullets
+  kicker: Contexte
+  title: Un service simple, des contraintes réelles
+  bullets:
+  - 100 étudiants, 1 staff, 1 semaine, 3 développeurs
+  - 'Stack : HTML/CSS/JS, Python, SQLite, serveur mutualisé'
+  - 'Contraintes : budget nul, sécurité, RGPD, accessibilité'
+  - 'Terminaux partagés : l’allocation change la conclusion'
+  source: audit.yml ; [S24], [S25]
+  notes: 'Le contexte est simple : cent étudiants, un membre du staff, une semaine,
+    trois développeurs et un serveur mutualisé. Les contraintes sont un budget nul,
+    une échéance courte, la sécurité, le RGPD et l’accessibilité. La stack est volontairement
+    légère : HTML, CSS, JavaScript, Python et SQLite. Les terminaux sont partagés,
+    ce qui change beaucoup l’allocation : un smartphone n’est pas dédié au service,
+    il est utilisé quelques secondes. Nous avons aussi un laptop pour le staff et
+    trois laptops pour les développeurs. Cette fiche projet sert de contrat : elle
+    fixe le périmètre, les acteurs, les contraintes et les hypothèses de départ. Nous
+    reviendrons sur chaque contrainte quand elle influence une décision. Ces éléments
+    viennent du fichier audit.yml. Les contraintes sont traitées comme des données
+    d’entrée.'
+- layout: bullets
+  kicker: Méthode
+  title: Une ACV screening traçable
+  bullets:
+  - 'ISO 14040/14044 : cadre, inventaire, impacts, interprétation'
+  - 'GWP100, ADPe, ADPf : trois indicateurs, trois unités'
+  - 'Frontière : terminaux, réseau, serveur, développement, maintenance'
+  - Distinguer mesuré, estimé, supposé
+  source: '[S12], [S13], [S08]'
+  notes: 'Notre méthode suit les quatre phases d’ISO 14040 et 14044 : objectifs et
+    champ, inventaire, évaluation des impacts, interprétation. Nous définissons une
+    unité fonctionnelle, une frontière et des règles d’allocation. Nous utilisons
+    trois indicateurs : le GWP100 en kilogrammes de CO2 équivalent, l’ADPe en kilogrammes
+    d’antimoine équivalent pour les ressources minérales, et l’ADPf en mégajoules
+    pour les ressources fossiles. Les facteurs viennent de Boavizta et du facteur
+    local NegaOctet pour le réseau. Nous distinguons mesuré, estimé et supposé. Le
+    résultat est une aide à la décision, pas une certification. Chaque choix méthodologique
+    est discuté et pourra être contesté par le jury. Nous assumons les choix et les
+    limites.'
+- layout: bullets
+  kicker: Inventaire
+  title: Sept postes, des hypothèses explicites
+  bullets:
+  - 100 smartphones × 40 s ; 1 laptop staff × 20 s
+  - 3 laptops développeurs × 30 h
+  - 1 serveur × 168 h × 10 % × PUE 1,5
+  - Réseau dérivé de la page mesurée (1 595 Ko)
+  source: audit.yml ; [S26], [S42]
+  notes: L’inventaire comprend les smartphones des étudiants, le laptop du staff,
+    les laptops des développeurs, le serveur, le réseau fixe et mobile, et la maintenance.
+    Les hypothèses clés sont un serveur 2U, un PUE de 1,5, 10 % d’allocation, 30 heures
+    de développement et 40 secondes d’usage par étudiant. Ces hypothèses sont dans
+    audit.yml et dans la note de calcul. Nous avons aussi supposé un mix électrique
+    français à 51,9 grammes de CO2 par kilowattheure. Chaque hypothèse a un identifiant,
+    une source, un niveau de confiance et un impact si elle est fausse. C’est ce qui
+    permet de discuter le résultat au lieu de le subir. Le fichier audit.yml est la
+    source unique de vérité pour les quantités et les hypothèses. Chaque quantité
+    est justifiée ou signalée comme hypothèse.
+- layout: chart
+  kicker: Résultats
+  title: Serveur et développement dominent
+  image: /home/mister_omega/greenITPlugins/greenit-rncp39388/dist/figures/lifecycle.png
+  takeaway: Le serveur et le développement sont les premiers leviers.
+  source: Calculs de l’audit
+  notes: 'Par étape du cycle de vie, le serveur et le développement dominent. La maintenance
+    est faible. La fin de vie est hors périmètre faute de facteur spécifique ; une
+    ACV complète devrait la traiter. Le message est que l’hébergement et les heures
+    de développement sont les premiers leviers. Nous aurions pu nous concentrer sur
+    le frontend parce que c’est plus facile à montrer, mais les chiffres disent que
+    ce n’est pas le poste principal. C’est une décision méthodologique importante
+    : nous suivons les hotspots, pas les intuitions. Nous préférons un résultat dominé
+    par un poste réel à un résultat flatteur mais faux. Les figures sont générées
+    à partir des mêmes données.'
+- layout: chart
+  kicker: Résultats
+  title: Le tier 3 porte l’essentiel du GWP
+  image: /home/mister_omega/greenITPlugins/greenit-rncp39388/dist/figures/tiers.png
+  takeaway: Le tier 1 est faible car les terminaux sont partagés.
+  source: Calculs de l’audit
+  notes: 'Par tier, le tier 3, c’est-à-dire le serveur, représente l’essentiel du
+    GWP. Le tier 1 est faible parce que les terminaux sont partagés et utilisés très
+    peu de temps. Le tier 2, le réseau, est négligeable dans ce scénario. Attention
+    : si les terminaux étaient dédiés, le tier 1 deviendrait dominant. Nous avons
+    testé ce scénario de sensibilité. C’est pour cela que l’allocation et le scénario
+    d’usage doivent être explicites. Un même service peut avoir une conclusion très
+    différente selon que l’on considère un terminal partagé ou un terminal dédié.
+    Nous préférons le dire clairement. Le scénario de sensibilité est explicite pour
+    éviter une conclusion trop générale. Le tier 3 est le premier levier de réduction.'
+- layout: chart
+  kicker: Hotspots
+  title: Le serveur représente 64 % du GWP
+  image: /home/mister_omega/greenITPlugins/greenit-rncp39388/dist/figures/hotspots.png
+  takeaway: Mesurer le serveur avant d’optimiser le frontend.
+  source: Calculs de l’audit
+  notes: 'Les hotspots sont le serveur, les laptops des développeurs et la maintenance.
+    Les smartphones ne représentent que 0,24 %. Si les cent smartphones étaient dédiés
+    168 heures, le GWP total passerait à environ 66 kilogrammes, soit 37 fois plus.
+    Ce n’est pas une prédiction : c’est une démonstration que l’allocation change
+    la conclusion. Nous recommandons donc de mesurer l’usage réel et de ne pas supposer
+    que les terminaux sont négligeables. Dans un service où chaque étudiant aurait
+    une application dédiée et l’utiliserait longtemps, le classement des hotspots
+    serait différent. C’est une limite méthodologique, pas un détail. C’est le point
+    le plus important pour interpréter correctement notre résultat. L’allocation est
+    un choix, pas une vérité physique.'
+- layout: bullets
+  kicker: Diagnostic
+  title: Des défauts mesurables, pas des impressions
+  bullets:
+  - Image PNG 1,6 Mo, CSS dupliqué, JS non minifié
+  - Polling 5 s, console.log, innerHTML
+  - SELECT *, pas d’index, CORS *, secret factice
+  - alt manquant, label manquant, target=_blank sans rel
+  source: codebase-audit.json ; [S03], [S06]
+  notes: Le diagnostic technique montre une image PNG de 1,6 mégaoctet, du CSS dupliqué,
+    du JavaScript non minifié, du polling toutes les cinq secondes, un SELECT *, pas
+    d’index, un CORS permissif et un secret factice. Ce sont des défauts mesurables.
+    Nous les relions au RGESN et à RWEB. Le scanner ne remplace pas un audit de sécurité,
+    mais il donne des preuves. Nous avons aussi vérifié les attributs alt, les labels
+    et les target blank. Chaque signal a un fichier, une ligne, une sévérité et une
+    recommandation. C’est ce qui permet de passer d’un constat général à une action
+    concrète et vérifiable. Le diagnostic technique sera relié aux actions du plan,
+    pas laissé comme une liste. Chaque signal est relié à une norme.
+- layout: bullets
+  kicker: Benchmark
+  title: Choisir l’outil selon la question
+  bullets:
+  - 'Boavizta : équipements, GWP/PE/ADPe/ADPf'
+  - 'EcoIndex : web, score/GES/eau'
+  - 'NegaOctet : ACV multicritère, licence commerciale'
+  - 'RGESN, GR491, RWEB : référentiels complémentaires'
+  source: '[S26], [S28], [S35], [S03], [S05]'
+  notes: 'Nous avons comparé les outils : Boavizta pour les équipements, EcoIndex
+    pour le web, NegaOctet local pour le réseau. Les périmètres ne sont pas comparables.
+    Boavizta ne donne pas un score web, EcoIndex ne fait pas d’ACV, et NegaOctet est
+    une base commerciale. Nous utilisons aussi RGESN, GR491 et RWEB. Le RGESN est
+    le référentiel réglementaire français ; GR491 et RWEB sont des compléments. Nous
+    ne comparons pas les scores entre eux. La question n’est pas « quel outil est
+    le meilleur », mais « quel outil répond à quelle question, avec quel périmètre
+    et quelle licence ». La comparabilité des périmètres est une règle que nous nous
+    sommes imposée. Les licences sont précisées pour chaque outil.'
+- layout: matrix
+  kicker: Brainstorm
+  title: 32 idées, puis une matrice impact/effort
+  items:
+  - label: Polling
+    impact: 0.18
+    effort: 0.12
+  - label: Cache
+    impact: 0.28
+    effort: 0.22
+  - label: Images
+    impact: 0.35
+    effort: 0.28
+  - label: SQL
+    impact: 0.22
+    effort: 0.25
+  - label: PUE
+    impact: 0.62
+    effort: 0.65
+  - label: Terminaux
+    impact: 0.85
+    effort: 0.8
+  takeaway: 'Quick wins : polling, cache, images, SQL. Projets : PUE, terminaux, gouvernance.'
+  source: Brainstorm ; [S03], [S05], [S06]
+  notes: 'Le brainstorm a produit 32 idées, sans filtrage. La matrice impact-effort
+    montre les quick wins : supprimer le polling, activer le cache, optimiser les
+    images, indexer les requêtes. Les projets structurants sont le PUE de l’hébergeur,
+    la durée de vie des terminaux et la gouvernance. Les idées de compensation sont
+    écartées. Nous avons aussi écarté les idées qui ne réduisent pas les impacts,
+    comme « passer au cloud vert » sans preuve ou « optimiser le frontend pour compenser
+    le serveur ». Le brainstorm sert à explorer, la matrice sert à décider. Ce sont
+    deux moments séparés. La divergence et la convergence sont deux temps distincts,
+    avec des critères explicites. La matrice est un outil d’aide à la décision.'
+- layout: timeline
+  kicker: Plan d’action
+  title: Quick wins, moyen, long
+  items:
+  - phase: S1
+    label: Polling, cache, images, SQL
+    start: 0
+    end: 1
+  - phase: S2
+    label: Budget poids, PUE, mesure
+    start: 1
+    end: 3
+  - phase: S3
+    label: Formation, CI, charte
+    start: 3
+    end: 5
+  - phase: S4+
+    label: Terminaux, gouvernance
+    start: 5
+    end: 8
+  source: Plan d’action
+  notes: 'Le plan d’action est divisé en quick wins, moyen et long. Les quick wins
+    sont A1 à A4 : polling, cache, images, requêtes SQL. Les actions A5 à A8 structurent
+    la mesure, le PUE, la formation et la CI. A9 et A10 sont des décisions de direction
+    : terminaux et gouvernance. Chaque action a un responsable, une échéance et un
+    KPI. Nous ne promettons pas de gains non mesurés. Les quick wins sont peu risqués
+    et peuvent être faits en une à deux semaines. Les projets longs demandent un arbitrage
+    budgétaire et politique. Nous préférons un plan réaliste à une liste de vœux.
+    Le plan est volontairement court : dix actions, des responsables et des KPI. Les
+    échéances sont indicatives et réalistes.'
+- layout: metrics
+  kicker: Gains
+  title: Le web fond, le GWP bouge peu
+  source: Mesures Playwright ; calculs de l’audit
+  cards:
+  - value: 1 595 → 91.6 Ko
+    label: poids de la page
+    detail: −94.3 %
+  - value: 87 → 95
+    label: EcoIndex
+    detail: 87 → 95
+  - value: 0.1 %
+    label: de GWP évité
+    detail: Le réseau n’est pas le hotspot
+  notes: 'Après optimisation, la page passe de 1 595 kilooctets à 92 kilooctets, soit
+    une réduction de 94 %. Les requêtes passent de 7 à 6, le cache de 0 à 4 ressources,
+    et l’EcoIndex de 87 à 95. Le GWP ne baisse que de moins de 0,1 %, car le réseau
+    n’est pas le hotspot et le serveur n’a pas changé. C’est un résultat honnête.
+    Nous ne présentons pas la réduction du poids de la page comme une réduction du
+    GWP : ce sont deux indicateurs différents. Le gain est réel pour la bande passante,
+    le temps de chargement et l’expérience utilisateur, mais il ne dispense pas de
+    mesurer l’hébergement. C’est le message central de cette slide. Nous distinguons
+    clairement le gain web du gain GWP, sans les confondre. Le gain GWP est faible,
+    et nous l’expliquons.'
+- layout: bullets
+  kicker: Bénéfices
+  title: Au-delà du carbone
+  bullets:
+  - 'Accessibilité : labels, alt, contrastes, clavier'
+  - 'Sécurité : CORS, secrets, SELECT *'
+  - 'Qualité : cache, index, moins de debug'
+  - 'Coûts et UX : bande passante, CPU, rapidité'
+  source: '[S24], [S25], [S39], [S40]'
+  notes: 'Les bénéfices collatéraux sont l’accessibilité, la sécurité, la qualité,
+    les coûts et l’expérience utilisateur. La gouvernance passe par une charte, une
+    revue GreenIT en CI et des KPI. Nous recommandons de mesurer la consommation réelle,
+    de documenter le PUE et de former les équipes. La démarche doit être continue,
+    pas un one-shot. Un audit qui reste dans un tiroir ne sert à rien. Nous proposons
+    un point de mesure à trois mois et un nouvel audit à six mois. Les KPI doivent
+    être simples et partagés : poids, requêtes, kWh, PUE, EcoIndex. C’est la condition
+    pour que les progrès soient visibles et crédibles. La gouvernance est ce qui transforme
+    une optimisation ponctuelle en pratique durable. Les KPI seront suivis dans le
+    temps.'
+- layout: closing
+  title: Merci
+  subtitle: Questions et échanges — 5 minutes
+  bullets:
+  - Mesurer avant de promettre
+  - Ne pas confondre poids web et GWP
+  - Assumer les hypothèses et les limites
+  notes: En conclusion, le service peut réduire fortement son poids web, mais son
+    GWP reste dominé par le serveur et le développement. La priorité est de mesurer,
+    puis de décider. Nous ne revendiquons ni neutralité carbone ni compensation. Nous
+    avons montré les forces, les faiblesses, les hypothèses et les limites. Merci
+    pour votre attention. Nous sommes prêts pour vos questions, notamment sur l’allocation
+    des terminaux, le PUE, la couverture RGESN et la différence entre poids web et
+    GWP. Nous avons aussi préparé des réponses aux questions les plus probables du
+    jury. Merci de votre attention.

@@ -1,0 +1,311 @@
+schema_version: '1.0'
+project:
+  name: Service d’émargement Zone01 — démonstration
+  client: Zone01 Normandie (cas pédagogique)
+  version: '1.0'
+  date: '2026-11-09'
+  authors:
+  - Équipe GreenIT RNCP39388
+  context: Service web fictif permettant à 100 étudiants de s’émarger et à un membre
+    du staff de consulter les présences pendant une semaine. Le cas sert à démontrer
+    une ACV screening reproductible, pas à certifier un service réel.
+functional_unit:
+  description: Permettre à 100 étudiants de s’émarger dix fois et de consulter leurs
+    présences, et à un membre du staff de consulter les présences, pendant une semaine,
+    avec un serveur mutualisé.
+  users: 100
+  period_days: 7
+  unit: semaine
+  scenarios:
+  - id: SC1
+    description: Émargement étudiant
+    actor: étudiant
+    count_per_user: 10
+    duration_s: 3
+    requests: 2
+    data_kb: 0.5
+    device: smartphone
+    network: 4G
+    server_time_ms: 10
+  - id: SC2
+    description: Consultation étudiante
+    actor: étudiant
+    count_per_user: 1
+    duration_s: 10
+    requests: 5
+    data_kb: 1595.305
+    device: smartphone
+    network: 4G
+    server_time_ms: 10
+  - id: SC3
+    description: Consultation staff
+    actor: staff
+    count_per_user: 1
+    duration_s: 20
+    requests: 3
+    data_kb: 1595.305
+    device: laptop
+    network: fixe
+    server_time_ms: 10
+scope:
+  tiers:
+  - 1
+  - 2
+  - 3
+  lifecycle_stages:
+  - Développement
+  - Utilisation
+  - Maintenance
+  included:
+  - Terminaux utilisateurs (fabrication et usage)
+  - Réseau fixe et mobile
+  - Serveur et hébergement (fabrication et usage)
+  - Développement
+  - Maintenance
+  excluded:
+  - Fabrication des bâtiments
+  - Réseau inactif
+  - Impacts sociaux
+  - Effets rebond
+  - Fin de vie faute de facteur spécifique
+  cut_off_rules:
+  - Aucun cut-off appliqué ; les flux non caractérisés sont signalés.
+  allocation_method: 'Serveur mutualisé : 10 % des impacts alloués au service. Terminaux
+    : allocation au temps d’usage du service.'
+  include_embodied: true
+  include_end_of_life: false
+  geography: France
+  grid_intensity_gco2e_per_kwh: 51.9
+  grid_source_id: S10
+stack:
+  frontend: HTML/CSS/JavaScript vanilla
+  backend: Python 3 stdlib (http.server)
+  database: SQLite
+  hosting: Serveur 2U mutualisé, région France
+  ci_cd: GitHub Actions (fictif)
+  third_parties: []
+hardware:
+  user_devices:
+  - 100 smartphones 6 pouces
+  - 1 laptop staff
+  - 3 laptops développeurs
+  servers:
+  - 1 serveur 2U mutualisé
+  network:
+  - Réseau mobile 4G pour les étudiants
+  - Réseau fixe pour le staff
+constraints:
+  budget_eur: 0
+  deadline: '2026-11-09'
+  security:
+  - OWASP Top 10
+  - moindre privilège
+  - secrets hors code
+  rgpd:
+  - minimisation
+  - durée de conservation
+  - information des personnes
+  accessibility:
+  - RGAA 4.1.2
+  - contrastes
+  - labels
+inventory:
+  items:
+  - id: students-smartphones
+    label: Smartphones des étudiants
+    category: device
+    tier: 1
+    stage: Utilisation
+    quantity: 100
+    hours: 0.011111
+    gb: 0
+    factor_id: boavizta_smartphone_default
+    allocation_share: 1.0
+    pue: 1.0
+    data_quality: generic
+    source_id: S26
+    notes: 40 s par étudiant sur la semaine (10 × 3 s + 10 s).
+  - id: staff-laptop
+    label: Laptop du staff
+    category: device
+    tier: 1
+    stage: Utilisation
+    quantity: 1
+    hours: 0.005556
+    gb: 0
+    factor_id: boavizta_laptop_default
+    allocation_share: 1.0
+    pue: 1.0
+    data_quality: generic
+    source_id: S26
+    notes: 20 s de consultation.
+  - id: dev-laptops
+    label: Laptops des développeurs
+    category: development
+    tier: 1
+    stage: Développement
+    quantity: 3
+    hours: 30
+    gb: 0
+    factor_id: boavizta_laptop_default
+    allocation_share: 1.0
+    pue: 1.0
+    data_quality: assumption
+    source_id: S26
+    notes: 30 h de développement par développeur, estimation.
+  - id: server
+    label: Serveur 2U mutualisé
+    category: server
+    tier: 3
+    stage: Utilisation
+    quantity: 1
+    hours: 168
+    gb: 0
+    factor_id: boavizta_server_default
+    allocation_share: 0.1
+    pue: 1.5
+    data_quality: assumption
+    source_id: S26
+    notes: 1 semaine complète, 10 % alloués, PUE 1,5.
+  - id: network-fixed
+    label: Réseau fixe
+    category: network
+    tier: 2
+    stage: Utilisation
+    quantity: 1
+    hours: 0
+    gb: 0.001522
+    factor_id: negaoctet_fixed_gb
+    allocation_share: 1.0
+    pue: 1.0
+    data_quality: generic
+    source_id: S35
+    notes: Volume fixe dérivé de la page mesurée ; facteur NegaOctet local pour GWP/ADPe/ADPf.
+  - id: network-mobile
+    label: Réseau mobile
+    category: network
+    tier: 2
+    stage: Utilisation
+    quantity: 1
+    hours: 0
+    gb: 0.15262
+    factor_id: negaoctet_mobile_gb
+    allocation_share: 1.0
+    pue: 1.0
+    data_quality: generic
+    source_id: S35
+    notes: Volume mobile dérivé de la page mesurée ; facteur NegaOctet local pour
+      GWP/ADPe/ADPf.
+  - id: maintenance
+    label: Maintenance applicative
+    category: maintenance
+    tier: 1
+    stage: Maintenance
+    quantity: 1
+    hours: 10
+    gb: 0
+    factor_id: boavizta_laptop_default
+    allocation_share: 1.0
+    pue: 1.0
+    data_quality: assumption
+    source_id: S26
+    notes: 10 h de maintenance sur la semaine.
+assumptions:
+- id: H1
+  statement: Le serveur est un 2U mutualisé dont les caractéristiques sont inconnues
+    ; les valeurs Boavizta par défaut sont utilisées.
+  value: 900
+  unit: kg CO2e embarqué
+  source_id: S26
+  confidence: low
+  impact_if_wrong: Si le serveur est plus petit ou plus récent, la part serveur peut
+    diminuer fortement.
+  status: évalué - scénario
+  owner: Ops / Achats
+  due: '2026-12-15'
+  evidence: Fiche serveur absente ; scénario Boavizta.
+  evidence_status: sans preuve
+- id: H2
+  statement: Le PUE de l’hébergement est de 1,5.
+  value: 1.5
+  unit: ratio
+  source_id: S26
+  confidence: low
+  impact_if_wrong: Un PUE de 1,2 réduit la part usage du serveur d’environ 20 %.
+  status: évalué - scénario
+  owner: Achats
+  due: '2026-12-15'
+  evidence: PUE contractuel absent ; scénario 1,5.
+  evidence_status: sans preuve
+- id: H3
+  statement: 10 % des impacts du serveur sont alloués au service.
+  value: 0.1
+  unit: part
+  source_id: S26
+  confidence: medium
+  impact_if_wrong: Une allocation à 5 % divise la part serveur par deux.
+  status: évalué - convention
+  owner: GreenIT
+  due: '2026-12-01'
+  evidence: Convention de travail ; matrice d’allocation non signée.
+  evidence_status: convention
+- id: H4
+  statement: Le développement représente 30 h par développeur.
+  value: 30
+  unit: heures
+  source_id: S36
+  confidence: medium
+  impact_if_wrong: Une durée double augmente la part développement.
+  status: évalué - estimation
+  owner: Tech lead
+  due: '2026-12-01'
+  evidence: Timesheet absent ; scénario 30 h.
+  evidence_status: sans preuve
+- id: H5
+  statement: Chaque étudiant utilise le service 40 s sur la semaine.
+  value: 40
+  unit: secondes
+  source_id: S36
+  confidence: medium
+  impact_if_wrong: Une utilisation plus longue augmente la part terminaux, mais elle
+    reste faible si les appareils sont partagés.
+  status: évalué - scénario
+  owner: Produit
+  due: '2026-12-01'
+  evidence: Logs absents ; scénario 40 s.
+  evidence_status: sans preuve
+- id: H6
+  statement: Le mix électrique français est de 51,9 g CO2e/kWh.
+  value: 51.9
+  unit: g CO2e/kWh
+  source_id: S10
+  confidence: high
+  impact_if_wrong: Un mix plus carboné augmente la part usage.
+  status: évalué - documenté
+  owner: GreenIT
+  due: '2026-11-09'
+  evidence: Base Empreinte [S10].
+  evidence_status: preuve
+- id: H7
+  statement: 'Le volume réseau est dérivé de la page mesurée (1 595 Ko) : 0,001522
+    Go fixe et 0,15262 Go mobile.'
+  value: 0.154142
+  unit: Go
+  source_id: S28
+  confidence: medium
+  impact_if_wrong: Un volume plus élevé augmente la part réseau, mais elle reste secondaire
+    dans ce scénario.
+  status: évalué - mesuré
+  owner: Tech lead
+  due: '2026-11-09'
+  evidence: web-metrics.json ; page mesurée.
+  evidence_status: preuve
+quality:
+  limitations:
+  - 'ACV screening : le rapport ne remplace pas une ACV complète avec revue critique.'
+  - Caractéristiques réelles du serveur et PUE de l’hébergeur à collecter (H1, H2).
+  - Fin de vie exclue faute de facteur spécifique ; impacts sociaux et effet rebond
+    hors périmètre.
+  - Le facteur réseau NegaOctet local couvre GWP, ADPe et ADPf ; sa licence interdit
+    la redistribution.
+  coverage: Screening sur les tiers 1–3, trois étapes de cycle de vie.

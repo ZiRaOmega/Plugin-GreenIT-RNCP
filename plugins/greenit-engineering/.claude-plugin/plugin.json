@@ -1,0 +1,18 @@
+{
+  "name": "greenit-engineering",
+  "displayName": "GreenIT Engineering",
+  "version": "0.1.2",
+  "description": "Refactoring, correctifs, propositions, brainstorm, benchmark et revue de code orientés GreenIT.",
+  "author": {
+    "name": "ZiRaOmega"
+  },
+  "license": "ViewOnly-1.0",
+  "keywords": [
+    "greenit",
+    "refactor",
+    "fix",
+    "brainstorm",
+    "benchmark",
+    "review"
+  ]
+}

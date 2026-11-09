@@ -1,0 +1,381 @@
+sources:
+- id: S01
+  org: France Compétences
+  title: RNCP39388 — Responsable green IT
+  date: '2026-11-09'
+  url: https://www.francecompetences.fr/recherche/rncp/39388
+  type: official
+  license: public
+  accessed: '2026-11-09'
+  used_for: Fiche titre, blocs et compétences
+- id: S02
+  org: France Compétences
+  title: RNCP42198 — autre titre Responsable green IT
+  date: '2026-11-09'
+  url: https://www.francecompetences.fr/recherche/rncp/42198
+  type: official
+  license: public
+  accessed: '2026-11-09'
+  used_for: Désambiguïsation uniquement
+- id: S03
+  org: Arcep / Arcom / ADEME
+  title: Référentiel général d’écoconception des services numériques — version 2024
+  date: 2024-05
+  url: https://ecoresponsable.numerique.gouv.fr/docs/2024/rgesn-mai2024/referentiel_general_ecoconception_des_services_numeriques_version_2024.pdf
+  type: official
+  license: Licence Ouverte
+  accessed: '2026-11-09'
+  used_for: 78 critères, 9 chapitres
+- id: S04
+  org: Arcep / Arcom / ADEME
+  title: Outil de déclaration RGESN 2024 (XLSX)
+  date: 2024-05
+  url: https://ecoresponsable.numerique.gouv.fr/docs/2024/rgesn-mai2024/rgesn_2024_outil_declaration_ecoconception.xlsx
+  type: official
+  license: Licence Ouverte
+  accessed: '2026-11-09'
+  used_for: Extraction des 78 critères, poids et cibles
+- id: S05
+  org: INR
+  title: GR491 — Guide de référence de l’écoconception de services numériques
+  date: '2024'
+  url: https://gr491.isit-europe.org/
+  type: official
+  license: Contenu INR, citation
+  accessed: '2026-11-09'
+  used_for: 8 familles, 61 recommandations, 516 critères
+- id: S06
+  org: Collectif Green IT
+  title: RWEB 5.0.0 — Référentiel de bonnes pratiques
+  date: '2024'
+  url: https://rweb.greenit.fr/fr/fiches
+  type: community
+  license: Contenu Collectif Green IT, citation
+  accessed: '2026-11-09'
+  used_for: 119 critères, 7 étapes de cycle de vie
+- id: S07
+  org: ADEME
+  title: Base Empreinte — facteurs d’impact
+  date: '2026'
+  url: https://base-empreinte.ademe.fr/
+  type: official
+  license: Licence Ouverte
+  accessed: '2026-11-09'
+  used_for: Facteurs GWP et multicritères
+- id: S08
+  org: ADEME
+  title: Méthodologie d’évaluation environnementale basée sur l’ACV pour un service
+    numérique — RCP v2
+  date: '2025'
+  url: https://librairie.ademe.fr/societe-et-politiques-publiques/9418-methodologie-d-evaluation-environnementale-basee-sur-l-analyse-du-cycle-de-vie-acv-pour-un-service-numerique.html
+  type: official
+  license: Licence Ouverte
+  accessed: '2026-11-09'
+  used_for: Cadre ACV service numérique
+- id: S09
+  org: ADEME / Arcep
+  title: Étude de l’empreinte environnementale du numérique en France — 2020-2030-2050
+  date: 2023-03
+  url: https://www.arcep.fr/uploads/tx_gspublication/dossier-presse-Etude-Ademe-Arcep-lot3_mars2023.pdf
+  type: official
+  license: Licence Ouverte
+  accessed: '2026-11-09'
+  used_for: Chiffres 2020 et projections
+- id: S10
+  org: ADEME
+  title: Impacts environnementaux du numérique en France — mise à jour 2025
+  date: '2025'
+  url: https://ecoresponsable.numerique.gouv.fr/docs/2024/etude-ademe-impacts-environnementaux-numerique.pdf
+  type: official
+  license: Licence Ouverte
+  accessed: '2026-11-09'
+  used_for: 'Chiffres 2022 : 29,5 Mt CO2e, 4,4 %, 11 % électricité'
+- id: S11
+  org: MiNumEco
+  title: Guide pratique pour des achats numériques responsables — ACV
+  date: '2024'
+  url: https://ecoresponsable.numerique.gouv.fr/publications/guide-pratique-achats-numeriques-responsables/demarche-numerique-responsable/analyse-cycle-de-vie
+  type: official
+  license: Licence Ouverte
+  accessed: '2026-11-09'
+  used_for: ACV, achats, critères
+- id: S12
+  org: ISO
+  title: ISO 14040:2006 — Management environnemental, ACV, principes et cadre
+  date: '2006'
+  url: https://www.iso.org/fr/standard/37456.html
+  type: standard
+  license: Norme payante
+  accessed: '2026-11-09'
+  used_for: Cadre ACV
+- id: S13
+  org: ISO
+  title: ISO 14044:2006 — Management environnemental, ACV, exigences et lignes directrices
+  date: '2006'
+  url: https://www.iso.org/fr/standard/38498.html
+  type: standard
+  license: Norme payante
+  accessed: '2026-11-09'
+  used_for: Exigences ACV
+- id: S14
+  org: ISO/IEC
+  title: ISO/IEC 21031:2024 — Software Carbon Intensity (SCI)
+  date: '2024'
+  url: https://www.iso.org/fr/standard/86612.html
+  type: standard
+  license: Norme payante
+  accessed: '2026-11-09'
+  used_for: Spécification SCI
+- id: S15
+  org: Commission européenne
+  title: Product Environmental Footprint (PEF) method
+  date: '2021'
+  url: https://green-forum.ec.europa.eu/green-business/environmental-footprint-methods/pef-method_en
+  type: official
+  license: Public
+  accessed: '2026-11-09'
+  used_for: Méthode PEF, 16 catégories
+- id: S16
+  org: JRC
+  title: EF 3.1 — characterisation and normalisation factors
+  date: '2023'
+  url: https://publications.jrc.ec.europa.eu/repository/bitstream/JRC130796/JRC130796_01.pdf
+  type: official
+  license: Public
+  accessed: '2026-11-09'
+  used_for: Facteurs EF 3.1
+- id: S17
+  org: ITU-T
+  title: L.1410 — Methodology for environmental impact assessment of ICT goods, networks
+    and services
+  date: 2024-11
+  url: https://www.itu.int/rec/T-REC-L.1410/en
+  type: standard
+  license: Norme ITU
+  accessed: '2026-11-09'
+  used_for: ACV TIC
+- id: S18
+  org: ITU-T
+  title: L.1450 — Methodologies for environmental impact assessment of ICT
+  date: '2023'
+  url: https://www.itu.int/rec/T-REC-L.1450
+  type: standard
+  license: Norme ITU
+  accessed: '2026-11-09'
+  used_for: ACV TIC
+- id: S19
+  org: ITU-T
+  title: L.1470 — GHG emissions trajectories for the ICT sector
+  date: '2020'
+  url: https://www.itu.int/rec/T-REC-L.1470
+  type: standard
+  license: Norme ITU
+  accessed: '2026-11-09'
+  used_for: Trajectoires GES TIC
+- id: S20
+  org: République française
+  title: Loi n° 2021-1485 du 15 novembre 2021 dite REEN
+  date: '2021-11-15'
+  url: https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000044327272
+  type: law
+  license: Public
+  accessed: '2026-11-09'
+  used_for: 'Article 25 : RGESN'
+- id: S21
+  org: République française
+  title: Décret n° 2022-1084 du 29 juillet 2022
+  date: '2022-07-29'
+  url: https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000046113741
+  type: law
+  license: Public
+  accessed: '2026-11-09'
+  used_for: Stratégie numérique responsable collectivités
+- id: S22
+  org: République française
+  title: Code de l’environnement, article L229-25 — BEGES
+  date: '2026'
+  url: https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000051559662
+  type: law
+  license: Public
+  accessed: '2026-11-09'
+  used_for: BEGES
+- id: S23
+  org: Commission européenne
+  title: Corporate Sustainability Reporting Directive (CSRD) et ESRS
+  date: '2026'
+  url: https://finance.ec.europa.eu/capital-markets-union-and-financial-markets/company-reporting-and-auditing/company-reporting/corporate-sustainability-reporting_en
+  type: official
+  license: Public
+  accessed: '2026-11-09'
+  used_for: CSRD, ESRS E1/E5
+- id: S24
+  org: CNIL
+  title: Règlement général sur la protection des données (RGPD)
+  date: '2016'
+  url: https://www.cnil.fr/fr/reglement-europeen-protection-donnees
+  type: official
+  license: Public
+  accessed: '2026-11-09'
+  used_for: RGPD, minimisation
+- id: S25
+  org: DINUM
+  title: RGAA 4.1.2 — critères et tests
+  date: '2023'
+  url: https://accessibilite.numerique.gouv.fr/methode/criteres-et-tests/
+  type: official
+  license: Licence Ouverte
+  accessed: '2026-11-09'
+  used_for: Accessibilité
+- id: S26
+  org: Boavizta
+  title: Documentation de l’API Boavizta
+  date: '2026'
+  url: https://doc.api.boavizta.org/
+  type: community
+  license: Code AGPL-3.0, données ouvertes
+  accessed: '2026-11-09'
+  used_for: Facteurs serveur, terminal, cloud
+- id: S27
+  org: Boavizta
+  title: Outils Boavizta
+  date: '2026'
+  url: https://www.boavizta.org/tools
+  type: community
+  license: AGPL-3.0
+  accessed: '2026-11-09'
+  used_for: Outils d’évaluation
+- id: S28
+  org: EcoIndex
+  title: Comment ça marche — méthode EcoIndex
+  date: '2026'
+  url: https://www.ecoindex.fr/comment-ca-marche
+  type: community
+  license: CC BY-NC-ND
+  accessed: '2026-11-09'
+  used_for: DOM, requêtes, poids, score
+- id: S29
+  org: CNUMR
+  title: EcoIndex Python — code source
+  date: '2026'
+  url: https://github.com/cnumr/EcoIndex_python
+  type: community
+  license: CC BY-NC-ND
+  accessed: '2026-11-09'
+  used_for: Quantiles et formule
+- id: S30
+  org: CNUMR
+  title: GreenIT Analysis — code source
+  date: '2026'
+  url: https://github.com/cnumr/GreenIT-Analysis
+  type: community
+  license: AGPL-3.0
+  accessed: '2026-11-09'
+  used_for: Extension navigateur
+- id: S31
+  org: MLCO2
+  title: CodeCarbon — code source
+  date: '2026'
+  url: https://github.com/mlco2/codecarbon
+  type: community
+  license: MIT
+  accessed: '2026-11-09'
+  used_for: Mesure énergie/carbone compute
+- id: S32
+  org: Hubblo
+  title: Scaphandre — code source
+  date: '2026'
+  url: https://github.com/hubblo-org/scaphandre
+  type: community
+  license: Apache-2.0
+  accessed: '2026-11-09'
+  used_for: Métrologie énergie
+- id: S33
+  org: Cloud Carbon Footprint
+  title: Cloud Carbon Footprint — code source
+  date: '2026'
+  url: https://github.com/cloud-carbon-footprint/cloud-carbon-footprint
+  type: community
+  license: Apache-2.0
+  accessed: '2026-11-09'
+  used_for: Facturation cloud, estimations
+- id: S34
+  org: Green Software Foundation
+  title: Software Carbon Intensity (SCI) specification
+  date: '2024'
+  url: https://sci.greensoftware.foundation/
+  type: community
+  license: Public
+  accessed: '2026-11-09'
+  used_for: SCI, ISO/IEC 21031
+- id: S35
+  org: GreenIT.fr / NegaOctet
+  title: NegaOctet — facteurs d’impacts ACV
+  date: '2024'
+  url: https://www.greenit.fr/negaoctet-acv-facteurs-dimpacts/
+  type: commercial
+  license: Licence commerciale, non redistribuable
+  accessed: '2026-11-09'
+  used_for: 526 facteurs, ACV multicritère
+- id: S36
+  org: Zone01 Normandie
+  title: Supports de formation GreenIT, modules 1–2
+  date: '2025'
+  url: $HOME/Downloads/Docs référent GreenIT.zip
+  type: local
+  license: Usage pédagogique local, ne pas redistribuer
+  accessed: '2026-11-09'
+  used_for: Cadrage, ACV, brainstorm, grille
+- id: S37
+  org: Zone01 Normandie
+  title: Présentation ACV Green IT
+  date: '2025'
+  url: $HOME/Downloads/ACV Green IT – Zone01 Normandie (1).pptx
+  type: local
+  license: Usage pédagogique local, ne pas redistribuer
+  accessed: '2026-11-09'
+  used_for: Structure et exemples
+- id: S38
+  org: Zone01 Normandie
+  title: Questions jury RNCP
+  date: '2025'
+  url: $HOME/Downloads/Questions RNCP.odt
+  type: local
+  license: Usage pédagogique local, ne pas redistribuer
+  accessed: '2026-11-09'
+  used_for: Questions de soutenance
+- id: S39
+  org: OWASP Foundation
+  title: OWASP Top 10
+  date: '2025'
+  url: https://owasp.org/www-project-top-ten/
+  type: community
+  license: CC BY-SA 4.0
+  accessed: '2026-11-09'
+  used_for: Sécurité applicative
+- id: S40
+  org: ANSSI
+  title: Recommandations et guides d’hygiène numérique
+  date: '2026'
+  url: https://cyber.gouv.fr/
+  type: official
+  license: Licence Ouverte
+  accessed: '2026-11-09'
+  used_for: Sécurité, bonnes pratiques
+- id: S41
+  org: GHG Protocol
+  title: Greenhouse Gas Protocol — Corporate Standard
+  date: '2004'
+  url: https://ghgprotocol.org/
+  type: standard
+  license: Public
+  accessed: '2026-11-09'
+  used_for: Scope 1/2/3
+- id: S42
+  org: Green Coding
+  title: Network Carbon Intensity — méthodologie et facteur 0,04106063 kWh/Go
+  date: '2025'
+  url: https://docs.green-coding.io/docs/measuring/carbon/network-carbon-intensity/
+  type: community
+  license: Documentation publique, citation
+  accessed: '2026-11-09'
+  used_for: Facteur réseau ouvert par Go ; GWP réseau

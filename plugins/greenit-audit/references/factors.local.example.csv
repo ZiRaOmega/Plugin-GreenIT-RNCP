@@ -1,0 +1,1 @@
+factor_id,category,label,unit,embedded_gwp,embedded_adpe,embedded_adpf,use_gwp_per_h,use_adpe_per_h,use_adpf_per_h,use_gwp_per_gb,use_adpe_per_gb,use_adpf_per_gb,lifetime_h,power_w,reference_grid_gco2e_per_kwh,source_id,source_url,version_date,license,notes

@@ -1,0 +1,18 @@
+{
+  "name": "greenit-studio",
+  "displayName": "GreenIT Studio",
+  "version": "0.1.2",
+  "description": "Génération de documents DOCX/PDF, diaporamas PPTX, vidéos, images et analyses de codebase pour les audits Green IT.",
+  "author": {
+    "name": "ZiRaOmega"
+  },
+  "license": "ViewOnly-1.0",
+  "keywords": [
+    "greenit",
+    "docx",
+    "pptx",
+    "video",
+    "images",
+    "codebase"
+  ]
+}

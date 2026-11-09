@@ -1,0 +1,12 @@
+.venv/
+build/
+dist/
+__pycache__/
+.pytest_cache/
+*.local.yml
+*.local.csv
+*.mp4
+examples/demo-service-optimized/
+.DS_Store
+
+*.db

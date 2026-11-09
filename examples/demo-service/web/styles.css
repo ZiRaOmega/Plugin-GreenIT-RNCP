@@ -1,0 +1,300 @@
+/* Feuille de style de démonstration, volontairement non minifiée. */
+:root {
+  --green: #1B4332;
+  --light: #D8F3DC;
+  --bg: #F7F5EF;
+  --text: #1F2933;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: "Liberation Sans", Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.5;
+}
+.hero {
+  padding: 2rem;
+  background: var(--light);
+  text-align: center;
+}
+.hero img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 1rem;
+}
+.hero h1 {
+  color: var(--green);
+  font-size: 2.4rem;
+  margin: 1rem 0 0.5rem;
+}
+main {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+.card {
+  background: white;
+  border: 1px solid #d9d9d9;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  margin: 1rem 0;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+input, button {
+  font: inherit;
+  padding: 0.7rem 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid #aaa;
+}
+button {
+  background: var(--green);
+  color: white;
+  border: 0;
+  cursor: pointer;
+}
+button:hover { background: #2D6A4F; }
+ul { padding-left: 1.2rem; }
+/* Règles dupliquées pour gonfler le fichier, comme dans un prototype. */
+.card { background: white; border: 1px solid #d9d9d9; border-radius: 1rem; padding: 1.5rem; margin: 1rem 0; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+.card { background: white; border: 1px solid #d9d9d9; border-radius: 1rem; padding: 1.5rem; margin: 1rem 0; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+.card { background: white; border: 1px solid #d9d9d9; border-radius: 1rem; padding: 1.5rem; margin: 1rem 0; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+.card { background: white; border: 1px solid #d9d9d9; border-radius: 1rem; padding: 1.5rem; margin: 1rem 0; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+/* padding rule 1 */
+.spacer-1 { padding: 1px; }
+/* padding rule 2 */
+.spacer-2 { padding: 2px; }
+/* padding rule 3 */
+.spacer-3 { padding: 3px; }
+/* padding rule 4 */
+.spacer-4 { padding: 4px; }
+/* padding rule 5 */
+.spacer-5 { padding: 5px; }
+/* padding rule 6 */
+.spacer-6 { padding: 6px; }
+/* padding rule 7 */
+.spacer-7 { padding: 7px; }
+/* padding rule 8 */
+.spacer-8 { padding: 8px; }
+/* padding rule 9 */
+.spacer-9 { padding: 9px; }
+/* padding rule 10 */
+.spacer-10 { padding: 10px; }
+/* padding rule 11 */
+.spacer-11 { padding: 11px; }
+/* padding rule 12 */
+.spacer-12 { padding: 12px; }
+/* padding rule 13 */
+.spacer-13 { padding: 13px; }
+/* padding rule 14 */
+.spacer-14 { padding: 14px; }
+/* padding rule 15 */
+.spacer-15 { padding: 15px; }
+/* padding rule 16 */
+.spacer-16 { padding: 16px; }
+/* padding rule 17 */
+.spacer-17 { padding: 17px; }
+/* padding rule 18 */
+.spacer-18 { padding: 18px; }
+/* padding rule 19 */
+.spacer-19 { padding: 19px; }
+/* padding rule 20 */
+.spacer-20 { padding: 20px; }
+/* padding rule 21 */
+.spacer-21 { padding: 21px; }
+/* padding rule 22 */
+.spacer-22 { padding: 22px; }
+/* padding rule 23 */
+.spacer-23 { padding: 23px; }
+/* padding rule 24 */
+.spacer-24 { padding: 24px; }
+/* padding rule 25 */
+.spacer-25 { padding: 25px; }
+/* padding rule 26 */
+.spacer-26 { padding: 26px; }
+/* padding rule 27 */
+.spacer-27 { padding: 27px; }
+/* padding rule 28 */
+.spacer-28 { padding: 28px; }
+/* padding rule 29 */
+.spacer-29 { padding: 29px; }
+/* padding rule 30 */
+.spacer-30 { padding: 30px; }
+/* padding rule 31 */
+.spacer-31 { padding: 31px; }
+/* padding rule 32 */
+.spacer-32 { padding: 32px; }
+/* padding rule 33 */
+.spacer-33 { padding: 33px; }
+/* padding rule 34 */
+.spacer-34 { padding: 34px; }
+/* padding rule 35 */
+.spacer-35 { padding: 35px; }
+/* padding rule 36 */
+.spacer-36 { padding: 36px; }
+/* padding rule 37 */
+.spacer-37 { padding: 37px; }
+/* padding rule 38 */
+.spacer-38 { padding: 38px; }
+/* padding rule 39 */
+.spacer-39 { padding: 39px; }
+/* padding rule 40 */
+.spacer-40 { padding: 40px; }
+/* padding rule 41 */
+.spacer-41 { padding: 41px; }
+/* padding rule 42 */
+.spacer-42 { padding: 42px; }
+/* padding rule 43 */
+.spacer-43 { padding: 43px; }
+/* padding rule 44 */
+.spacer-44 { padding: 44px; }
+/* padding rule 45 */
+.spacer-45 { padding: 45px; }
+/* padding rule 46 */
+.spacer-46 { padding: 46px; }
+/* padding rule 47 */
+.spacer-47 { padding: 47px; }
+/* padding rule 48 */
+.spacer-48 { padding: 48px; }
+/* padding rule 49 */
+.spacer-49 { padding: 49px; }
+/* padding rule 50 */
+.spacer-50 { padding: 50px; }
+/* padding rule 51 */
+.spacer-51 { padding: 51px; }
+/* padding rule 52 */
+.spacer-52 { padding: 52px; }
+/* padding rule 53 */
+.spacer-53 { padding: 53px; }
+/* padding rule 54 */
+.spacer-54 { padding: 54px; }
+/* padding rule 55 */
+.spacer-55 { padding: 55px; }
+/* padding rule 56 */
+.spacer-56 { padding: 56px; }
+/* padding rule 57 */
+.spacer-57 { padding: 57px; }
+/* padding rule 58 */
+.spacer-58 { padding: 58px; }
+/* padding rule 59 */
+.spacer-59 { padding: 59px; }
+/* padding rule 60 */
+.spacer-60 { padding: 60px; }
+/* padding rule 61 */
+.spacer-61 { padding: 61px; }
+/* padding rule 62 */
+.spacer-62 { padding: 62px; }
+/* padding rule 63 */
+.spacer-63 { padding: 63px; }
+/* padding rule 64 */
+.spacer-64 { padding: 64px; }
+/* padding rule 65 */
+.spacer-65 { padding: 65px; }
+/* padding rule 66 */
+.spacer-66 { padding: 66px; }
+/* padding rule 67 */
+.spacer-67 { padding: 67px; }
+/* padding rule 68 */
+.spacer-68 { padding: 68px; }
+/* padding rule 69 */
+.spacer-69 { padding: 69px; }
+/* padding rule 70 */
+.spacer-70 { padding: 70px; }
+/* padding rule 71 */
+.spacer-71 { padding: 71px; }
+/* padding rule 72 */
+.spacer-72 { padding: 72px; }
+/* padding rule 73 */
+.spacer-73 { padding: 73px; }
+/* padding rule 74 */
+.spacer-74 { padding: 74px; }
+/* padding rule 75 */
+.spacer-75 { padding: 75px; }
+/* padding rule 76 */
+.spacer-76 { padding: 76px; }
+/* padding rule 77 */
+.spacer-77 { padding: 77px; }
+/* padding rule 78 */
+.spacer-78 { padding: 78px; }
+/* padding rule 79 */
+.spacer-79 { padding: 79px; }
+/* padding rule 80 */
+.spacer-80 { padding: 80px; }
+/* padding rule 81 */
+.spacer-81 { padding: 81px; }
+/* padding rule 82 */
+.spacer-82 { padding: 82px; }
+/* padding rule 83 */
+.spacer-83 { padding: 83px; }
+/* padding rule 84 */
+.spacer-84 { padding: 84px; }
+/* padding rule 85 */
+.spacer-85 { padding: 85px; }
+/* padding rule 86 */
+.spacer-86 { padding: 86px; }
+/* padding rule 87 */
+.spacer-87 { padding: 87px; }
+/* padding rule 88 */
+.spacer-88 { padding: 88px; }
+/* padding rule 89 */
+.spacer-89 { padding: 89px; }
+/* padding rule 90 */
+.spacer-90 { padding: 90px; }
+/* padding rule 91 */
+.spacer-91 { padding: 91px; }
+/* padding rule 92 */
+.spacer-92 { padding: 92px; }
+/* padding rule 93 */
+.spacer-93 { padding: 93px; }
+/* padding rule 94 */
+.spacer-94 { padding: 94px; }
+/* padding rule 95 */
+.spacer-95 { padding: 95px; }
+/* padding rule 96 */
+.spacer-96 { padding: 96px; }
+/* padding rule 97 */
+.spacer-97 { padding: 97px; }
+/* padding rule 98 */
+.spacer-98 { padding: 98px; }
+/* padding rule 99 */
+.spacer-99 { padding: 99px; }
+/* padding rule 100 */
+.spacer-100 { padding: 100px; }
+/* padding rule 101 */
+.spacer-101 { padding: 101px; }
+/* padding rule 102 */
+.spacer-102 { padding: 102px; }
+/* padding rule 103 */
+.spacer-103 { padding: 103px; }
+/* padding rule 104 */
+.spacer-104 { padding: 104px; }
+/* padding rule 105 */
+.spacer-105 { padding: 105px; }
+/* padding rule 106 */
+.spacer-106 { padding: 106px; }
+/* padding rule 107 */
+.spacer-107 { padding: 107px; }
+/* padding rule 108 */
+.spacer-108 { padding: 108px; }
+/* padding rule 109 */
+.spacer-109 { padding: 109px; }
+/* padding rule 110 */
+.spacer-110 { padding: 110px; }
+/* padding rule 111 */
+.spacer-111 { padding: 111px; }
+/* padding rule 112 */
+.spacer-112 { padding: 112px; }
+/* padding rule 113 */
+.spacer-113 { padding: 113px; }
+/* padding rule 114 */
+.spacer-114 { padding: 114px; }
+/* padding rule 115 */
+.spacer-115 { padding: 115px; }
+/* padding rule 116 */
+.spacer-116 { padding: 116px; }
+/* padding rule 117 */
+.spacer-117 { padding: 117px; }
+/* padding rule 118 */
+.spacer-118 { padding: 118px; }
+/* padding rule 119 */
+.spacer-119 { padding: 119px; }

@@ -1,0 +1,104 @@
+# 1. Fiche d’identité du projet
+
+**Projet** : {{ project.name }}  
+**Client** : {{ project.client }}  
+**Version** : {{ project.version }} — **Date** : {{ project.date }}  
+**Auteurs** : {{ project.authors | join(', ') }}
+
+{{ project.context }}
+
+# 2. Synthèse exécutive
+
+- **{{ totals.gwp }} kg CO2e** pour l’unité fonctionnelle.
+- **{{ shares.by_tier[0].share_gwp }} %** pour le premier tier.
+- **{{ rgesn.coverage }} %** de couverture RGESN.
+
+# 3. Objectifs et questions d’audit
+
+{{ objectives }}
+
+# 4. Unité fonctionnelle et scénarios
+
+**Unité fonctionnelle** : {{ functional_unit.description }}
+
+{{ scenarios_table }}
+
+# 5. Méthodologie
+
+{{ methodology }}
+
+# 6. Inventaire et facteurs
+
+{{ inventory_table }}
+
+{{ assumptions_table }}
+
+# 7. Résultats par étape du cycle de vie
+
+{{ figure_lifecycle }}
+
+{{ stage_table }}
+
+# 8. Résultats par tier
+
+{{ figure_tiers }}
+
+{{ tier_table }}
+
+# 9. Résultats par fonction
+
+{{ function_analysis }}
+
+# 10. Hotspots et contributeurs principaux
+
+{{ figure_hotspots }}
+
+{{ hotspots_table }}
+
+# 11. Incertitudes, sensibilité et limites
+
+{{ uncertainty }}
+
+# 12. Diagnostic technique
+
+{{ technical_diagnostic }}
+
+# 13. Benchmark et correspondance normative
+
+{{ benchmark_table }}
+
+# 14. Évaluation RGESN
+
+{{ rgesn_table }}
+
+# 15. Brainstorm
+
+{{ brainstorm }}
+
+# 16. Plan d’action priorisé
+
+{{ action_table }}
+
+# 17. Quantification des gains
+
+{{ gains_table }}
+
+# 18. Bénéfices collatéraux et gouvernance
+
+{{ co_benefits }}
+
+# 19. Conclusion, sources, glossaire et annexes
+
+{{ conclusion }}
+
+## Sources et bibliographie
+
+{{ sources }}
+
+## Glossaire
+
+{{ glossary }}
+
+## Annexes
+
+{{ annexes }}

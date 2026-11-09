@@ -1,0 +1,57 @@
+# Glossaire
+
+Chaque définition est courte et opérationnelle. La source est indiquée quand elle est normative.
+
+- **ACV** : analyse du cycle de vie ; méthode d’évaluation des impacts d’un service sur son cycle de vie `[S12]``[S13]`.
+- **ALD** : sigle non normatif dans les référentiels GreenIT français ; le bundle l’interprète comme un alias d’ACV. À documenter si le client lui donne un autre sens.
+- **ICV** : inventaire du cycle de vie ; quantification des flux entrants et sortants.
+- **UF** : unité fonctionnelle ; service rendu servant de base de comparaison.
+- **Frontière** : limites de l’étude ; ce qui est inclus et exclu.
+- **Allocation** : répartition des impacts d’un système partagé entre plusieurs fonctions.
+- **Cut-off** : seuil d’exclusion de flux mineurs.
+- **ACV attributionnelle** : répartition des impacts existants entre des fonctions.
+- **ACV conséquentielle** : impacts supplémentaires induits par un changement.
+- **GWP100** : potentiel de réchauffement global à 100 ans, en kg CO2 eq.
+- **ADPe** : épuisement des ressources abiotiques éléments/minéraux, en kg Sb eq.
+- **ADPf** : épuisement des ressources abiotiques fossiles, en MJ.
+- **PE** : énergie primaire cumulée, en MJ.
+- **EF** : énergie finale, en MJ.
+- **PUE** : ratio énergie datacenter / énergie IT.
+- **WUE** : eau consommée par kWh IT.
+- **CUE** : émissions de carbone par kWh IT.
+- **EcoIndex** : score web 0–100 basé sur DOM, poids et requêtes `[S28]`.
+- **DOM** : arbre des éléments HTML d’une page.
+- **Requête HTTP** : demande d’une ressource au serveur.
+- **Tier 1** : terminaux utilisateurs.
+- **Tier 2** : réseau.
+- **Tier 3** : datacenter / serveurs.
+- **Scope 1** : émissions directes.
+- **Scope 2** : émissions liées à l’électricité achetée.
+- **Scope 3** : autres émissions indirectes.
+- **BEGES** : bilan d’émissions de gaz à effet de serre `[S22]`.
+- **CSRD** : directive européenne de reporting de durabilité `[S23]`.
+- **ESRS** : normes européennes de reporting de durabilité.
+- **RGESN** : référentiel général d’écoconception des services numériques `[S03]``[S04]`.
+- **GR491** : guide de référence de l’écoconception de services numériques `[S05]`.
+- **RWEB** : référentiel de bonnes pratiques web responsable `[S06]`.
+- **NegaOctet** : base de facteurs d’impacts ACV commerciale `[S35]`.
+- **Boavizta** : communauté et API de quantification d’impact du numérique `[S26]`.
+- **Facteur d’impact** : valeur convertissant une quantité en impact environnemental.
+- **Incertitude** : caractère non parfaitement connu d’une valeur.
+- **Analyse de sensibilité** : variation des résultats en fonction des hypothèses.
+- **Effet rebond** : hausse d’usage qui annule une partie du gain.
+- **Sobriété** : réduction du service ou de l’usage.
+- **Efficacité** : même service avec moins de ressources.
+- **Transition** : changement de modèle ou de technologie.
+- **Greenwashing** : allégation environnementale non étayée ou trompeuse.
+- **Compensation** : achat de crédits carbone ; ne rend pas un service neutre.
+- **Neutralité carbone** : équilibre entre émissions et absorptions ; ne pas revendiquer sans preuve.
+- **SCI** : Software Carbon Intensity, taux d’émission par unité fonctionnelle `[S14]`.
+- **ACV screening** : ACV simplifiée de priorisation.
+- **RCP** : référentiel par catégorie de produit `[S08]`.
+- **PEF** : Product Environmental Footprint `[S15]`.
+- **ISO 14040 / 14044** : normes cadre et exigences de l’ACV `[S12]``[S13]`.
+- **RGAA** : référentiel général d’amélioration de l’accessibilité `[S25]`.
+- **RGPD** : règlement européen sur la protection des données `[S24]`.
+- **OWASP** : référentiel de sécurité applicative `[S39]`.
+- **ANSSI** : agence française de cybersécurité `[S40]`.

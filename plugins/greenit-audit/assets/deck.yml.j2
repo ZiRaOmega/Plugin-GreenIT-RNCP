@@ -1,0 +1,101 @@
+meta:
+  title: "{{ project.name }}"
+  subtitle: "{{ project.subtitle }}"
+  client: "{{ project.client }}"
+  date: "{{ project.date }}"
+  version: "{{ project.version }}"
+  authors: {{ project.authors | tojson }}
+  footer: "Audit Green IT — {{ project.client }}"
+
+slides:
+  - layout: title
+    title: "{{ project.name }}"
+    subtitle: "{{ project.subtitle }}"
+    notes: "{{ notes.intro }}"
+  - layout: metrics
+    kicker: Synthèse
+    title: Trois chiffres pour décider
+    cards: {{ cards | tojson }}
+    source: "{{ sources.short }}"
+    notes: "{{ notes.synthesis }}"
+  - layout: bullets
+    kicker: Contexte
+    title: Un service simple, des contraintes réelles
+    bullets: {{ context_bullets | tojson }}
+    source: "{{ sources.context }}"
+    notes: "{{ notes.context }}"
+  - layout: bullets
+    kicker: Méthode
+    title: Une ACV screening traçable
+    bullets: {{ method_bullets | tojson }}
+    source: "{{ sources.method }}"
+    notes: "{{ notes.method }}"
+  - layout: bullets
+    kicker: Inventaire
+    title: Des hypothèses explicites
+    bullets: {{ inventory_bullets | tojson }}
+    source: "{{ sources.inventory }}"
+    notes: "{{ notes.inventory }}"
+  - layout: chart
+    kicker: Résultats
+    title: Les hotspots
+    image: "{{ figures.lifecycle }}"
+    takeaway: "{{ takeaways.lifecycle }}"
+    source: "{{ sources.results }}"
+    notes: "{{ notes.lifecycle }}"
+  - layout: chart
+    kicker: Résultats
+    title: Répartition par tier
+    image: "{{ figures.tiers }}"
+    takeaway: "{{ takeaways.tiers }}"
+    source: "{{ sources.results }}"
+    notes: "{{ notes.tiers }}"
+  - layout: chart
+    kicker: Hotspots
+    title: Les premiers contributeurs
+    image: "{{ figures.hotspots }}"
+    takeaway: "{{ takeaways.hotspots }}"
+    source: "{{ sources.results }}"
+    notes: "{{ notes.hotspots }}"
+  - layout: bullets
+    kicker: Diagnostic
+    title: Des défauts mesurables
+    bullets: {{ diagnostic_bullets | tojson }}
+    source: "{{ sources.diagnostic }}"
+    notes: "{{ notes.diagnostic }}"
+  - layout: bullets
+    kicker: Benchmark
+    title: Choisir l’outil selon la question
+    bullets: {{ benchmark_bullets | tojson }}
+    source: "{{ sources.benchmark }}"
+    notes: "{{ notes.benchmark }}"
+  - layout: matrix
+    kicker: Brainstorm
+    title: Impact / effort
+    items: {{ matrix_items | tojson }}
+    takeaway: "{{ takeaways.matrix }}"
+    source: "{{ sources.brainstorm }}"
+    notes: "{{ notes.brainstorm }}"
+  - layout: timeline
+    kicker: Plan d’action
+    title: Quick wins, moyen, long
+    items: {{ timeline_items | tojson }}
+    source: "{{ sources.plan }}"
+    notes: "{{ notes.plan }}"
+  - layout: metrics
+    kicker: Gains
+    title: Le web fond, le GWP bouge peu
+    cards: {{ gain_cards | tojson }}
+    source: "{{ sources.gains }}"
+    notes: "{{ notes.gains }}"
+  - layout: bullets
+    kicker: Bénéfices
+    title: Au-delà du carbone
+    bullets: {{ benefit_bullets | tojson }}
+    source: "{{ sources.benefits }}"
+    notes: "{{ notes.benefits }}"
+  - layout: closing
+    title: Merci
+    subtitle: Questions et échanges — 5 minutes
+    bullets: {{ closing_bullets | tojson }}
+    notes: "{{ notes.closing }}"

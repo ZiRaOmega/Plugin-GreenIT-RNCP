@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://greenit-rncp39388.local/schemas/source.schema.json",
+  "title": "Sources",
+  "type": "object",
+  "required": [
+    "sources"
+  ],
+  "properties": {
+    "sources": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "org",
+          "title",
+          "date",
+          "url",
+          "type",
+          "license",
+          "accessed",
+          "used_for"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^S\\d{2}$"
+          },
+          "org": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "date": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "license": {
+            "type": "string"
+          },
+          "accessed": {
+            "type": "string"
+          },
+          "used_for": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

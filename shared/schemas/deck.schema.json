@@ -1,0 +1,116 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://greenit-rncp39388.local/schemas/deck.schema.json",
+  "title": "Deck",
+  "type": "object",
+  "required": [
+    "meta",
+    "slides"
+  ],
+  "properties": {
+    "meta": {
+      "type": "object",
+      "required": [
+        "title",
+        "subtitle",
+        "client",
+        "date",
+        "version",
+        "authors",
+        "footer"
+      ],
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "subtitle": {
+          "type": "string"
+        },
+        "client": {
+          "type": "string"
+        },
+        "date": {
+          "type": "string"
+        },
+        "version": {
+          "type": "string"
+        },
+        "authors": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "footer": {
+          "type": "string"
+        }
+      }
+    },
+    "slides": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 15,
+      "items": {
+        "type": "object",
+        "required": [
+          "layout"
+        ],
+        "properties": {
+          "layout": {
+            "enum": [
+              "title",
+              "section",
+              "bullets",
+              "metrics",
+              "chart",
+              "image",
+              "matrix",
+              "timeline",
+              "quote",
+              "closing"
+            ]
+          },
+          "title": {
+            "type": "string"
+          },
+          "subtitle": {
+            "type": "string"
+          },
+          "kicker": {
+            "type": "string"
+          },
+          "bullets": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "cards": {
+            "type": "array"
+          },
+          "image": {
+            "type": "string"
+          },
+          "takeaway": {
+            "type": "string"
+          },
+          "items": {
+            "type": "array"
+          },
+          "quote": {
+            "type": "string"
+          },
+          "attribution": {
+            "type": "string"
+          },
+          "source": {
+            "type": "string"
+          },
+          "notes": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}
