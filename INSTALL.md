@@ -1,5 +1,10 @@
 # Installation — Plugin-GreenIT-RNCP
 
+<p align="center"><img src="assets/WARNING_RED.png" alt="INTERDIT SANS AUTORISATION ÉCRITE — consultation seule, utilisation et installation interdites" width="100%"></p>
+
+> **INTERDIT SANS AUTORISATION ÉCRITE.** Ce dépôt est public pour consultation uniquement. Les étapes d’installation ci-dessous sont documentaires et réservées au titulaire et aux collaborateurs autorisés. Elles ne accordent aucun droit d’utilisation. Voir `LICENSE` et la section « Avertissement légal » du `README.md`.
+
+
 > **Licence View-Only.** Ce dépôt est public pour consultation uniquement. Les étapes ci-dessous sont documentaires et réservées au titulaire du copyright et aux collaborateurs autorisés. Elles ne accordent aucun droit d’utilisation, d’installation ou d’exécution. Voir `LICENSE`.
 
 ## Prérequis

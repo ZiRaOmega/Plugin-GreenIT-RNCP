@@ -19,6 +19,10 @@ git grep -nE 'AKIA[0-9A-Z]{16}|ghp_[A-Za-z0-9]{30,}|BEGIN (RSA|OPENSSH|EC) PRIVA
 
 Contacter **ZiRaOmega** en privé. Ne pas ouvrir d’issue publique contenant un exploit ou une donnée sensible.
 
+## Avertissement légal
+
+Voir `README.md` et `LICENSE`. Toute utilisation non autorisée peut entraîner des poursuites civiles et pénales.
+
 ## Licence
 
 Le dépôt est en consultation seule. Voir `LICENSE`. La présence d’instructions d’installation ne constitue pas une autorisation d’usage.

@@ -1,5 +1,10 @@
 # Plugin-GreenIT-RNCP — bundle GreenIT RNCP39388
 
+<p align="center"><img src="assets/WARNING_RED.png" alt="INTERDIT SANS AUTORISATION ÉCRITE — consultation seule, utilisation, installation, exécution et diffusion interdites" width="100%"></p>
+
+<h2 align="center" style="color:#C1121F">CONSULTATION SEULE — UTILISATION INTERDITE</h2>
+
+
 **Créateur : ZiRaOmega.**
 
 Bundle reproductible pour produire des livrables GreenIT et des preuves pour le titre **RNCP39388 — Responsable green IT** (niveau 6, Efficom, 4 blocs, 19 compétences).
@@ -142,6 +147,20 @@ RNCP42198 est un autre titre « Responsable green IT » (niveau 7, IPSA). Il n�
 ## Limites
 
 Le bundle produit une **ACV screening** et un **score d’avancement RGESN**, pas une ACV avec revue critique, pas un audit RGESN officiel, pas un bilan GES réglementaire, pas un conseil juridique. Les données manquantes sont signalées. Les effets rebond et les impacts sociaux ne sont pas mesurés.
+
+## Avertissement légal
+
+**Ce dépôt n’est pas open source.** La licence `View-Only License 1.0 (No Use)` autorise uniquement la consultation du code et de la documentation. Toute utilisation, installation, exécution, copie, modification, distribution, mise en service ou création dérivée est interdite sans autorisation écrite de **ZiRaOmega**.
+
+### Conséquences possibles en cas de non-respect
+
+- **Civil** : action en contrefaçon, demande de cessation, retrait du dépôt ou du service, dommages-intérêts, remboursement des frais juridiques, saisie-contrefaçon et mesures d’interdiction.
+- **Pénal** : en France, la contrefaçon de droits d’auteur est notamment punie par l’article L335-2 du Code de la propriété intellectuelle de **trois ans d’emprisonnement et 300 000 € d’amende**, sous réserve de l’appréciation des tribunaux et des exceptions légales. D’autres juridictions prévoient leurs propres peines.
+- **Plateforme** : signalement pour atteinte au droit d’auteur, retrait du dépôt ou du fork, suspension de compte selon les règles de l’hébergeur.
+- **Tiers** : les titulaires de contenus tiers, notamment les facteurs sous licence, peuvent également agir.
+- **Instructions d’installation** : leur présence ne vaut pas autorisation. Elles sont documentaires et réservées au titulaire et aux collaborateurs autorisés.
+
+**Consultation autorisée. Utilisation interdite.** Ce texte n’est pas un conseil juridique personnalisé ; consultez un avocat pour votre situation.
 
 ## Licence
 
