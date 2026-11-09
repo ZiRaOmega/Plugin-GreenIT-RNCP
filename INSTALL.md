@@ -125,9 +125,10 @@ dist/
 
 ```bash
 make test
-make check
 make validate
 ```
+
+`make demo` et `make check` nécessitent `factors.local.csv` et les dépendances de rendu ; ils ne fonctionnent pas sur un clone public sans facteurs sous licence.
 
 ## Désinstallation Claude Code
 
