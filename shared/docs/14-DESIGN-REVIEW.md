@@ -44,6 +44,10 @@ Si le projet est vert, le rendu est vert. Le reviewer vérifie la cohérence ave
 
 Le reviewer accepte `--blocks BC01,BC04` et vérifie que les compétences des blocs non sélectionnés sont marquées `hors périmètre`.
 
+## Filtrage des preuves par bloc
+
+Le reviewer ignore les lignes `hors périmètre` dans le contrôle d’existence des preuves. Un audit BC01/BC04 ne signale donc pas les preuves manquantes de BC02/BC03, et inversement.
+
 ## Limites de couverture
 
 - PDF : revue textuelle et marges, pas de rasterisation systématique.

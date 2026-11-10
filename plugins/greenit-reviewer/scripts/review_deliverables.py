@@ -302,6 +302,8 @@ def review_rncp(root: Path, findings: list[dict], blocks_arg: str | None = None)
                 findings.append({"severity": "major", "file": matrix.name, "code": "rncp-block-status",
                                  "message": f"{r.get('competency_id')} devrait être hors périmètre ({r.get('block')} non sélectionné)."})
     for r in rows:
+        if r.get("status") == "hors périmètre":
+            continue
         ev = r.get("evidence")
         if ev and not (root / ev).exists() and not (root.parent / ev).exists():
             findings.append({"severity": "major", "file": matrix.name, "code": "rncp-evidence",
