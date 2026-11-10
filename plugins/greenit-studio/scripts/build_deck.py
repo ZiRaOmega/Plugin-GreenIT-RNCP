@@ -44,6 +44,11 @@ def apply_theme(theme: dict) -> None:
     ACCENT = RGBColor.from_string(theme["accent"].lstrip("#"))
 
 
+def clean_text(value) -> str:
+    return (str(value).replace("—", "-").replace("–", "-")
+            .replace("“", '"').replace("”", '"').replace("…", "..."))
+
+
 def fill(shape, color: RGBColor):
     shape.fill.solid()
     shape.fill.fore_color.rgb = color
@@ -59,7 +64,7 @@ def textbox(slide, left, top, width, height, text="", size=20, bold=False,
     p = tf.paragraphs[0]
     p.alignment = align
     run = p.add_run()
-    run.text = text
+    run.text = clean_text(text)
     run.font.size = Pt(size)
     run.font.bold = bold
     run.font.name = font
@@ -76,7 +81,7 @@ def add_bullets(slide, bullets, left=0.9, top=1.75, width=11.7, height=4.9):
         p.space_after = Pt(12)
         p.level = 0
         run = p.add_run()
-        run.text = "•  " + str(bullet)
+        run.text = "•  " + clean_text(bullet)
         run.font.size = Pt(20)
         run.font.name = "Liberation Sans"
         run.font.color.rgb = TEXT
@@ -253,7 +258,7 @@ def slide_closing(prs, s, meta, number):
 def add_notes(slide, s):
     notes = str(s.get("notes", "")).strip()
     if notes:
-        slide.notes_slide.notes_text_frame.text = notes
+        slide.notes_slide.notes_text_frame.text = clean_text(notes)
 
 
 BUILDERS = {"title": slide_title, "section": slide_section, "bullets": slide_bullets,
@@ -284,7 +289,7 @@ def build(deck: dict, out: Path, notes_path: Path | None = None) -> dict:
     for idx, s in enumerate(slides, start=1):
         words = len(str(s.get("notes", "")).split())
         total_words += words
-        notes.append(f"## Slide {idx} — {s.get('title', '')}\n\n{s.get('notes', '').strip()}\n")
+        notes.append(f"## Slide {idx} - {s.get('title', '')}\n\n{s.get('notes', '').strip()}\n")
     notes_md = "# Notes orales\n\n" + "\n".join(notes)
     notes_path = notes_path or out.with_name("notes-orales.md")
     notes_path.write_text(notes_md, encoding="utf-8")

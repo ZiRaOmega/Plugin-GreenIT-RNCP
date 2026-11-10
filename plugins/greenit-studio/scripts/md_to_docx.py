@@ -22,6 +22,14 @@ HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
 from common import THEME, hex_to_rgb, load_design, theme_from_design  # noqa: E402
 
+def mix_hex(a: str, b: str, t: float) -> str:
+    a, b = a.lstrip("#"), b.lstrip("#")
+    if len(a) == 3: a = "".join(c * 2 for c in a)
+    if len(b) == 3: b = "".join(c * 2 for c in b)
+    ra = tuple(int(a[i:i+2], 16) for i in (0,2,4)); rb = tuple(int(b[i:i+2], 16) for i in (0,2,4))
+    return "".join(f"{round(x + (y-x)*t):02X}" for x,y in zip(ra,rb))
+
+
 GREEN = RGBColor.from_string(THEME["green_900"].lstrip("#"))
 MUTED = RGBColor.from_string(THEME["muted"].lstrip("#"))
 CALLOUT_COLORS = {}
@@ -131,7 +139,13 @@ def make_cover(metadata: dict, out: Path) -> Path:
     return out
 
 
+def clean_text(value: str) -> str:
+    return (value.replace("—", "-").replace("–", "-")
+            .replace("“", '"').replace("”", '"').replace("…", "..."))
+
+
 def add_runs(paragraph, text: str, size: float | None = None) -> None:
+    text = clean_text(text)
     token = re.compile(r"(\*\*.+?\*\*|\*[^*]+?\*|`[^`]+?`)")
     parts = token.split(text)
     for part in parts:
@@ -173,7 +187,7 @@ def add_table(doc: Document, rows: list[list[str]]) -> None:
                 for run in p.runs:
                     run.bold = True
                     run.font.color.rgb = RGBColor(0xFF, 0xFF, 0xFF)
-                set_cell_shading(cell, THEME["green_900"])
+                set_cell_shading(cell, str(GREEN))
         if ridx == 0:
             set_repeat_table_header(table.rows[0])
     doc.add_paragraph()
@@ -194,7 +208,7 @@ def add_callout(doc: Document, tone: str, title: str, body: list[str]) -> None:
         if line.strip():
             p2 = cell.add_paragraph()
             add_runs(p2, line.strip(), 10)
-    set_cell_shading(cell, CALLOUT_COLORS.get(tone, "D8F3DC"))
+    set_cell_shading(cell, CALLOUT_COLORS.get(tone, CALLOUT_COLORS.get("info", "E8EEFF")))
     doc.add_paragraph()
 
 
@@ -202,10 +216,13 @@ def apply_theme(theme: dict) -> None:
     global GREEN, MUTED, CALLOUT_COLORS
     GREEN = RGBColor.from_string(theme["green_900"].lstrip("#"))
     MUTED = RGBColor.from_string(theme["muted"].lstrip("#"))
-    light = theme.get("green_200", "D8F3DC").lstrip("#")
+    light = theme.get("green_200", "E8EEFF").lstrip("#")
+    accent = theme.get("accent", "#C06C4A").lstrip("#")
+    alert = theme.get("alert", "#C1121F").lstrip("#")
     CALLOUT_COLORS = {
-        "info": light, "hypothese": "FFF3CD", "limite": "F8D7DA",
-        "decision": "D1ECF1", "aretenir": light,
+        "info": light, "hypothese": mix_hex(light, accent, 0.25),
+        "limite": mix_hex(light, alert, 0.18), "decision": mix_hex(light, "#FFFFFF", 0.35),
+        "aretenir": light,
     }
 
 

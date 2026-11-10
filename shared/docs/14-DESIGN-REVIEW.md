@@ -33,3 +33,9 @@ Le rapport de revue contient `review-report.md` et `review-report.json`.
 - La palette doit être celle du projet ; le vert générique doit être justifié.
 - Chaque bloc RNCP doit avoir une preuve existante.
 - L’agent indépendant ne modifie rien.
+
+## Direction artistique du projet
+
+`extract_project_palette.py` lit les variables CSS du projet, ses couleurs hexadécimales, ses tokens et son logo. Il écrit `design.yml` avec `source` et `confidence`. Les renderers chargent ce fichier : la palette du rapport et du deck est donc celle du projet, pas un thème générique.
+
+Si le projet est vert, le rendu est vert. Le reviewer vérifie la cohérence avec `design.yml`, pas une interdiction universelle du vert.

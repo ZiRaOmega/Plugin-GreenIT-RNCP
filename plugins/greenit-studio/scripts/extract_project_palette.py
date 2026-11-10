@@ -132,6 +132,8 @@ def pick(named: dict, freq: Counter) -> tuple[dict, list[str]]:
         "green_500": mix(primary, "#FFFFFF", 0.45), "green_400": mix(primary, "#FFFFFF", 0.60),
         "green_300": mix(primary, "#FFFFFF", 0.75), "green_200": light,
         "bg": background, "text": text, "muted": muted, "accent": accent, "alert": alert,
+        "info": light, "hypothese": mix(light, accent, 0.25),
+        "limite": mix(light, alert, 0.18), "decision": mix(light, "#FFFFFF", 0.35),
     }
     return colors, warnings
 

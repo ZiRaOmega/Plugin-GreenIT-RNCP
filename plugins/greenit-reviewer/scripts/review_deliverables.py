@@ -355,11 +355,35 @@ def review_palette(deck: Path | None, design: Path | None, findings: list[dict])
     return {}
 
 
+def review_docx_palette(docx: Path | None, design: Path | None, findings: list[dict]) -> dict:
+    if not docx or not docx.exists() or not design or not design.exists():
+        return {}
+    import yaml
+    from docx import Document
+    d = yaml.safe_load(design.read_text(encoding="utf-8")) or {}
+    allowed = {str(c).lower() for c in (d.get("colors") or {}).values()}
+    allowed.add("#ffffff")
+    doc = Document(docx)
+    bad = set()
+    for table in doc.tables:
+        for row in table.rows:
+            for cell in row.cells:
+                for shd in cell._tc.xpath('.//w:shd'):
+                    fill = shd.get('{http://schemas.openxmlformats.org/wordprocessingml/2006/main}fill')
+                    if fill and fill.lower() not in {a.lstrip('#') for a in allowed}:
+                        bad.add(fill.lower())
+    for b in sorted(bad):
+        findings.append({"severity": "major", "file": docx.name, "code": "docx-palette",
+                         "message": f"Fond de tableau hors palette projet : #{b}."})
+    return {"outside": len(bad)}
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--root", type=Path, default=Path("dist"))
     ap.add_argument("--report", type=Path)
     ap.add_argument("--deck", type=Path)
+    ap.add_argument("--docx", type=Path)
     ap.add_argument("--metrics", type=Path)
     ap.add_argument("--rgesn", type=Path)
     ap.add_argument("--charts", type=Path)
@@ -370,6 +394,7 @@ def main() -> int:
     root = args.root.resolve()
     report = args.report or first([root / "rapport-audit-greenit-demo.pdf", root / "rapport.pdf"])
     deck = args.deck or first([root / "soutenance-greenit-demo.pptx", root / "soutenance.pptx"])
+    docx = args.docx or first([root / "rapport-audit-greenit-demo.docx", root / "rapport.docx"])
     metrics = args.metrics or first([root / "audit-demo/metrics.json", root / "metrics.json"])
     rgesn = args.rgesn or first([root / "audit-demo/rgesn-score.csv", root / "rgesn-score.csv"])
     charts = args.charts or first([root / "audit-demo/charts.yml", root / "charts.yml"])
@@ -391,6 +416,7 @@ def main() -> int:
     summary["rgesn"] = review_rgesn(rgesn, findings)
     summary["charts"] = review_charts(charts, figures, findings)
     summary["palette"] = review_palette(deck, design, findings)
+    summary["docx_palette"] = review_docx_palette(docx, design, findings)
     summary["rncp"] = review_rncp(root, findings)
     order = {"blocker": 0, "major": 1, "minor": 2}
     findings.sort(key=lambda f: (order.get(f["severity"], 9), f.get("file", ""), f.get("slide", 0)))

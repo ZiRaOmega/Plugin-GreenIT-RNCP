@@ -31,14 +31,14 @@ def n(value: float, digits: int = 3) -> str:
     if abs(value) >= 1000:
         return f"{value:,.0f}".replace(",", " ")
     if abs(value) >= 10:
-        return f"{value:.1f}"
-    return f"{value:.{digits}g}"
+        return f"{value:.1f}".replace(".", ",")
+    return f"{value:.{digits}g}".replace(".", ",")
 
 
 def pct(value: float, digits: int = 1) -> str:
     if value != 0 and abs(value) < 0.1:
         digits = max(digits, 2)
-    return f"{value:.{digits}f} %"
+    return f"{value:.{digits}f} %".replace(".", ",")
 
 
 def val(value: float | None) -> str:
@@ -51,6 +51,23 @@ def delta_fmt(value: float) -> str:
     if abs(value) < 0.1:
         return "< 0,1 %"
     return pct(value)
+
+
+def clean_text(value):
+    if not isinstance(value, str):
+        return value
+    return (value.replace("—", "-").replace("–", "-")
+            .replace("“", '"').replace("”", '"').replace("…", "..."))
+
+
+def clean_obj(value):
+    if isinstance(value, str):
+        return clean_text(value)
+    if isinstance(value, list):
+        return [clean_obj(v) for v in value]
+    if isinstance(value, dict):
+        return {k: clean_obj(v) for k, v in value.items()}
+    return value
 
 
 def table(headers: list[str], rows: list[list[str]]) -> str:
@@ -621,7 +638,7 @@ def deck_text(ctx: dict, figures: Path) -> dict:
         {"layout": "metrics", "kicker": "Synthèse", "title": "Trois chiffres pour décider", "source": "Calculs de l’audit ; [S26], [S42]",
          "cards": [{"value": f"{n(total['gwp'])} kg", "label": "CO2e / semaine", "detail": f"±30 % : {n(m['uncertainty']['low']['gwp'])}–{n(m['uncertainty']['high']['gwp'])} kg"},
                    {"value": pct(server.get('gwp',0)/total['gwp']*100), "label": "du GWP vient du serveur", "detail": "Hébergement mutualisé, PUE 1,5 supposé"},
-                   {"value": pct(ctx['coverage']), "label": "de preuves RGESN", "detail": f"{pct(ctx['coverage_evaluated'])} statués ; score {ctx['score']:.1f}/100 {('significatif mais faible' if ctx['coverage'] >= 50 else 'non significatif')}"}], "notes": notes[2]},
+                   {"value": pct(ctx['coverage']), "label": "de preuves RGESN", "detail": f"{pct(ctx['coverage_evaluated'])} statués ; score {ctx['score']:.1f}".replace(".", ",") + "/100 {('significatif mais faible' if ctx['coverage'] >= 50 else 'non significatif')}"}], "notes": notes[2]},
         {"layout": "bullets", "kicker": "Contexte", "title": "Un service simple, des contraintes réelles", "bullets": ["100 étudiants, 1 staff, 1 semaine, 3 développeurs", "Stack : HTML/CSS/JS, Python, SQLite, serveur mutualisé", "Contraintes : budget nul, sécurité, RGPD, accessibilité", "Terminaux partagés : l’allocation change la conclusion"], "source": "audit.yml ; [S24], [S25]", "notes": notes[3]},
         {"layout": "bullets", "kicker": "Méthode", "title": "Une ACV screening traçable", "bullets": ["ISO 14040/14044 : cadre, inventaire, impacts, interprétation", "GWP100, ADPe, ADPf : trois indicateurs, trois unités", "Frontière : terminaux, réseau, serveur, développement, maintenance", "Distinguer mesuré, estimé, supposé"], "source": "[S12], [S13], [S08]", "notes": notes[4]},
         {"layout": "bullets", "kicker": "Inventaire", "title": "Sept postes, des hypothèses explicites", "bullets": ["100 smartphones × 40 s ; 1 laptop staff × 20 s", "3 laptops développeurs × 30 h", "1 serveur × 168 h × 10 % × PUE 1,5", f"Réseau dérivé de la page mesurée ({n(webp.get('size_kb', 0))} Ko)"], "source": "audit.yml ; [S26], [S42]", "notes": notes[5]},
@@ -840,7 +857,7 @@ def main() -> int:
     import sys
     studio = HERE.parents[1] / "greenit-studio" / "scripts" / "make_chart.py"
     subprocess.run([str(Path(__import__("sys").executable)), str(studio), "--spec", str(charts), "--out", str(args.figures), "--design", str(args.out / "design.yml")], check=True)
-    report = report_text(ctx, args.figures)
+    report = clean_text(report_text(ctx, args.figures))
     (args.out / "report.md").write_text(report, encoding="utf-8")
     # Registre d’hypothèses exportable pour le client et le jury.
     hyp_fields = ["id", "statement", "value", "unit", "source_id", "confidence",
@@ -850,7 +867,7 @@ def main() -> int:
         w.writeheader()
         for a in ctx["audit"].get("assumptions", []):
             w.writerow(a)
-    deck = deck_text(ctx, args.figures)
+    deck = clean_obj(deck_text(ctx, args.figures))
     (args.out / "deck.yml").write_text(yaml.safe_dump(deck, allow_unicode=True, sort_keys=False), encoding="utf-8")
     # Synthèse client : 4 pages, autonome, sans jargon inutile.
     m = ctx["m"]
@@ -908,6 +925,7 @@ La version complète, les sources et les calculs sont dans `rapport-audit-greeni
     metadata = {"title": "Audit GreenIT — Service d’émargement", "subtitle": "ACV screening, RGESN et plan d’action",
                 "client": "Zone01 Normandie", "authors": ["Équipe GreenIT RNCP39388"], "date": "2026-11-09",
                 "version": "1.0", "header": "Audit Green IT — Zone01 Normandie"}
+    metadata = clean_obj(metadata)
     (args.out / "metadata.yml").write_text(yaml.safe_dump(metadata, allow_unicode=True, sort_keys=False), encoding="utf-8")
     design_path = args.out / "design.yml"
     palette_script = HERE.parents[1] / "greenit-studio" / "scripts" / "extract_project_palette.py"
