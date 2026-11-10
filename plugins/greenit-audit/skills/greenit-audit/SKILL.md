@@ -20,6 +20,36 @@ Exemples :
 Ne pas supposer « tous les blocs ». Reporter la réponse dans `--blocks`.
 
 
+## Mode guidé — un skill à la fois
+
+Si l’utilisateur demande un déclenchement **un par un**, ne pas lancer `run_audit.py` d’un coup. Poser les questions, attendre les réponses, puis appeler le skill suivant.
+
+### Questions à poser, dans cet ordre
+
+1. **Quels blocs RNCP auditer ?** Exemples : `BC01 et BC04`, `BC02 et BC03`, ou les quatre.
+2. **Quel est le projet et sa racine ?** Chemin absolu de la codebase.
+3. **Quelle est l’unité fonctionnelle ?** Service rendu, utilisateurs, période.
+4. **Quelles sont les frontières et les exclusions ?** Tiers, cycle de vie, données manquantes.
+5. **Quel est le périmètre technique ?** Stack, matériel, hébergement, URL locale.
+6. **Quelles données sont disponibles ?** Factures, PUE, logs, nombre d’utilisateurs, volumes.
+7. **Quel niveau de preuve attendu ?** Screening, audit complet, dossier RNCP.
+8. **Quels livrables ?** Rapport, synthèse client, deck, vidéo, dossier examen.
+
+### Séquence de skills
+
+1. `/greenit-reviewer:discover-palette` — palette du projet.
+2. `/greenit-studio:codebase-analysis` — signaux techniques et métriques web.
+3. `/greenit-audit:greenit-calculations` — GWP/ADPe/ADPf.
+4. `/greenit-audit:greenit-norms` — RGESN/GR491/RWEB.
+5. `/greenit-audit:greenit-report` — rapport 19 sections.
+6. `/greenit-audit:greenit-defense` — deck et notes.
+7. `/greenit-audit:rncp39388` — matrice et dossier, avec les blocs choisis.
+8. `/greenit-reviewer:design-review` — contrôle design et qualité.
+9. `/greenit-reviewer:content-challenge` — challenge indépendant.
+10. `/greenit-reviewer:sanitize-ai-text` — nettoyage IA.
+
+Ne passer à l’étape suivante qu’après réponse explicite de l’utilisateur. Si une réponse manque, poser une seule question et attendre.
+
 ## Commande unique
 
 Le script `run_audit.py` exécute le workflow complet : validation, scan, mesure web, calculs, score RGESN, `build_audit_pack`, rapport, synthèse client, deck, vidéo et manifest.

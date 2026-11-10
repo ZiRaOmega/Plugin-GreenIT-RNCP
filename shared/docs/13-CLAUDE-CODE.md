@@ -265,3 +265,15 @@ Les dépendances `greenit-studio` et `greenit-engineering` sont retirées avec l
 - PDF absent : vérifier `soffice`.
 - Vidéo absente : vérifier `ffmpeg` et `pdftoppm`.
 - Facteur NegaOctet : exemple local non diffusable ; remplacer pour publication.
+
+## Mode guidé — un skill à la fois
+
+Demander :
+
+```text
+Utilise greenit-audit en mode guidé : pose-moi les questions une par une, attends mes réponses, puis appelle le skill suivant. Ne lance pas run_audit.py d’un coup.
+```
+
+Questions : blocs RNCP, racine projet, UF, frontières, stack/hardware, données disponibles, niveau de preuve, livrables.
+
+Séquence : `discover-palette` → `codebase-analysis` → `greenit-calculations` → `greenit-norms` → `greenit-report` → `greenit-defense` → `rncp39388` → `design-review` → `content-challenge` → `sanitize-ai-text`.
