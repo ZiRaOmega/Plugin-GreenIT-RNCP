@@ -5,18 +5,18 @@ import json
 from pathlib import Path
 
 THEME = {
-    "green_900": "#1B4332",
-    "green_800": "#2D6A4F",
-    "green_700": "#40916C",
-    "green_600": "#52B788",
-    "green_500": "#74C69D",
-    "green_400": "#95D5B2",
-    "green_300": "#B7E4C7",
-    "green_200": "#D8F3DC",
-    "accent": "#E9C46A",
+    "green_900": "#1E2761",
+    "green_800": "#2A3A7A",
+    "green_700": "#3B4E9B",
+    "green_600": "#5A6FC0",
+    "green_500": "#7D8FD6",
+    "green_400": "#A9B7E8",
+    "green_300": "#CADCFC",
+    "green_200": "#E8EEFF",
+    "accent": "#C06C4A",
     "alert": "#C1121F",
     "text": "#1F2933",
-    "bg": "#F7F5EF",
+    "bg": "#F7F4EE",
     "muted": "#5C6B73",
 }
 

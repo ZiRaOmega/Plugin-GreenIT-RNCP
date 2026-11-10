@@ -25,11 +25,11 @@ from common import THEME, hex_to_rgb  # noqa: E402
 GREEN = RGBColor.from_string(THEME["green_900"].lstrip("#"))
 MUTED = RGBColor.from_string(THEME["muted"].lstrip("#"))
 CALLOUT_COLORS = {
-    "info": "D8F3DC",
+    "info": "E8EEFF",
     "hypothese": "FFF3CD",
     "limite": "F8D7DA",
     "decision": "D1ECF1",
-    "aretenir": "D8F3DC",
+    "aretenir": "E8EEFF",
 }
 
 

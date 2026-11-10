@@ -72,7 +72,7 @@ def chrome(slide, meta, number, source=""):
     fill(bg, BG)
     bar = slide.shapes.add_shape(MSO_SHAPE.RECTANGLE, 0, 0, Inches(W), Inches(0.12))
     fill(bar, GREEN)
-    textbox(slide, 0.55, 7.02, 7.8, 0.3, meta.get("footer", "Audit Green IT"), 9, False, MUTED)
+    textbox(slide, 0.55, 7.02, 7.8, 0.3, meta.get("footer", "Audit Green IT").replace("—", "-").replace("–", "-"), 9, False, MUTED)
     textbox(slide, 11.7, 7.02, 1.1, 0.3, str(number), 9, False, MUTED, PP_ALIGN.RIGHT)
     if source:
         textbox(slide, 0.55, 6.62, 12.2, 0.3, "Source : " + source, 8.5, False, MUTED)
@@ -93,9 +93,9 @@ def slide_title(prs, s, meta, number):
     accent = slide.shapes.add_shape(MSO_SHAPE.RECTANGLE, 0, 0, Inches(0.18), Inches(H))
     fill(accent, ACCENT)
     textbox(slide, 0.9, 1.45, 11.5, 1.7, s.get("title", meta.get("title", "")), 40, True, WHITE)
-    textbox(slide, 0.95, 3.25, 10.8, 1.0, s.get("subtitle", meta.get("subtitle", "")), 21, False, RGBColor(0xD8, 0xF3, 0xDC))
-    textbox(slide, 0.95, 5.0, 10.8, 0.5, f"{meta.get('client', '')}  •  {meta.get('date', '')}", 14, False, WHITE)
-    textbox(slide, 0.95, 5.5, 10.8, 0.5, " • ".join(meta.get("authors", [])), 13, False, RGBColor(0xB7, 0xE4, 0xC7))
+    textbox(slide, 0.95, 3.25, 10.8, 1.0, s.get("subtitle", meta.get("subtitle", "")), 21, False, RGBColor(0xE8, 0xEE, 0xFF))
+    textbox(slide, 0.95, 5.0, 10.8, 0.5, f"{meta.get('client', '')}  |  {meta.get('date', '')}", 14, False, WHITE)
+    textbox(slide, 0.95, 5.5, 10.8, 0.5, " • ".join(meta.get("authors", [])), 13, False, RGBColor(0xCA, 0xDC, 0xFC))
     add_notes(slide, s)
     return slide
 
@@ -107,7 +107,7 @@ def slide_section(prs, s, meta, number):
     textbox(slide, 0.9, 2.4, 11.4, 0.4, s.get("kicker", "").upper(), 12, True, ACCENT)
     textbox(slide, 0.9, 2.9, 11.4, 1.6, s.get("title", ""), 36, True, WHITE)
     if s.get("subtitle"):
-        textbox(slide, 0.95, 4.55, 10.8, 0.8, s["subtitle"], 17, False, RGBColor(0xD8, 0xF3, 0xDC))
+        textbox(slide, 0.95, 4.55, 10.8, 0.8, s["subtitle"], 17, False, RGBColor(0xE8, 0xEE, 0xFF))
     add_notes(slide, s)
     return slide
 
@@ -154,7 +154,7 @@ def slide_chart(prs, s, meta, number):
         textbox(slide, 1.0, 2.2, 8.0, 1.0, "[figure manquante]", 20, True, MUTED)
     if s.get("takeaway"):
         box = slide.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, Inches(10.35), Inches(2.0), Inches(2.2), Inches(3.4))
-        fill(box, RGBColor(0xD8, 0xF3, 0xDC))
+        fill(box, RGBColor(0xE8, 0xEE, 0xFF))
         textbox(slide, 10.5, 2.2, 1.9, 3.0, s["takeaway"], 13, True, GREEN)
     add_notes(slide, s)
     return slide
@@ -165,8 +165,8 @@ def slide_matrix(prs, s, meta, number):
     chrome(slide, meta, number, s.get("source", ""))
     heading(slide, s.get("kicker", ""), s.get("title", ""), s.get("subtitle", ""))
     x0, y0, size = 1.0, 1.9, 5.0
-    colors = [RGBColor(0xD8, 0xF3, 0xDC), RGBColor(0xB7, 0xE4, 0xC7),
-              RGBColor(0xF7, 0xF5, 0xEF), RGBColor(0xE9, 0xC4, 0x6A)]
+    colors = [RGBColor(0xE8, 0xEE, 0xFF), RGBColor(0xCA, 0xDC, 0xFC),
+              RGBColor(0xF7, 0xF4, 0xEE), RGBColor(0xC0, 0x6C, 0x4A)]
     labels = ["Quick wins", "Projets structurants", "À éviter", "À planifier"]
     for i in range(2):
         for j in range(2):
@@ -211,7 +211,7 @@ def slide_timeline(prs, s, meta, number):
 def slide_quote(prs, s, meta, number):
     slide = prs.slides.add_slide(prs.slide_layouts[6])
     bg = slide.shapes.add_shape(MSO_SHAPE.RECTANGLE, 0, 0, Inches(W), Inches(H))
-    fill(bg, RGBColor(0xF7, 0xF5, 0xEF))
+    fill(bg, RGBColor(0xF7, 0xF4, 0xEE))
     textbox(slide, 0.9, 1.6, 0.8, 1.0, "“", 80, True, ACCENT)
     textbox(slide, 1.2, 2.2, 10.8, 2.6, s.get("quote", ""), 28, True, GREEN)
     textbox(slide, 1.25, 5.0, 10.5, 0.5, s.get("attribution", ""), 14, False, MUTED)
@@ -224,7 +224,7 @@ def slide_closing(prs, s, meta, number):
     bg = slide.shapes.add_shape(MSO_SHAPE.RECTANGLE, 0, 0, Inches(W), Inches(H))
     fill(bg, GREEN)
     textbox(slide, 0.9, 1.8, 11.4, 1.2, s.get("title", "Merci"), 42, True, WHITE)
-    textbox(slide, 0.95, 3.2, 10.8, 0.8, s.get("subtitle", "Questions et échanges"), 22, False, RGBColor(0xD8, 0xF3, 0xDC))
+    textbox(slide, 0.95, 3.2, 10.8, 0.8, s.get("subtitle", "Questions et échanges"), 22, False, RGBColor(0xE8, 0xEE, 0xFF))
     if s.get("bullets"):
         add_bullets(slide, s["bullets"][:3], top=4.2, height=2.0)
         for p in slide.shapes[-1].text_frame.paragraphs:

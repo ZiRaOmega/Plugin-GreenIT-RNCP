@@ -332,7 +332,7 @@ def report_text(ctx: dict, figures: Path) -> str:
     glossary_lines = "\n".join(f"- **{k}** : {v}" for k, v in glossary)
     return f"""# 1. Fiche d’identité du projet
 
-**Projet** : {ctx['audit'].get('project', {}).get('name', 'Service d’émargement')}  
+**Projet** : {ctx['audit'].get('project', {}).get('name', 'Service d’émargement').replace("—", "-")}  
 **Client** : {ctx['audit'].get('project', {}).get('client', 'Zone01 Normandie')}  
 **Version** : {ctx['audit'].get('project', {}).get('version', '1.0')} — **Date** : {ctx['audit'].get('project', {}).get('date', '2026-11-09')}  
 **Auteurs** : {', '.join(ctx['audit'].get('project', {}).get('authors', []))}
@@ -907,6 +907,12 @@ La version complète, les sources et les calculs sont dans `rapport-audit-greeni
                 "client": "Zone01 Normandie", "authors": ["Équipe GreenIT RNCP39388"], "date": "2026-11-09",
                 "version": "1.0", "header": "Audit Green IT — Zone01 Normandie"}
     (args.out / "metadata.yml").write_text(yaml.safe_dump(metadata, allow_unicode=True, sort_keys=False), encoding="utf-8")
+    theme_path = HERE.parents[1] / "greenit-studio" / "assets" / "theme.json"
+    if theme_path.exists():
+        theme = json.loads(theme_path.read_text(encoding="utf-8"))
+        design = {"project": metadata.get("title", "Projet"), "colors": theme.get("colors", {}),
+                  "fonts": theme.get("fonts", {}), "rules": ["pas de vert générique", "pas de 3D", "source sur chaque figure"]}
+        (args.out / "design.yml").write_text(yaml.safe_dump(design, allow_unicode=True, sort_keys=False), encoding="utf-8")
     rncp_docs(ctx, args.dist / "rncp39388")
     narration = ("Le numérique a un impact réel, souvent invisible. Nous avons audité un service d’émargement "
                  "utilisé par cent étudiants pendant une semaine. Notre démarche est une ACV screening : nous avons "

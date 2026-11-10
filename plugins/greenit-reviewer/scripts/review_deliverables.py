@@ -18,7 +18,7 @@ from pypdf import PdfReader
 
 HERE = Path(__file__).resolve().parent
 REF = HERE.parent / "references"
-AI_RE = re.compile(r"[\u2014\u2013\u201c\u201d\u2018\u2019\u2026\u00a0\u202f\u200b\U0001F300-\U0001FAFF]")
+AI_RE = re.compile(r"[\u2014\u2013\u201c\u201d\u2026\u00a0\u202f\u200b\U0001F300-\U0001FAFF]")
 GREEN_HUE = range(80, 171)
 ALLOWED_STATUS = {"validé", "en cours", "non validé", "non applicable"}
 
@@ -314,6 +314,43 @@ def review_glossary(text: str, findings: list[dict]) -> dict:
     return {"required": len(required), "missing": missing}
 
 
+def review_palette(deck: Path | None, design: Path | None, findings: list[dict]) -> dict:
+    if not design or not design.exists():
+        findings.append({"severity": "major", "file": str(design), "code": "design-missing",
+                         "message": "design.yml absent : impossible de vérifier la palette projet."})
+        return {}
+    import yaml
+    d = yaml.safe_load(design.read_text(encoding="utf-8")) or {}
+    allowed = {c.lower() for c in (d.get("colors") or {}).values() if isinstance(c, str)}
+    allowed.add("#ffffff")
+    if deck:
+        prs = Presentation(deck)
+        seen = set()
+        for slide in prs.slides:
+            for shape in slide.shapes:
+                for fill in (getattr(shape, "fill", None),):
+                    try:
+                        c = color_hex(fill.fore_color)
+                        if c: seen.add(c.lower())
+                    except Exception: pass
+                if shape.has_text_frame:
+                    for p in shape.text_frame.paragraphs:
+                        for run in p.runs:
+                            c = color_hex(run.font.color)
+                            if c: seen.add(c.lower())
+        bad = sorted(c for c in seen if c not in allowed)
+        for c in bad:
+            findings.append({"severity": "major", "file": deck.name, "code": "palette",
+                             "message": f"Couleur hors palette projet : {c}.",
+                             "evidence": c})
+        greens = [c for c in seen if (rgb := hex_to_rgb(c)) and 90 <= rgb_to_hue(rgb) <= 160]
+        if greens and not any(c in allowed for c in greens):
+            findings.append({"severity": "major", "file": deck.name, "code": "green-default",
+                             "message": "Couleurs vertes dominantes hors palette projet."})
+        return {"seen": len(seen), "outside": len(bad), "greens": len(greens)}
+    return {}
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--root", type=Path, default=Path("dist"))
@@ -323,6 +360,7 @@ def main() -> int:
     ap.add_argument("--rgesn", type=Path)
     ap.add_argument("--charts", type=Path)
     ap.add_argument("--figures", type=Path)
+    ap.add_argument("--design", type=Path)
     ap.add_argument("--out", type=Path)
     args = ap.parse_args()
     root = args.root.resolve()
@@ -332,6 +370,7 @@ def main() -> int:
     rgesn = args.rgesn or first([root / "audit-demo/rgesn-score.csv", root / "rgesn-score.csv"])
     charts = args.charts or first([root / "audit-demo/charts.yml", root / "charts.yml"])
     figures = args.figures or root / "figures"
+    design = args.design or first([root / "design.yml", root / "audit-demo/design.yml"])
     findings: list[dict] = []
     summary = {}
     if deck:
@@ -347,6 +386,7 @@ def main() -> int:
     summary["metrics"] = review_metrics(metrics, findings)
     summary["rgesn"] = review_rgesn(rgesn, findings)
     summary["charts"] = review_charts(charts, figures, findings)
+    summary["palette"] = review_palette(deck, design, findings)
     summary["rncp"] = review_rncp(root, findings)
     order = {"blocker": 0, "major": 1, "minor": 2}
     findings.sort(key=lambda f: (order.get(f["severity"], 9), f.get("file", ""), f.get("slide", 0)))
