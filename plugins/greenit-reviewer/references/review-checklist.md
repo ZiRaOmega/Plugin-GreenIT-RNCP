@@ -42,3 +42,11 @@
 - [ ] dossier de preuves complet
 - [ ] formation avec quiz et exercice
 - [ ] challenge indépendant effectué
+
+## Limites de couverture
+
+- La revue PDF est textuelle (pypdf + pdftotext -bbox) : elle ne rasterise pas les pages et ne détecte pas un chevauchement purement visuel dans le PDF.
+- La revue PPTX est structurelle : positions, tailles, couleurs, notes. Elle ne remplace pas une inspection visuelle humaine.
+- `review_rncp` vérifie 19 lignes, 4 blocs, l’existence des fichiers et la présence des IDs ; il ne juge pas la qualité ou la circularité d’une preuve.
+- `review_palette` compare le PPTX à `design.yml` ; il ne prouve pas que `design.yml` est la seule palette du projet.
+- Le challenge indépendant doit être exécuté séparément ; s’il n’a pas lu les fichiers réels, le dire explicitement.

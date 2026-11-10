@@ -157,18 +157,18 @@ def review_pptx(path: Path, findings: list[dict]) -> dict:
     return out
 
 
-def review_pdf(path: Path, findings: list[dict]) -> dict:
+def review_pdf(path: Path, findings: list[dict], min_pages: int = 12, required: tuple[str, ...] = ("Synthèse", "Unité fonctionnelle", "Sources", "Glossaire")) -> dict:
     reader = PdfReader(path)
     text = "\n".join((p.extract_text() or "") for p in reader.pages)
     out = {"path": str(path), "pages": len(reader.pages), "text_chars": len(text)}
-    if len(reader.pages) < 12:
+    if min_pages and len(reader.pages) < min_pages:
         findings.append({"severity": "major", "file": path.name, "code": "pdf-pages",
                          "message": f"{len(reader.pages)} pages, attendu > 12 pour le rapport."})
     if AI_RE.search(text):
         findings.append({"severity": "major", "file": path.name, "code": "ai-characters",
                          "message": "Caractère typographique IA détecté dans le PDF.",
                          "evidence": AI_RE.search(text).group(0)})
-    for needle in ("Synthèse", "Unité fonctionnelle", "Sources", "Glossaire"):
+    for needle in required:
         if needle.lower() not in text.lower():
             findings.append({"severity": "major", "file": path.name, "code": "missing-section",
                              "message": f"Chaîne absente du PDF : {needle!r}."})
@@ -384,6 +384,9 @@ def main() -> int:
     ap.add_argument("--report", type=Path)
     ap.add_argument("--deck", type=Path)
     ap.add_argument("--docx", type=Path)
+    ap.add_argument("--synthese-pdf", type=Path)
+    ap.add_argument("--soutenance-pdf", type=Path)
+    ap.add_argument("--synthese-docx", type=Path)
     ap.add_argument("--metrics", type=Path)
     ap.add_argument("--rgesn", type=Path)
     ap.add_argument("--charts", type=Path)
@@ -395,6 +398,9 @@ def main() -> int:
     report = args.report or first([root / "rapport-audit-greenit-demo.pdf", root / "rapport.pdf"])
     deck = args.deck or first([root / "soutenance-greenit-demo.pptx", root / "soutenance.pptx"])
     docx = args.docx or first([root / "rapport-audit-greenit-demo.docx", root / "rapport.docx"])
+    synthese_pdf = args.synthese_pdf or first([root / "synthese-client-greenit-demo.pdf", root / "synthese-client.pdf"])
+    soutenance_pdf = args.soutenance_pdf or first([root / "soutenance-greenit-demo.pdf", root / "soutenance.pdf"])
+    synthese_docx = args.synthese_docx or first([root / "synthese-client-greenit-demo.docx", root / "synthese-client.docx"])
     metrics = args.metrics or first([root / "audit-demo/metrics.json", root / "metrics.json"])
     rgesn = args.rgesn or first([root / "audit-demo/rgesn-score.csv", root / "rgesn-score.csv"])
     charts = args.charts or first([root / "audit-demo/charts.yml", root / "charts.yml"])
@@ -410,6 +416,10 @@ def main() -> int:
         summary["pdf"] = review_pdf(report, findings)
         pdf_text = "\n".join((p.extract_text() or "") for p in PdfReader(report).pages)
         summary["glossary"] = review_glossary(pdf_text, findings)
+    if synthese_pdf:
+        summary["synthese_pdf"] = review_pdf(synthese_pdf, findings, min_pages=2, required=("Décisions", "Conditions"))
+    if soutenance_pdf:
+        summary["soutenance_pdf"] = review_pdf(soutenance_pdf, findings, min_pages=10, required=())
     else:
         findings.append({"severity": "blocker", "file": str(report), "code": "pdf-missing", "message": "PDF absent."})
     summary["metrics"] = review_metrics(metrics, findings)
@@ -417,10 +427,14 @@ def main() -> int:
     summary["charts"] = review_charts(charts, figures, findings)
     summary["palette"] = review_palette(deck, design, findings)
     summary["docx_palette"] = review_docx_palette(docx, design, findings)
+    if synthese_docx:
+        summary["synthese_docx_palette"] = review_docx_palette(synthese_docx, design, findings)
     summary["rncp"] = review_rncp(root, findings)
     order = {"blocker": 0, "major": 1, "minor": 2}
     findings.sort(key=lambda f: (order.get(f["severity"], 9), f.get("file", ""), f.get("slide", 0)))
-    result = {"root": str(root), "files": {"report": str(report), "deck": str(deck)},
+    result = {"root": str(root), "files": {"report": str(report), "deck": str(deck),
+                                             "synthese_pdf": str(synthese_pdf), "soutenance_pdf": str(soutenance_pdf),
+                                             "docx": str(docx), "synthese_docx": str(synthese_docx)},
               "summary": summary, "findings": findings,
               "counts": dict(Counter(f["severity"] for f in findings))}
     out = args.out or root / "review-report.json"

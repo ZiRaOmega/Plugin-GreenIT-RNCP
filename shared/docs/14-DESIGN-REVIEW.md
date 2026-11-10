@@ -39,3 +39,10 @@ Le rapport de revue contient `review-report.md` et `review-report.json`.
 `extract_project_palette.py` lit les variables CSS du projet, ses couleurs hexadécimales, ses tokens et son logo. Il écrit `design.yml` avec `source` et `confidence`. Les renderers chargent ce fichier : la palette du rapport et du deck est donc celle du projet, pas un thème générique.
 
 Si le projet est vert, le rendu est vert. Le reviewer vérifie la cohérence avec `design.yml`, pas une interdiction universelle du vert.
+
+## Limites de couverture
+
+- PDF : revue textuelle et marges, pas de rasterisation systématique.
+- PPTX : revue structurelle, pas de rendu visuel exhaustif.
+- RNCP : contrôle de complétude et d’existence des preuves, pas de jugement de qualité.
+- Le challenge indépendant est un complément, pas une preuve automatique.

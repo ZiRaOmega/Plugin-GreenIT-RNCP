@@ -1,8 +1,8 @@
 # 1. Fiche d’identité du projet
 
-**Projet** : Service d’émargement Zone01 — démonstration  
+**Projet** : Service d’émargement Zone01 - démonstration  
 **Client** : Zone01 Normandie (cas pédagogique)  
-**Version** : 1.0 — **Date** : 2026-11-09  
+**Version** : 1.0 - **Date** : 2026-11-09  
 **Auteurs** : Équipe GreenIT RNCP39388
 
 Nous avons audité un service fictif d’émargement utilisé par 100 étudiants et un membre du staff pendant une semaine. Le service est volontairement perfectible : image PNG lourde, CSS dupliqué, JavaScript non minifié, polling, `SELECT *`, absence d’index et `alt` manquant. Notre objectif est de montrer une démarche complète, traçable et honnête, pas de certifier un service réel.
@@ -15,9 +15,9 @@ Le cas est une **ACV screening**. Les chiffres servent à prioriser et à appren
 
 Trois chiffres suffisent à raconter l’essentiel :
 
-- **1.76 kg CO2e** pour une semaine d’émargement, soit environ **17.6 g CO2e par étudiant**.
-- **63.6 %** du GWP vient du serveur mutualisé ; **32.4 %** vient du développement.
-- **100.0 %** des critères RGESN ont un statut, mais **39.6 %** seulement ont une preuve : le score de **15.0/100** est donc **non significatif**.
+- **1,76 kg CO2e** pour une semaine d’émargement, soit environ **17,6 g CO2e par étudiant**.
+- **63,6 %** du GWP vient du serveur mutualisé ; **32,4 %** vient du développement.
+- **100,0 %** des critères RGESN ont un statut, mais **39,6 %** seulement ont une preuve : le score de **15.0/100** est donc **non significatif**.
 
 ::: callout {tone=decision title="Notre décision"}
 Nous priorisons d’abord la mesure du serveur et de l’hébergement, puis les quick wins web. Optimiser le frontend est utile, mais ne doit pas masquer le poste serveur, qui domine dans notre scénario.
@@ -66,13 +66,13 @@ Le mix électrique est celui de la France en 2024 : **51,9 g CO2e/kWh** [S10]. L
 
 | Poste | Catégorie | Tier | GWP (kg CO2e) | ADPe (kg Sb eq) | ADPf (MJ) | Source |
 |---|---|---|---|---|---|---|
-| Smartphones des étudiants | device | 1 | 0.00428 | 1.04e-07 | 0.0567 | S26 |
-| Laptop du staff | device | 1 | 3.52e-05 | 1.4e-09 | 0.000534 | S26 |
-| Laptops des développeurs | development | 1 | 0.57 | 2.21e-05 | 8.65 | S26 |
-| Serveur 2U mutualisé | server | 3 | 1.12 | 1.82e-05 | 40.4 | S26 |
-| Réseau fixe | network | 2 | 1.89e-06 | 3e-10 | 0.000154 | S35 |
-| Réseau mobile | network | 2 | 0.002 | 1.24e-07 | 0.218 | S35 |
-| Maintenance applicative | maintenance | 1 | 0.0633 | 2.46e-06 | 0.961 | S26 |
+| Smartphones des étudiants | device | 1 | 0,00428 | 1,04e-07 | 0,0567 | S26 |
+| Laptop du staff | device | 1 | 3,52e-05 | 1,4e-09 | 0,000534 | S26 |
+| Laptops des développeurs | development | 1 | 0,57 | 2,21e-05 | 8,65 | S26 |
+| Serveur 2U mutualisé | server | 3 | 1,12 | 1,82e-05 | 40,4 | S26 |
+| Réseau fixe | network | 2 | 1,89e-06 | 3e-10 | 0,000154 | S35 |
+| Réseau mobile | network | 2 | 0,002 | 1,24e-07 | 0,218 | S35 |
+| Maintenance applicative | maintenance | 1 | 0,0633 | 2,46e-06 | 0,961 | S26 |
 
 Les facteurs utilisés sont documentés dans `factors.open.csv` et `factors.local.example.csv`. Les valeurs Boavizta sont datées du 2026-11-09. Le facteur réseau de la démonstration est NegaOctet local [S35], utilisé comme exemple pédagogique non redistribuable. Green Coding [S42] reste une variante ouverte pour le GWP seul.
 
@@ -88,27 +88,27 @@ Les facteurs utilisés sont documentés dans `factors.open.csv` et `factors.loca
 
 # 7. Résultats par étape du cycle de vie
 
-![Graphique des impacts GWP par étape du cycle de vie](/home/mister_omega/greenITPlugins/greenit-rncp39388/dist/figures/lifecycle.png)
+![Graphique des impacts GWP par étape du cycle de vie](figures/lifecycle.png)
 
 | Étape | GWP (kg CO2e) | Part |
 |---|---|---|
-| Développement | 0.57 | 32.4 % |
-| Maintenance | 0.0633 | 3.6 % |
-| Utilisation | 1.13 | 64.0 % |
+| Développement | 0,57 | 32,4 % |
+| Maintenance | 0,0633 | 3,6 % |
+| Utilisation | 1,13 | 64,0 % |
 
 Le serveur et le développement dominent. La maintenance reste faible. La fin de vie n’est pas évaluée : nous préférons l’assumer plutôt que d’inventer un facteur.
 
 # 8. Résultats par tier
 
-![Diagramme de la répartition du GWP par tier](/home/mister_omega/greenITPlugins/greenit-rncp39388/dist/figures/tiers.png)
+![Diagramme de la répartition du GWP par tier](figures/tiers.png)
 
 | Tier | GWP (kg CO2e) | Part |
 |---|---|---|
-| Tier 1 | 0.638 | 36.3 % |
-| Tier 2 | 0.002 | 0.1 % |
-| Tier 3 | 1.12 | 63.6 % |
+| Tier 1 | 0,638 | 36,3 % |
+| Tier 2 | 0,002 | 0,1 % |
+| Tier 3 | 1,12 | 63,6 % |
 
-Le tier 3 (serveur) représente la majorité du GWP. Le tier 1 (terminaux) est faible **parce que** les appareils sont partagés et utilisés très peu de temps pour le service. Ce résultat serait très différent avec des terminaux dédiés.
+Le tier 3 (serveur) représente la majorité du GWP. Le tier 1 est minoritaire dans ce scénario, mais il contient aussi les laptops de développement et la maintenance ; il ne se résume donc pas aux terminaux. Les terminaux seuls restent faibles parce que les appareils sont partagés et utilisés très peu de temps pour le service. Ce résultat serait très différent avec des terminaux dédiés.
 
 # 9. Résultats par fonction
 
@@ -117,8 +117,8 @@ Nous n’avons pas alloué les impacts scénario par scénario, car les facteurs
 | Fonction | Volume indicatif | Lecture |
 |---|---|---|
 | Émargement étudiant | 5 Ko | Très faible poids, mais 10 interactions par étudiant. |
-| Consultation étudiante | 120 Ko | Poste web le plus lourd. |
-| Consultation staff | 10 Ko | Faible volume. |
+| Consultation étudiante | 1 595 Ko | Page complète mesurée, poste web le plus lourd. |
+| Consultation staff | 1 595 Ko | Même page complète pour le staff. |
 
 ::: callout {tone=limite title="Notre limite"}
 Nous donnons une répartition indicative par volume de données, sans l’utiliser comme score ; une répartition par fonction serait une fausse précision.
@@ -126,17 +126,17 @@ Nous donnons une répartition indicative par volume de données, sans l’utilis
 
 # 10. Hotspots et contributeurs principaux
 
-![Graphique des cinq premiers contributeurs au GWP](/home/mister_omega/greenITPlugins/greenit-rncp39388/dist/figures/hotspots.png)
+![Graphique des cinq premiers contributeurs au GWP](figures/hotspots.png)
 
 | Rang | Poste | GWP (kg CO2e) | Part |
 |---|---|---|---|
-| 1 | Serveur 2U mutualisé | 1.12 | 63.6 % |
-| 2 | Laptops des développeurs | 0.57 | 32.4 % |
-| 3 | Maintenance applicative | 0.0633 | 3.6 % |
-| 4 | Smartphones des étudiants | 0.00428 | 0.2 % |
-| 5 | Réseau mobile | 0.002 | 0.1 % |
+| 1 | Serveur 2U mutualisé | 1,12 | 63,6 % |
+| 2 | Laptops des développeurs | 0,57 | 32,4 % |
+| 3 | Maintenance applicative | 0,0633 | 3,6 % |
+| 4 | Smartphones des étudiants | 0,00428 | 0,2 % |
+| 5 | Réseau mobile | 0,002 | 0,1 % |
 
-Le serveur représente **63.6 %** du GWP. Le développement représente **32.4 %**. Les smartphones, dans notre scénario partagé, ne représentent que **0.2 %**.
+Le serveur représente **63,6 %** du GWP. Le développement représente **32,4 %**. Les smartphones, dans notre scénario partagé, ne représentent que **0,2 %**.
 
 # 11. Conditions de validité, sensibilité et plan de consolidation
 
@@ -146,36 +146,36 @@ Le rapport reste un **screening**. Nous ne supprimons pas les incertitudes : nou
 
 Nous appliquons une fourchette de ±30 % sur le total, faute de distribution de facteurs :
 
-- bas : **1.23 kg CO2e** ;
-- base : **1.76 kg CO2e** ;
-- haut : **2.29 kg CO2e**.
+- bas : **1,23 kg CO2e** ;
+- base : **1,76 kg CO2e** ;
+- haut : **2,29 kg CO2e**.
 
 ## Scénarios de sensibilité
 
 | Scénario | Variation | GWP (kg CO2e) | Δ vs base | Lecture |
 |---|---|---|---|---|
-| Référence | base | 1.76 | négligeable | Scénario du rapport |
-| PUE | 1.2 | 1.62 | -7.8 % | PUE de l’hébergement |
-| PUE | 1.5 | 1.76 | négligeable | PUE de l’hébergement |
-| PUE | 1.8 | 1.89 | 7.8 % | PUE de l’hébergement |
-| Allocation serveur | 5% | 1.2 | -31.8 % | Part des impacts serveur allouée |
-| Allocation serveur | 10% | 1.76 | négligeable | Part des impacts serveur allouée |
-| Allocation serveur | 20% | 2.88 | 63.7 % | Part des impacts serveur allouée |
-| Développement | 15 h/dev | 1.47 | -16.2 % | Durée de développement |
-| Développement | 30 h/dev | 1.76 | négligeable | Durée de développement |
-| Développement | 60 h/dev | 2.33 | 32.5 % | Durée de développement |
-| Usage étudiant | 20 s | 1.75 | -0.1 % | Temps d’usage par étudiant |
-| Usage étudiant | 40 s | 1.76 | négligeable | Temps d’usage par étudiant |
-| Usage étudiant | 120 s | 1.77 | 0.5 % | Temps d’usage par étudiant |
-| Mix électrique | 51.9 g/kWh | 1.76 | négligeable | Intensité carbone de l’électricité |
-| Mix électrique | 100 g/kWh | 2.5 | 42.4 % | Intensité carbone de l’électricité |
-| Mix électrique | 300 g/kWh | 5.6 | 218.9 % | Intensité carbone de l’électricité |
-| Volume réseau | ×0.5 | 1.76 | négligeable | Incertitude sur les volumes réseau |
-| Volume réseau | ×1 | 1.76 | négligeable | Incertitude sur les volumes réseau |
-| Volume réseau | ×1.5 | 1.76 | négligeable | Incertitude sur les volumes réseau |
-| Terminaux dédiés | 168 h | 66.4 | 3679.5 % | Smartphones dédiés au service |
+| Référence | base | 1,76 | négligeable | Scénario du rapport |
+| PUE | 1.2 | 1,62 | -7,8 % | PUE de l’hébergement |
+| PUE | 1.5 | 1,76 | négligeable | PUE de l’hébergement |
+| PUE | 1.8 | 1,9 | 7,8 % | PUE de l’hébergement |
+| Allocation serveur | 5% | 1,2 | -31,8 % | Part des impacts serveur allouée |
+| Allocation serveur | 10% | 1,76 | négligeable | Part des impacts serveur allouée |
+| Allocation serveur | 20% | 2,88 | 63,6 % | Part des impacts serveur allouée |
+| Développement | 15 h/dev | 1,47 | -16,2 % | Durée de développement |
+| Développement | 30 h/dev | 1,76 | négligeable | Durée de développement |
+| Développement | 60 h/dev | 2,33 | 32,4 % | Durée de développement |
+| Usage étudiant | 20 s | 1,76 | -0,1 % | Temps d’usage par étudiant |
+| Usage étudiant | 40 s | 1,76 | négligeable | Temps d’usage par étudiant |
+| Usage étudiant | 120 s | 1,77 | 0,5 % | Temps d’usage par étudiant |
+| Mix électrique | 51.9 g/kWh | 1,76 | négligeable | Intensité carbone de l’électricité |
+| Mix électrique | 100 g/kWh | 2,51 | 42,5 % | Intensité carbone de l’électricité |
+| Mix électrique | 300 g/kWh | 5,61 | 219,2 % | Intensité carbone de l’électricité |
+| Volume réseau | ×0.5 | 1,76 | < 0,1 % | Incertitude sur les volumes réseau |
+| Volume réseau | ×1 | 1,76 | négligeable | Incertitude sur les volumes réseau |
+| Volume réseau | ×1.5 | 1,76 | < 0,1 % | Incertitude sur les volumes réseau |
+| Terminaux dédiés | 168 h | 66,4 | 3675,3 % | Smartphones dédiés au service |
 
-Le scénario « terminaux dédiés » est le plus structurant : le GWP passerait à environ **66.4 kg CO2e**, soit **37.8×** le scénario de partage. Ce n’est pas une prédiction : c’est la démonstration que l’allocation change la conclusion.
+Le scénario « terminaux dédiés » est le plus structurant : le GWP passerait à environ **66,4 kg CO2e**, soit **37,8×** le scénario de partage. Ce n’est pas une prédiction : c’est la démonstration que l’allocation change la conclusion.
 
 ## Conditions de validité
 
@@ -264,9 +264,9 @@ Correspondance normative : RGESN [S03][S04] pour les 78 critères, GR491 [S05] p
 | sans preuve | 42 |
 | non applicable | 10 |
 
-**Score d’avancement** : 15.0/100. **Statuts évalués** : 100.0 %. **Preuves disponibles** : 39.6 %. Le score est **non significatif** : le taux de statuts ne vaut pas taux de preuves. Les 54 critères non validés le sont pour l’essentiel faute de preuve. Ce n’est pas le score officiel de l’outil RGESN.
+**Score d’avancement** : 15.0/100. **Statuts évalués** : 100,0 %. **Preuves disponibles** : 39,6 %. Le score est **non significatif** : le taux de statuts ne vaut pas taux de preuves. Les 54 critères non validés le sont pour l’essentiel faute de preuve. Ce n’est pas le score officiel de l’outil RGESN.
 
-![Jauge du score RGESN d’avancement](/home/mister_omega/greenITPlugins/greenit-rncp39388/dist/figures/rgesn.png)
+![Jauge du score RGESN d’avancement](figures/rgesn.png)
 
 | ID | Priorité | Statut | Critère |
 |---|---|---|---|
@@ -320,7 +320,7 @@ Nous avons divergé sans filtrer, puis convergence avec une matrice impact/effor
 31. Mesurer l’effet rebond après optimisation.
 32. Comparer les scénarios terminal partagé / dédié.
 
-![Matrice impact / effort des actions d’écoconception](/home/mister_omega/greenITPlugins/greenit-rncp39388/dist/figures/actions.png)
+![Matrice impact / effort des actions d’écoconception](figures/actions.png)
 
 ::: callout {tone=info title="Idées écartées"}
 « Acheter de la compensation carbone », « passer au cloud vert sans preuve » et « Optimiser le frontend pour compenser le serveur » sont écartées : elles ne réduisent pas les impacts du service et peuvent relever du greenwashing.
@@ -347,14 +347,14 @@ Les quick wins sont A1 à A4. Ils sont peu risqués et mesurables. Les actions A
 
 | Indicateur | Baseline | Optimisé | Delta |
 |---|---|---|---|
-| Poids transféré | 1 595 Ko | 91.6 Ko | 94.3 % |
-| Requêtes | 7 | 6 | 14.3 % |
+| Poids transféré | 1 595 Ko | 91,6 Ko | 94,3 % |
+| Requêtes | 7 | 6 | 14,3 % |
 | Nœuds DOM | 25 | 26 | stable |
 | Ressources avec cache | 0 | 4 | ajout de cache |
 | EcoIndex | 87 (A) | 95 (A) | amélioration |
-| GWP du service | 1.76 kg CO2e | 1.76 kg CO2e | 0.1 % |
+| GWP du service | 1,76 kg CO2e | 1,76 kg CO2e | 0,1 % |
 
-La page passe de **1 595 Ko** à **91.6 Ko**, soit une réduction de **94.3 %**. L’EcoIndex passe de **87** à **95**. Le GWP du service ne baisse que de **moins de 0,1 %** : le réseau n’est pas le hotspot, et le serveur n’a pas changé. C’est un résultat honnête : optimiser le frontend ne suffit pas.
+La page passe de **1 595 Ko** à **91,6 Ko**, soit une réduction de **94,3 %**. L’EcoIndex passe de **87** à **95**. Le GWP du service ne baisse que de **moins de 0,1 %** : le réseau n’est pas le hotspot, et le serveur n’a pas changé. C’est un résultat honnête : optimiser le frontend ne suffit pas.
 
 ::: callout {tone=decision title="Notre décision"}
 Nous ne présentons pas la réduction du poids de la page comme une réduction du GWP. Ce sont deux indicateurs différents. Le gain GWP est faible dans ce scénario, et nous le disons.
@@ -363,7 +363,7 @@ Nous ne présentons pas la réduction du poids de la page comme une réduction d
 # 18. Bénéfices collatéraux et gouvernance
 
 - **Accessibilité** : labels, `alt`, contrastes, navigation clavier.
-- **Sécurité** : suppression du CORS `*`, du secret factice, des `SELECT *`.
+- **Sécurité** : suppression du CORS `*`, du faux secret de démonstration, des `SELECT *`.
 - **Qualité** : code plus léger, cache, index, moins de debug.
 - **Coûts** : moins de bande passante, moins de CPU, moins de stockage.
 - **UX** : page plus rapide, surtout sur mobile.
@@ -377,48 +377,48 @@ Le service peut réduire fortement son poids web, mais son GWP reste dominé par
 
 ## Sources et bibliographie
 
-- **S01** — France Compétences, *RNCP39388 — Responsable green IT*, 2026-11-09. https://www.francecompetences.fr/recherche/rncp/39388
-- **S02** — France Compétences, *RNCP42198 — autre titre Responsable green IT*, 2026-11-09. https://www.francecompetences.fr/recherche/rncp/42198
-- **S03** — Arcep / Arcom / ADEME, *Référentiel général d’écoconception des services numériques — version 2024*, 2024-05. https://ecoresponsable.numerique.gouv.fr/docs/2024/rgesn-mai2024/referentiel_general_ecoconception_des_services_numeriques_version_2024.pdf
-- **S04** — Arcep / Arcom / ADEME, *Outil de déclaration RGESN 2024 (XLSX)*, 2024-05. https://ecoresponsable.numerique.gouv.fr/docs/2024/rgesn-mai2024/rgesn_2024_outil_declaration_ecoconception.xlsx
-- **S05** — INR, *GR491 — Guide de référence de l’écoconception de services numériques*, 2024. https://gr491.isit-europe.org/
-- **S06** — Collectif Green IT, *RWEB 5.0.0 — Référentiel de bonnes pratiques*, 2024. https://rweb.greenit.fr/fr/fiches
-- **S07** — ADEME, *Base Empreinte — facteurs d’impact*, 2026. https://base-empreinte.ademe.fr/
-- **S08** — ADEME, *Méthodologie d’évaluation environnementale basée sur l’ACV pour un service numérique — RCP v2*, 2025. https://librairie.ademe.fr/societe-et-politiques-publiques/9418-methodologie-d-evaluation-environnementale-basee-sur-l-analyse-du-cycle-de-vie-acv-pour-un-service-numerique.html
-- **S09** — ADEME / Arcep, *Étude de l’empreinte environnementale du numérique en France — 2020-2030-2050*, 2023-03. https://www.arcep.fr/uploads/tx_gspublication/dossier-presse-Etude-Ademe-Arcep-lot3_mars2023.pdf
-- **S10** — ADEME, *Impacts environnementaux du numérique en France — mise à jour 2025*, 2025. https://ecoresponsable.numerique.gouv.fr/docs/2024/etude-ademe-impacts-environnementaux-numerique.pdf
-- **S11** — MiNumEco, *Guide pratique pour des achats numériques responsables — ACV*, 2024. https://ecoresponsable.numerique.gouv.fr/publications/guide-pratique-achats-numeriques-responsables/demarche-numerique-responsable/analyse-cycle-de-vie
-- **S12** — ISO, *ISO 14040:2006 — Management environnemental, ACV, principes et cadre*, 2006. https://www.iso.org/fr/standard/37456.html
-- **S13** — ISO, *ISO 14044:2006 — Management environnemental, ACV, exigences et lignes directrices*, 2006. https://www.iso.org/fr/standard/38498.html
-- **S14** — ISO/IEC, *ISO/IEC 21031:2024 — Software Carbon Intensity (SCI)*, 2024. https://www.iso.org/fr/standard/86612.html
-- **S15** — Commission européenne, *Product Environmental Footprint (PEF) method*, 2021. https://green-forum.ec.europa.eu/green-business/environmental-footprint-methods/pef-method_en
-- **S16** — JRC, *EF 3.1 — characterisation and normalisation factors*, 2023. https://publications.jrc.ec.europa.eu/repository/bitstream/JRC130796/JRC130796_01.pdf
-- **S17** — ITU-T, *L.1410 — Methodology for environmental impact assessment of ICT goods, networks and services*, 2024-11. https://www.itu.int/rec/T-REC-L.1410/en
-- **S18** — ITU-T, *L.1450 — Methodologies for environmental impact assessment of ICT*, 2023. https://www.itu.int/rec/T-REC-L.1450
-- **S19** — ITU-T, *L.1470 — GHG emissions trajectories for the ICT sector*, 2020. https://www.itu.int/rec/T-REC-L.1470
-- **S20** — République française, *Loi n° 2021-1485 du 15 novembre 2021 dite REEN*, 2021-11-15. https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000044327272
-- **S21** — République française, *Décret n° 2022-1084 du 29 juillet 2022*, 2022-07-29. https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000046113741
-- **S22** — République française, *Code de l’environnement, article L229-25 — BEGES*, 2026. https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000051559662
-- **S23** — Commission européenne, *Corporate Sustainability Reporting Directive (CSRD) et ESRS*, 2026. https://finance.ec.europa.eu/capital-markets-union-and-financial-markets/company-reporting-and-auditing/company-reporting/corporate-sustainability-reporting_en
-- **S24** — CNIL, *Règlement général sur la protection des données (RGPD)*, 2016. https://www.cnil.fr/fr/reglement-europeen-protection-donnees
-- **S25** — DINUM, *RGAA 4.1.2 — critères et tests*, 2023. https://accessibilite.numerique.gouv.fr/methode/criteres-et-tests/
-- **S26** — Boavizta, *Documentation de l’API Boavizta*, 2026. https://doc.api.boavizta.org/
-- **S27** — Boavizta, *Outils Boavizta*, 2026. https://www.boavizta.org/tools
-- **S28** — EcoIndex, *Comment ça marche — méthode EcoIndex*, 2026. https://www.ecoindex.fr/comment-ca-marche
-- **S29** — CNUMR, *EcoIndex Python — code source*, 2026. https://github.com/cnumr/EcoIndex_python
-- **S30** — CNUMR, *GreenIT Analysis — code source*, 2026. https://github.com/cnumr/GreenIT-Analysis
-- **S31** — MLCO2, *CodeCarbon — code source*, 2026. https://github.com/mlco2/codecarbon
-- **S32** — Hubblo, *Scaphandre — code source*, 2026. https://github.com/hubblo-org/scaphandre
-- **S33** — Cloud Carbon Footprint, *Cloud Carbon Footprint — code source*, 2026. https://github.com/cloud-carbon-footprint/cloud-carbon-footprint
-- **S34** — Green Software Foundation, *Software Carbon Intensity (SCI) specification*, 2024. https://sci.greensoftware.foundation/
-- **S35** — GreenIT.fr / NegaOctet, *NegaOctet — facteurs d’impacts ACV*, 2024. https://www.greenit.fr/negaoctet-acv-facteurs-dimpacts/
-- **S36** — Zone01 Normandie, *Supports de formation GreenIT, modules 1–2*, 2025. $HOME/Downloads/Docs référent GreenIT.zip
-- **S37** — Zone01 Normandie, *Présentation ACV Green IT*, 2025. $HOME/Downloads/ACV Green IT – Zone01 Normandie (1).pptx
-- **S38** — Zone01 Normandie, *Questions jury RNCP*, 2025. $HOME/Downloads/Questions RNCP.odt
-- **S39** — OWASP Foundation, *OWASP Top 10*, 2025. https://owasp.org/www-project-top-ten/
-- **S40** — ANSSI, *Recommandations et guides d’hygiène numérique*, 2026. https://cyber.gouv.fr/
-- **S41** — GHG Protocol, *Greenhouse Gas Protocol — Corporate Standard*, 2004. https://ghgprotocol.org/
-- **S42** — Green Coding, *Network Carbon Intensity — méthodologie et facteur 0,04106063 kWh/Go*, 2025. https://docs.green-coding.io/docs/measuring/carbon/network-carbon-intensity/
+- **S01** - France Compétences, *RNCP39388 - Responsable green IT*, 2026-11-09. https://www.francecompetences.fr/recherche/rncp/39388
+- **S02** - France Compétences, *RNCP42198 - autre titre Responsable green IT*, 2026-11-09. https://www.francecompetences.fr/recherche/rncp/42198
+- **S03** - Arcep / Arcom / ADEME, *Référentiel général d’écoconception des services numériques - version 2024*, 2024-05. https://ecoresponsable.numerique.gouv.fr/docs/2024/rgesn-mai2024/referentiel_general_ecoconception_des_services_numeriques_version_2024.pdf
+- **S04** - Arcep / Arcom / ADEME, *Outil de déclaration RGESN 2024 (XLSX)*, 2024-05. https://ecoresponsable.numerique.gouv.fr/docs/2024/rgesn-mai2024/rgesn_2024_outil_declaration_ecoconception.xlsx
+- **S05** - INR, *GR491 - Guide de référence de l’écoconception de services numériques*, 2024. https://gr491.isit-europe.org/
+- **S06** - Collectif Green IT, *RWEB 5.0.0 - Référentiel de bonnes pratiques*, 2024. https://rweb.greenit.fr/fr/fiches
+- **S07** - ADEME, *Base Empreinte - facteurs d’impact*, 2026. https://base-empreinte.ademe.fr/
+- **S08** - ADEME, *Méthodologie d’évaluation environnementale basée sur l’ACV pour un service numérique - RCP v2*, 2025. https://librairie.ademe.fr/societe-et-politiques-publiques/9418-methodologie-d-evaluation-environnementale-basee-sur-l-analyse-du-cycle-de-vie-acv-pour-un-service-numerique.html
+- **S09** - ADEME / Arcep, *Étude de l’empreinte environnementale du numérique en France - 2020-2030-2050*, 2023-03. https://www.arcep.fr/uploads/tx_gspublication/dossier-presse-Etude-Ademe-Arcep-lot3_mars2023.pdf
+- **S10** - ADEME, *Impacts environnementaux du numérique en France - mise à jour 2025*, 2025. https://ecoresponsable.numerique.gouv.fr/docs/2024/etude-ademe-impacts-environnementaux-numerique.pdf
+- **S11** - MiNumEco, *Guide pratique pour des achats numériques responsables - ACV*, 2024. https://ecoresponsable.numerique.gouv.fr/publications/guide-pratique-achats-numeriques-responsables/demarche-numerique-responsable/analyse-cycle-de-vie
+- **S12** - ISO, *ISO 14040:2006 - Management environnemental, ACV, principes et cadre*, 2006. https://www.iso.org/fr/standard/37456.html
+- **S13** - ISO, *ISO 14044:2006 - Management environnemental, ACV, exigences et lignes directrices*, 2006. https://www.iso.org/fr/standard/38498.html
+- **S14** - ISO/IEC, *ISO/IEC 21031:2024 - Software Carbon Intensity (SCI)*, 2024. https://www.iso.org/fr/standard/86612.html
+- **S15** - Commission européenne, *Product Environmental Footprint (PEF) method*, 2021. https://green-forum.ec.europa.eu/green-business/environmental-footprint-methods/pef-method_en
+- **S16** - JRC, *EF 3.1 - characterisation and normalisation factors*, 2023. https://publications.jrc.ec.europa.eu/repository/bitstream/JRC130796/JRC130796_01.pdf
+- **S17** - ITU-T, *L.1410 - Methodology for environmental impact assessment of ICT goods, networks and services*, 2024-11. https://www.itu.int/rec/T-REC-L.1410/en
+- **S18** - ITU-T, *L.1450 - Methodologies for environmental impact assessment of ICT*, 2023. https://www.itu.int/rec/T-REC-L.1450
+- **S19** - ITU-T, *L.1470 - GHG emissions trajectories for the ICT sector*, 2020. https://www.itu.int/rec/T-REC-L.1470
+- **S20** - République française, *Loi n° 2021-1485 du 15 novembre 2021 dite REEN*, 2021-11-15. https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000044327272
+- **S21** - République française, *Décret n° 2022-1084 du 29 juillet 2022*, 2022-07-29. https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000046113741
+- **S22** - République française, *Code de l’environnement, article L229-25 - BEGES*, 2026. https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000051559662
+- **S23** - Commission européenne, *Corporate Sustainability Reporting Directive (CSRD) et ESRS*, 2026. https://finance.ec.europa.eu/capital-markets-union-and-financial-markets/company-reporting-and-auditing/company-reporting/corporate-sustainability-reporting_en
+- **S24** - CNIL, *Règlement général sur la protection des données (RGPD)*, 2016. https://www.cnil.fr/fr/reglement-europeen-protection-donnees
+- **S25** - DINUM, *RGAA 4.1.2 - critères et tests*, 2023. https://accessibilite.numerique.gouv.fr/methode/criteres-et-tests/
+- **S26** - Boavizta, *Documentation de l’API Boavizta*, 2026. https://doc.api.boavizta.org/
+- **S27** - Boavizta, *Outils Boavizta*, 2026. https://www.boavizta.org/tools
+- **S28** - EcoIndex, *Comment ça marche - méthode EcoIndex*, 2026. https://www.ecoindex.fr/comment-ca-marche
+- **S29** - CNUMR, *EcoIndex Python - code source*, 2026. https://github.com/cnumr/EcoIndex_python
+- **S30** - CNUMR, *GreenIT Analysis - code source*, 2026. https://github.com/cnumr/GreenIT-Analysis
+- **S31** - MLCO2, *CodeCarbon - code source*, 2026. https://github.com/mlco2/codecarbon
+- **S32** - Hubblo, *Scaphandre - code source*, 2026. https://github.com/hubblo-org/scaphandre
+- **S33** - Cloud Carbon Footprint, *Cloud Carbon Footprint - code source*, 2026. https://github.com/cloud-carbon-footprint/cloud-carbon-footprint
+- **S34** - Green Software Foundation, *Software Carbon Intensity (SCI) specification*, 2024. https://sci.greensoftware.foundation/
+- **S35** - GreenIT.fr / NegaOctet, *NegaOctet - facteurs d’impacts ACV*, 2024. https://www.greenit.fr/negaoctet-acv-facteurs-dimpacts/
+- **S36** - Zone01 Normandie, *Supports de formation GreenIT, modules 1-2*, 2025. $HOME/Downloads/Docs référent GreenIT.zip
+- **S37** - Zone01 Normandie, *Présentation ACV Green IT*, 2025. $HOME/Downloads/ACV Green IT - Zone01 Normandie (1).pptx
+- **S38** - Zone01 Normandie, *Questions jury RNCP*, 2025. $HOME/Downloads/Questions RNCP.odt
+- **S39** - OWASP Foundation, *OWASP Top 10*, 2025. https://owasp.org/www-project-top-ten/
+- **S40** - ANSSI, *Recommandations et guides d’hygiène numérique*, 2026. https://cyber.gouv.fr/
+- **S41** - GHG Protocol, *Greenhouse Gas Protocol - Corporate Standard*, 2004. https://ghgprotocol.org/
+- **S42** - Green Coding, *Network Carbon Intensity - méthodologie et facteur 0,04106063 kWh/Go*, 2025. https://docs.green-coding.io/docs/measuring/carbon/network-carbon-intensity/
 
 ## Glossaire
 
@@ -428,8 +428,13 @@ Le service peut réduire fortement son poids web, mais son GWP reste dominé par
 - **ADPe** : Épuisement des ressources minérales, en kg Sb eq.
 - **ADPf** : Épuisement des ressources fossiles, en MJ.
 - **PUE** : Énergie totale du datacenter / énergie IT.
-- **EcoIndex** : Score web 0–100 basé sur DOM, poids et requêtes [S28].
+- **EcoIndex** : Score web 0-100 basé sur DOM, poids et requêtes [S28].
 - **SCI** : Software Carbon Intensity, taux d’émission par unité fonctionnelle [S14].
+- **ICV** : Inventaire du cycle de vie ; quantification des flux entrants et sortants.
+- **WUE** : Water Usage Effectiveness ; litres d’eau consommés par kWh IT.
+- **scope 1** : Émissions directes de l’organisation.
+- **scope 2** : Émissions indirectes liées à l’électricité achetée.
+- **scope 3** : Autres émissions indirectes de la chaîne de valeur.
 - **RGESN** : Référentiel général d’écoconception des services numériques [S03].
 - **GR491** : Guide de référence de l’écoconception de services numériques [S05].
 - **RWEB** : Référentiel de bonnes pratiques web responsable [S06].

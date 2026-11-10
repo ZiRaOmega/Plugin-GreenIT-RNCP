@@ -99,7 +99,7 @@ plugins/
   greenit-studio/      # 5 skills, scripts DOCX/PPTX/vidéo/figures/scanner
   greenit-audit/       # 7 skills, références, calculs, schémas
   greenit-engineering/ # 6 skills, playbooks, mesure de delta
-  greenit-reviewer/    # 3 skills + agent indépendant de revue design/qualité
+  greenit-reviewer/    # 4 skills + agent indépendant de revue design/qualité
 shared/
   docs/                # architecture, sources, glossaire, calculs, RNCP, style, limites
   schemas/             # audit, deck, source
