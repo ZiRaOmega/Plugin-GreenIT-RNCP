@@ -70,6 +70,16 @@ make test
 
 Outils attendus : Python 3.10+, LibreOffice (`soffice`), `ffmpeg`, `ffprobe`, `pdftoppm`, `pdfinfo`, `pdftotext`, Chromium pour Playwright.
 
+## Mode guidé
+
+Pour un déclenchement un par un, demander à OMP :
+
+```text
+Utilise le skill greenit-audit en mode guidé : pose-moi les questions une par une, attends mes réponses, puis appelle le skill suivant. Ne lance pas run_audit.py d’un coup.
+```
+
+Séquence : discover-palette → codebase-analysis → greenit-calculations → greenit-norms → greenit-report → greenit-defense → rncp39388 → design-review → content-challenge → sanitize-ai-text.
+
 ## Workflow sur un projet réel
 
 ### 1. Cadrer

@@ -66,3 +66,21 @@ Ne jamais lancer les rendus avant l’étape 1 : les fichiers d’entrée n’ex
 La démonstration utilise `factors.local.example.csv` (NegaOctet) pour évaluer GWP/ADPe/ADPf réseau. Ce fichier est un exemple local non redistribuable. Pour un rapport public, remplacer ce facteur par une source sous licence compatible.
 
 Le score RGESN est calculé sur les statuts ; la couverture des preuves est affichée séparément. Un score de 15/100 avec 100 % de statuts et 39,6 % de preuves est **non significatif** : les 42 critères sans preuve sont comptés comme non validés, pas comme conformes.
+
+## Mode guidé OMP
+
+Dans OMP, il n’y a pas de slash-command `plugin:skill`. Demander :
+
+```text
+Utilise le skill greenit-audit en mode guidé : pose-moi les questions une par une, attends mes réponses, puis appelle le skill suivant. Ne lance pas run_audit.py d’un coup.
+```
+
+Ou :
+
+```text
+Utilise greenit-rncp39388 en mode guidé pour auditer /chemin/mon-projet. Commence par me demander quels blocs RNCP auditer.
+```
+
+Questions : blocs RNCP, racine projet, UF, frontières, stack/hardware, données, niveau de preuve, livrables.
+
+Séquence : discover-palette → codebase-analysis → greenit-calculations → greenit-norms → greenit-report → greenit-defense → rncp39388 → design-review → content-challenge → sanitize-ai-text.
