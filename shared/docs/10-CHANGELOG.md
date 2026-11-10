@@ -25,7 +25,7 @@
 
 - Création du marketplace `greenit-rncp39388`.
 - Trois plugins : `greenit-studio`, `greenit-audit`, `greenit-engineering`.
-- 18 skills.
+- 18 skills (puis 21 avec le plugin reviewer).
 - Import RGESN 2024 : 78 critères, 9 chapitres.
 - Références GR491, RWEB, ACV, indicateurs, réglementation.
 - 41 sources.

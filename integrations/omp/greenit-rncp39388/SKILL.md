@@ -24,7 +24,7 @@ $BUNDLE_ROOT
 
 Définir `BUNDLE_ROOT` vers la racine du dépôt cloné.
 
-## Carte des 18 skills
+## Carte des 21 skills
 
 ### greenit-studio
 
