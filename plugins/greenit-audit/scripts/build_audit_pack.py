@@ -13,8 +13,27 @@ import yaml
 
 import calc
 
+ALL_BLOCKS = ("BC01", "BC02", "BC03", "BC04")
+
 HERE = Path(__file__).resolve().parent
 REF = HERE.parent / "references"
+
+
+def parse_blocks(value: str | None) -> tuple[str, ...]:
+    if not value:
+        return ALL_BLOCKS
+    raw = value.replace("bloc", "").replace("BC", "").replace("bc", "")
+    parts = [p.strip().upper() for p in raw.replace(";", ",").split(",") if p.strip()]
+    out = []
+    for p in parts:
+        code = p if p.startswith("BC") else f"BC{int(p):02d}"
+        if code not in ALL_BLOCKS:
+            raise ValueError(f"Bloc inconnu : {code}")
+        if code not in out:
+            out.append(code)
+    if not out:
+        raise ValueError("Aucun bloc sélectionné")
+    return tuple(out)
 
 
 def load_json(p: Path) -> dict:
@@ -352,7 +371,8 @@ def report_text(ctx: dict, figures: Path) -> str:
 **Projet** : {ctx['audit'].get('project', {}).get('name', 'Service d’émargement').replace("—", "-")}  
 **Client** : {ctx['audit'].get('project', {}).get('client', 'Zone01 Normandie')}  
 **Version** : {ctx['audit'].get('project', {}).get('version', '1.0')} — **Date** : {ctx['audit'].get('project', {}).get('date', '2026-11-09')}  
-**Auteurs** : {', '.join(ctx['audit'].get('project', {}).get('authors', []))}
+**Auteurs** : {', '.join(ctx['audit'].get('project', {}).get('authors', []))}  
+**Blocs RNCP audités** : {', '.join(ctx.get('blocks', ALL_BLOCKS))}
 
 Nous avons audité un service fictif d’émargement utilisé par 100 étudiants et un membre du staff pendant une semaine. Le service est volontairement perfectible : image PNG lourde, CSS dupliqué, JavaScript non minifié, polling, `SELECT *`, absence d’index et `alt` manquant. Notre objectif est de montrer une démarche complète, traçable et honnête, pas de certifier un service réel.
 
@@ -662,22 +682,62 @@ def deck_text(ctx: dict, figures: Path) -> dict:
             "slides": slides}
 
 
-def rncp_docs(ctx: dict, out: Path) -> None:
+def rncp_docs(ctx: dict, out: Path, selected_blocks: tuple[str, ...] = ALL_BLOCKS) -> None:
     out.mkdir(parents=True, exist_ok=True)
-    shutil.copyfile(REF / "rncp39388-matrix.csv", out / "01-matrice-competences.csv")
     matrix = list(csv.DictReader((REF / "rncp39388-matrix.csv").open(encoding="utf-8-sig")))
+    selected = set(selected_blocks)
+    for row in matrix:
+        if row["block"] not in selected:
+            row["status"] = "hors périmètre"
+    fields = ["block", "block_title", "competency_id", "competency", "evidence", "location", "status"]
+    with (out / "01-matrice-competences.csv").open("w", encoding="utf-8-sig", newline="") as f:
+        w = csv.DictWriter(f, fieldnames=fields, extrasaction="ignore")
+        w.writeheader(); w.writerows(matrix)
+    (out / "00-blocs-audites.md").write_text(
+        "# Blocs RNCP audités\n\n" + "\n".join(f"- {b}" for b in selected_blocks) +
+        "\n\nLes blocs non sélectionnés sont marqués « hors périmètre » dans la matrice.\n", encoding="utf-8")
+    if "BC01" in selected and "BC04" in selected:
+        exam = list(csv.DictReader((REF / "rncp39388-bc01-bc04-exam.csv").open(encoding="utf-8-sig")))
+        lines = ["# Dossier d’examen — Blocs 1 et 4 (9 parties)", "",
+                 f"Projet : **{ctx.get('audit', {}).get('project', {}).get('name', 'Projet')}**", "",
+                 "Structure issue du document fourni : 9 parties, 16 compétences C1.1–C1.8 et C4.1–C4.8.", "",
+                 "> La correspondance avec RNCP39388 (4 blocs, 19 compétences) est indicative. Vérifier le référentiel exact de l’école avant remise.", "",
+                 "| Partie | Compétence | Contenu attendu | Preuve | Statut |", "|---:|---|---|---|---|"]
+        for r in exam:
+            lines.append(f"| {r['part']} | {r['exam_code']} | {r['expected_content']} | `{r['evidence']}` | {r['status_note']} |")
+        lines += ["", "## Répartition des 9 parties", ""]
+        by_part = {}
+        for r in exam:
+            by_part.setdefault(r["part"], []).append(r)
+        for part, rows in by_part.items():
+            lines += [f"### Partie {part} — {rows[0]['part_title']}", "",
+                      "Compétences : " + ", ".join(r["exam_code"] for r in rows), "",
+                      "Contenu attendu : " + rows[0]["expected_content"], "",
+                      "Preuves : " + ", ".join(f"`{r['evidence']}`" for r in rows), ""]
+        (out / "11-dossier-examen-bc01-bc04.md").write_text("\n".join(lines), encoding="utf-8")
+        with (out / "12-matrice-16-competences.csv").open("w", encoding="utf-8-sig", newline="") as f:
+            w = csv.DictWriter(f, fieldnames=["part", "part_title", "exam_code", "expected_content", "rncp_ids", "evidence", "status_note"])
+            w.writeheader(); w.writerows(exam)
     blocks = {}
     for row in matrix:
         blocks.setdefault(row["block"], []).append(row)
     proof = ["# Dossier de preuves RNCP39388", "",
              "Titre : Responsable green IT (RNCP39388, niveau 6, Efficom).", "",
+             f"Blocs sélectionnés : {', '.join(selected_blocks)}.", "",
              "Chaque compétence est reliée à une preuve existante. Les preuves sont des fichiers du bundle ou des livrables générés dans `dist/`.", ""]
     for block, rows in blocks.items():
+        if block not in selected:
+            continue
         proof += [f"## {block} — {rows[0]['block_title']}", ""]
         for r in rows:
             proof += [f"### {r['competency_id']} — {r['competency']}", "",
                       f"- **Preuve** : `{r['evidence']}`", f"- **Emplacement** : {r['location']}",
                       f"- **Statut** : {r['status']}", ""]
+    others = [r for r in matrix if r["block"] not in selected]
+    if others:
+        proof += ["## Blocs hors périmètre", ""]
+        proof += [f"- {r['competency_id']} — {r['competency']} (hors périmètre)" for r in others]
+        proof += [""]
     (out / "02-dossier-preuves.md").write_text("\n".join(proof), encoding="utf-8")
     (out / "03-checklist-livrables.md").write_text("""# Checklist des livrables
 
@@ -834,6 +894,7 @@ Le tech lead publie les mesures. Un écart de plus de 20 % déclenche une revue.
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--project", type=Path)
+    ap.add_argument("--blocks", default="BC01,BC02,BC03,BC04", help="Blocs RNCP à auditer")
     ap.add_argument("--metrics", type=Path, required=True)
     ap.add_argument("--metrics-optimized", type=Path)
     ap.add_argument("--web", type=Path)
@@ -849,6 +910,7 @@ def main() -> int:
     args = ap.parse_args()
     args.figures = args.figures.resolve()
     ctx = build_context(args)
+    ctx["blocks"] = parse_blocks(args.blocks)
     args.out.mkdir(parents=True, exist_ok=True)
     charts = build_charts(ctx, args.figures)
     args.figures.mkdir(parents=True, exist_ok=True)
@@ -940,7 +1002,7 @@ La version complète, les sources et les calculs sont dans `rapport-audit-greeni
                       "warnings": ["Aucun projet fourni : palette de secours."],
                       "rules": ["source sur chaque figure", "pas de 3D"]}
             design_path.write_text(yaml.safe_dump(design, allow_unicode=True, sort_keys=False), encoding="utf-8")
-    rncp_docs(ctx, args.dist / "rncp39388")
+    rncp_docs(ctx, args.dist / "rncp39388", ctx.get("blocks", ALL_BLOCKS))
     narration = ("Le numérique a un impact réel, souvent invisible. Nous avons audité un service d’émargement "
                  "utilisé par cent étudiants pendant une semaine. Notre démarche est une ACV screening : nous avons "
                  "défini une unité fonctionnelle, une frontière et trois indicateurs. Résultat : environ 1,76 kilogramme "

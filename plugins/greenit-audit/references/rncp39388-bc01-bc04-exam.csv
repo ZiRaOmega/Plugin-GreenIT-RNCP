@@ -1,0 +1,17 @@
+﻿part,part_title,exam_code,expected_content,rncp_ids,evidence,status_note
+1,Cadrage du diagnostic,C1.1,"Cadre normatif applicable (loi REEN, RGAA, RGPD), référentiels retenus, contributeurs internes et externes.",BC01-1,report.md §5 ; regulations-fr.md,preuve disponible
+2,Stratégie RSE de l’organisation,C1.2,"Actions liées au numérique responsable déjà identifiées, indicateurs de reporting existants ou leur absence.",BC01-2,audit.yml ; report.md §2,preuve à compléter
+3,Cartographie du système d’information et de son usage interne,C1.3,"Existant numérique de l’organisation, processus IT internes liés au dispositif Bougez Vous Avec Nous.",BC01-2,audit.yml stack/hardware,preuve disponible
+3,Cartographie du système d’information et de son usage interne,C1.4,"Usages internes, flux, dépendances et tiers.",BC01-2,codebase-audit.json,preuve disponible
+4,Maturité des pratiques et politique matérielle,C1.5,"Pratiques actuelles des interlocuteurs, critères de sélection et cycle de vie du matériel.",BC01-4,audit.yml ; report.md §11,preuve à compléter
+4,Maturité des pratiques et politique matérielle,C1.6,"Politique matérielle, achats, durée de vie, fin de vie.",BC01-4,report.md §11 ; hypotheses.csv,preuve à compléter
+5,Positionnement et empreinte environnementale actuelle,C1.7,"Comparaison à des structures similaires, analyse de l’usage et de la consommation du système existant.",BC01-2,metrics.json ; web-metrics.json,preuve à compléter
+5,Positionnement et empreinte environnementale actuelle,C4.1,"Analyse de l’usage et de la consommation du système existant, indicateurs de performance environnementale.",BC04-3,metrics.json ; report.md §17,preuve à compléter
+6,Diagnostic technique de l’existant,C4.2,"Inefficacités de l’ancienne application et de son hébergement, recommandations chiffrées pour la reconstruction.",BC04-4,codebase-audit.md ; report.md §12,preuve disponible
+7,"Objectifs, indicateurs et référentiel visé",C4.3,"Objectifs quantifiables du nouveau projet, indicateurs de suivi.",BC04-1,report.md §16 ; metrics.json,preuve disponible
+7,"Objectifs, indicateurs et référentiel visé",C4.4,"Critères d’un label green IT visé, référentiel RGESN/GR491/RWEB.",BC04-1,rgesn-score.csv ; report.md §14,preuve disponible
+8,Innovations et recommandations chiffrées,C4.5,"Innovations applicables au projet, indicateurs compilés.",BC04-1,brainstorm.md ; report.md §15,preuve disponible
+8,Innovations et recommandations chiffrées,C4.6,Recommandations argumentées et chiffrées.,BC04-1,report.md §17 ; figures/actions.png,preuve disponible
+9,"Restitution, sensibilisation et communication",C1.8,"Synthèse de sensibilisation, présentation des données de performance environnementale, adaptation à différents publics.",BC01-3,synthese-client.md ; soutenance.pptx,preuve disponible
+9,"Restitution, sensibilisation et communication",C4.7,Supports de communication adaptés aux publics.,BC04-2,synthese-client.pptx ; notes-orales.md,preuve à compléter
+9,"Restitution, sensibilisation et communication",C4.8,Adaptation des messages et des formats aux différents publics.,BC04-3,synthese-client.pptx ; report.md §18,preuve à compléter

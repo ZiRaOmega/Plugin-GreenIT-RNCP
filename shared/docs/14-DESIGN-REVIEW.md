@@ -40,9 +40,22 @@ Le rapport de revue contient `review-report.md` et `review-report.json`.
 
 Si le projet est vert, le rendu est vert. Le reviewer vérifie la cohérence avec `design.yml`, pas une interdiction universelle du vert.
 
+## Blocs RNCP
+
+Le reviewer accepte `--blocks BC01,BC04` et vérifie que les compétences des blocs non sélectionnés sont marquées `hors périmètre`.
+
 ## Limites de couverture
 
 - PDF : revue textuelle et marges, pas de rasterisation systématique.
 - PPTX : revue structurelle, pas de rendu visuel exhaustif.
 - RNCP : contrôle de complétude et d’existence des preuves, pas de jugement de qualité.
 - Le challenge indépendant est un complément, pas une preuve automatique.
+
+## Blocs 1 et 4 — dossier d’examen
+
+Quand `--blocks BC01,BC04` est utilisé, le pack ajoute :
+
+- `11-dossier-examen-bc01-bc04.md` : 9 parties, 16 compétences C1.1–C1.8 et C4.1–C4.8 ;
+- `12-matrice-16-competences.csv` : correspondance partie / compétence / preuve / statut.
+
+La correspondance C1.x/C4.x → RNCP39388 est indicative : vérifier le référentiel de l’école.

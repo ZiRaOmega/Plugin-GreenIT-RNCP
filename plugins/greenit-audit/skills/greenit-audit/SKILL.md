@@ -1,11 +1,24 @@
 ---
 name: greenit-audit
 description: Orchestre un audit GreenIT complet depuis le cadrage jusqu’aux livrables et aux preuves RNCP39388.
-argument-hint: "<projet> [url] [audit.yml] [rgesn-assessment.yml]"
+argument-hint: "<projet> [blocs BC01,BC04] [url] [audit.yml] [rgesn-assessment.yml]"
 disable-model-invocation: true
 ---
 
 # Orchestrer un audit GreenIT
+
+## Question obligatoire
+
+**Avant de lancer l’audit, demander : « Quels blocs RNCP faut-il auditer ? »**
+
+Exemples :
+
+- `BC01 et BC04` — conception et conduite de projet ;
+- `BC02 et BC03` — déploiement et maintenance ;
+- `BC01, BC02, BC03, BC04` — audit complet.
+
+Ne pas supposer « tous les blocs ». Reporter la réponse dans `--blocks`.
+
 
 ## Commande unique
 
@@ -17,6 +30,7 @@ python3 "${CLAUDE_PLUGIN_ROOT}/../../scripts/run_audit.py" \
   --audit /chemin/mon-projet/audit/audit.yml \
   --assessment /chemin/mon-projet/audit/rgesn-assessment.yml \
   --url http://127.0.0.1:8000/ \
+  --blocks BC01,BC04 \
   --out /chemin/mon-projet/dist
 ```
 
@@ -25,6 +39,7 @@ python3 "${CLAUDE_PLUGIN_ROOT}/../../scripts/run_audit.py" \
 - `--assessment` : fichier `rgesn-assessment.yml`.
 - `--url` : URL locale du service. Omettre si aucun serveur web n’est disponible ; les métriques web seront alors absentes.
 - `--out` : dossier des livrables.
+- `--blocks` : blocs RNCP à auditer (`BC01,BC04`, `BC02,BC03`, etc.). Demander la réponse à l’utilisateur avant de lancer.
 - Les facteurs sont résolus automatiquement depuis le bundle : `factors.open.csv` et `factors.local.example.csv`.
 
 ## Démarrer le serveur local

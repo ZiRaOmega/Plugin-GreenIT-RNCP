@@ -1,11 +1,18 @@
 ---
 name: rncp39388
 description: Produit la matrice de compétences et le dossier de preuves pour le titre RNCP39388 Responsable green IT.
-argument-hint: "<dist/>"
+argument-hint: "<dist/> [BC01,BC04]"
 disable-model-invocation: true
 ---
 
 # Dossier RNCP39388
+
+## Question obligatoire
+
+**Demander quels blocs auditer avant de produire le dossier.** Exemples : `BC01 et BC04`, `BC02 et BC03`, ou les quatre blocs.
+
+La matrice complète reste à 19 lignes ; les blocs non sélectionnés sont marqués `hors périmètre`.
+
 
 ## Cible
 
@@ -28,7 +35,7 @@ RNCP39388, niveau 6, Efficom, 4 blocs, 19 compétences, fiche active jusqu’au 
 - Chaque preuve est un fichier ou un livrable vérifiable.
 - Ne pas inventer une expérience professionnelle.
 - Ne pas confondre les blocs.
-- Vérifier que la matrice a 19 lignes et 4 blocs.
+- Vérifier que la matrice a 19 lignes et 4 blocs, avec les blocs non sélectionnés en `hors périmètre`.
 
 ## Vérification
 

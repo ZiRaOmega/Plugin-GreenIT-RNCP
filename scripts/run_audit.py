@@ -43,6 +43,7 @@ def main() -> int:
     ap.add_argument("--url", help="URL locale du service pour web_metrics.py")
     ap.add_argument("--out", type=Path, help="Dossier de sortie (défaut : <projet>/dist)")
     ap.add_argument("--factors", type=Path, action="append", help="Facteur CSV ; répétable")
+    ap.add_argument("--blocks", default="BC01,BC02,BC03,BC04", help="Blocs RNCP à auditer, ex. BC01,BC04")
     args = ap.parse_args()
 
     project = args.project.resolve()
@@ -83,6 +84,7 @@ def main() -> int:
             "--rgesn", out / "rgesn-score.csv",
             "--audit", audit,
             "--project", project,
+            "--blocks", args.blocks,
             "--out", out,
             "--figures", figures,
             "--dist", out,

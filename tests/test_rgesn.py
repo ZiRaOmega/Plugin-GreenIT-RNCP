@@ -32,3 +32,26 @@ def test_assessment_has_78(tmp_path):
     assert len(rows) == 78
     assert "Statuts évalués" in md.read_text(encoding="utf-8")
     assert "Preuves disponibles" in md.read_text(encoding="utf-8")
+
+
+def test_parse_blocks():
+    import sys
+    sys.path.insert(0, str(ROOT / "plugins/greenit-audit/scripts"))
+    from build_audit_pack import parse_blocks
+    assert parse_blocks("BC01,BC04") == ("BC01", "BC04")
+    assert parse_blocks("bloc 2, bloc 3") == ("BC02", "BC03")
+    try:
+        parse_blocks("BC05")
+    except ValueError:
+        pass
+    else:
+        raise AssertionError("BC05 doit être refusé")
+
+
+def test_exam_bc01_bc04():
+    import csv
+    p = ROOT / "plugins/greenit-audit/references/rncp39388-bc01-bc04-exam.csv"
+    rows = list(csv.DictReader(p.open(encoding="utf-8-sig")))
+    assert len(rows) == 16
+    assert {r["part"] for r in rows} == {str(i) for i in range(1, 10)}
+    assert {r["exam_code"] for r in rows} == {f"C1.{i}" for i in range(1, 9)} | {f"C4.{i}" for i in range(1, 9)}

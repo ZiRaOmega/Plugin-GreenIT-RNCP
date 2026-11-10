@@ -78,6 +78,7 @@ cp plugins/greenit-audit/references/factors.local.example.csv \
    plugins/greenit-audit/references/factors.local.csv
 # remplir factors.local.csv avec des facteurs sous licence
 
+# Choisir les blocs RNCP : BC01,BC04 ou BC02,BC03, etc.
 python3 plugins/greenit-audit/scripts/validate_audit.py --input audit.yml \
   --factors plugins/greenit-audit/references/factors.open.csv \
   --factors plugins/greenit-audit/references/factors.local.csv

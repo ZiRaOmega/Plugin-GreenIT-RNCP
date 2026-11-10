@@ -7,6 +7,10 @@ disable-model-invocation: true
 
 # Revue design et qualité des livrables
 
+## Question obligatoire
+
+Demander quels blocs RNCP ont été audités (`BC01,BC04`, `BC02,BC03`, etc.) avant de vérifier la matrice et le dossier de preuves.
+
 ## Quand l’utiliser
 
 Après la génération du rapport PDF, de la soutenance PPTX et des figures. Cette revue est indépendante : elle ne modifie pas les livrables, elle produit un rapport de constats.

@@ -20,7 +20,7 @@ HERE = Path(__file__).resolve().parent
 REF = HERE.parent / "references"
 AI_RE = re.compile(r"[\u2014\u2013\u201c\u201d\u2026\u00a0\u202f\u200b\U0001F300-\U0001FAFF]")
 GREEN_HUE = range(80, 171)
-ALLOWED_STATUS = {"validé", "en cours", "non validé", "non applicable"}
+ALLOWED_STATUS = {"validé", "en cours", "non validé", "non applicable", "hors périmètre"}
 
 
 def load_json(p: Path | None) -> dict | None:
@@ -275,7 +275,7 @@ def review_charts(charts_path: Path | None, figures: Path, findings: list[dict])
     return {"charts": len(charts)}
 
 
-def review_rncp(root: Path, findings: list[dict]) -> dict:
+def review_rncp(root: Path, findings: list[dict], blocks_arg: str | None = None) -> dict:
     base = root / "rncp39388"
     matrix = base / "01-matrice-competences.csv"
     if not matrix.exists():
@@ -290,6 +290,17 @@ def review_rncp(root: Path, findings: list[dict]) -> dict:
     if len(blocks) != 4:
         findings.append({"severity": "blocker", "file": matrix.name, "code": "rncp-blocks",
                          "message": f"{len(blocks)} blocs, attendu 4."})
+    if blocks_arg:
+        selected = {b.strip().upper().replace("BLOC", "BC") for b in blocks_arg.split(",") if b.strip()}
+        selected = {b if b.startswith("BC") else f"BC{int(b):02d}" for b in selected}
+        for r in rows:
+            should = r.get("block") in selected
+            if should and r.get("status") == "hors périmètre":
+                findings.append({"severity": "blocker", "file": matrix.name, "code": "rncp-block-status",
+                                 "message": f"{r.get('competency_id')} est hors périmètre alors que {r.get('block')} est sélectionné."})
+            if not should and r.get("status") != "hors périmètre":
+                findings.append({"severity": "major", "file": matrix.name, "code": "rncp-block-status",
+                                 "message": f"{r.get('competency_id')} devrait être hors périmètre ({r.get('block')} non sélectionné)."})
     for r in rows:
         ev = r.get("evidence")
         if ev and not (root / ev).exists() and not (root.parent / ev).exists():
@@ -387,6 +398,7 @@ def main() -> int:
     ap.add_argument("--synthese-pdf", type=Path)
     ap.add_argument("--soutenance-pdf", type=Path)
     ap.add_argument("--synthese-docx", type=Path)
+    ap.add_argument("--blocks", help="Blocs RNCP attendus, ex. BC01,BC04")
     ap.add_argument("--metrics", type=Path)
     ap.add_argument("--rgesn", type=Path)
     ap.add_argument("--charts", type=Path)
@@ -429,7 +441,7 @@ def main() -> int:
     summary["docx_palette"] = review_docx_palette(docx, design, findings)
     if synthese_docx:
         summary["synthese_docx_palette"] = review_docx_palette(synthese_docx, design, findings)
-    summary["rncp"] = review_rncp(root, findings)
+    summary["rncp"] = review_rncp(root, findings, args.blocks)
     order = {"blocker": 0, "major": 1, "minor": 2}
     findings.sort(key=lambda f: (order.get(f["severity"], 9), f.get("file", ""), f.get("slide", 0)))
     result = {"root": str(root), "files": {"report": str(report), "deck": str(deck),
