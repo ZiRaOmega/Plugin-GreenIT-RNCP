@@ -321,6 +321,10 @@ def review_palette(deck: Path | None, design: Path | None, findings: list[dict])
         return {}
     import yaml
     d = yaml.safe_load(design.read_text(encoding="utf-8")) or {}
+    source = str(d.get("source", "fallback")).lower()
+    if source not in {"css", "logo", "tokens", "tailwind"}:
+        findings.append({"severity": "major", "file": str(design), "code": "design-source",
+                         "message": f"Palette non extraite du projet (source={source})."})
     allowed = {c.lower() for c in (d.get("colors") or {}).values() if isinstance(c, str)}
     allowed.add("#ffffff")
     if deck:

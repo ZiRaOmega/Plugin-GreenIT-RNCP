@@ -5,8 +5,14 @@ Plugin `greenit-reviewer` :
 - `design-review` : PDF/PPTX, chevauchements, marges, polices, palette, glossaire, données, graphiques, RNCP.
 - `sanitize-ai-text` : caractères et formulations IA.
 - `content-challenge` : agent indépendant `independent-challenger`.
+- `discover-palette` : extraction CSS/tokens/logo de la palette du projet.
 
 ## Commandes
+
+```bash
+python3 plugins/greenit-studio/scripts/extract_project_palette.py \
+  --project examples/demo-service --out dist/design.yml
+```
 
 ```bash
 python3 plugins/greenit-reviewer/scripts/review_deliverables.py \

@@ -146,6 +146,7 @@ def main() -> int:
          "--codebase", str(DIST / "audit-demo/codebase-audit.json"),
          "--rgesn", str(DIST / "audit-demo/rgesn-score.csv"),
          "--audit", str(baseline_audit),
+         "--project", str(DEMO),
          "--factors", str(ROOT / "plugins/greenit-audit/references/factors.open.csv"),
          "--factors", str(ROOT / "plugins/greenit-audit/references/factors.local.example.csv"),
          "--out", str(DIST / "audit-demo"),

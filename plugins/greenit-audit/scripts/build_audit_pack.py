@@ -816,6 +816,7 @@ Le tech lead publie les mesures. Un écart de plus de 20 % déclenche une revue.
 
 def main() -> int:
     ap = argparse.ArgumentParser()
+    ap.add_argument("--project", type=Path)
     ap.add_argument("--metrics", type=Path, required=True)
     ap.add_argument("--metrics-optimized", type=Path)
     ap.add_argument("--web", type=Path)
@@ -836,8 +837,9 @@ def main() -> int:
     args.figures.mkdir(parents=True, exist_ok=True)
     # Run chart generation
     import subprocess
+    import sys
     studio = HERE.parents[1] / "greenit-studio" / "scripts" / "make_chart.py"
-    subprocess.run([str(Path(__import__("sys").executable)), str(studio), "--spec", str(charts), "--out", str(args.figures)], check=True)
+    subprocess.run([str(Path(__import__("sys").executable)), str(studio), "--spec", str(charts), "--out", str(args.figures), "--design", str(args.out / "design.yml")], check=True)
     report = report_text(ctx, args.figures)
     (args.out / "report.md").write_text(report, encoding="utf-8")
     # Registre d’hypothèses exportable pour le client et le jury.
@@ -907,12 +909,19 @@ La version complète, les sources et les calculs sont dans `rapport-audit-greeni
                 "client": "Zone01 Normandie", "authors": ["Équipe GreenIT RNCP39388"], "date": "2026-11-09",
                 "version": "1.0", "header": "Audit Green IT — Zone01 Normandie"}
     (args.out / "metadata.yml").write_text(yaml.safe_dump(metadata, allow_unicode=True, sort_keys=False), encoding="utf-8")
-    theme_path = HERE.parents[1] / "greenit-studio" / "assets" / "theme.json"
-    if theme_path.exists():
-        theme = json.loads(theme_path.read_text(encoding="utf-8"))
-        design = {"project": metadata.get("title", "Projet"), "colors": theme.get("colors", {}),
-                  "fonts": theme.get("fonts", {}), "rules": ["pas de vert générique", "pas de 3D", "source sur chaque figure"]}
-        (args.out / "design.yml").write_text(yaml.safe_dump(design, allow_unicode=True, sort_keys=False), encoding="utf-8")
+    design_path = args.out / "design.yml"
+    palette_script = HERE.parents[1] / "greenit-studio" / "scripts" / "extract_project_palette.py"
+    if args.project and args.project.exists() and palette_script.exists():
+        subprocess.run([sys.executable, str(palette_script), "--project", str(args.project), "--out", str(design_path)], check=True)
+    else:
+        theme_path = HERE.parents[1] / "greenit-studio" / "assets" / "theme.json"
+        if theme_path.exists():
+            theme = json.loads(theme_path.read_text(encoding="utf-8"))
+            design = {"project": metadata.get("title", "Projet"), "source": "fallback", "confidence": "low",
+                      "colors": theme.get("colors", {}), "fonts": theme.get("fonts", {}),
+                      "warnings": ["Aucun projet fourni : palette de secours."],
+                      "rules": ["source sur chaque figure", "pas de 3D"]}
+            design_path.write_text(yaml.safe_dump(design, allow_unicode=True, sort_keys=False), encoding="utf-8")
     rncp_docs(ctx, args.dist / "rncp39388")
     narration = ("Le numérique a un impact réel, souvent invisible. Nous avons audité un service d’émargement "
                  "utilisé par cent étudiants pendant une semaine. Notre démarche est une ACV screening : nous avons "

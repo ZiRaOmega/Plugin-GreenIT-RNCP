@@ -44,3 +44,18 @@ def fmt(value: float, digits: int = 3) -> str:
     if abs(value) >= 10:
         return f"{value:.1f}"
     return f"{value:.{digits}g}"
+
+
+def load_design(path: Path) -> dict:
+    import yaml
+    return yaml.safe_load(path.read_text(encoding="utf-8")) or {}
+
+
+def theme_from_design(design: dict) -> dict:
+    """Fusionne une palette projet dans le thème de rendu."""
+    theme = dict(THEME)
+    colors = design.get("colors", {}) if isinstance(design, dict) else {}
+    for key, value in colors.items():
+        if key in theme and isinstance(value, str):
+            theme[key] = value
+    return theme

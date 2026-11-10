@@ -13,6 +13,7 @@ Revue indépendante des livrables d’audit GreenIT : PDF, PPTX, figures, métri
 - `design-review` : chevauchements, marges, typographie, palette, glossaire, données, graphiques, RNCP.
 - `sanitize-ai-text` : détection et remplacement des caractères/formulations IA.
 - `content-challenge` : agent indépendant qui challenge les livrables.
+- `discover-palette` : extraction de la palette du projet audité.
 
 ## Agent
 

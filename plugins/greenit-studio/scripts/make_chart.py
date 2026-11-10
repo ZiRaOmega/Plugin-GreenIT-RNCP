@@ -14,12 +14,20 @@ from matplotlib.patches import Rectangle
 HERE = Path(__file__).resolve().parent
 import sys
 sys.path.insert(0, str(HERE))
-from common import THEME, hex_to_rgb  # noqa: E402
+from common import THEME, hex_to_rgb, load_design, theme_from_design  # noqa: E402
 
 GREEN = THEME["green_900"]
 MUTED = THEME["muted"]
 ACCENT = THEME["accent"]
 ALERT = THEME["alert"]
+
+
+def apply_theme(theme: dict) -> None:
+    global GREEN, MUTED, ACCENT, ALERT
+    GREEN = theme["green_900"]
+    MUTED = theme["muted"]
+    ACCENT = theme["accent"]
+    ALERT = theme["alert"]
 
 
 def style(ax, title: str, subtitle: str, source: str) -> None:
@@ -181,8 +189,12 @@ def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--spec", type=Path, required=True)
     ap.add_argument("--out", type=Path, required=True)
+    ap.add_argument("--design", type=Path)
     args = ap.parse_args()
     import yaml
+    design_path = args.design or (args.spec.parent.parent / "design.yml")
+    if design_path.exists():
+        apply_theme(theme_from_design(load_design(design_path)))
     specs = yaml.safe_load(args.spec.read_text(encoding="utf-8"))
     charts = specs.get("charts", specs if isinstance(specs, list) else [])
     args.out.mkdir(parents=True, exist_ok=True)

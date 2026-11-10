@@ -16,16 +16,32 @@ from pptx.util import Inches, Pt
 
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
-from common import THEME  # noqa: E402
+from common import THEME, load_design, theme_from_design  # noqa: E402
+GREEN_600 = RGBColor.from_string(THEME["green_600"].lstrip("#"))
 
 W, H = 13.333, 7.5
 GREEN = RGBColor.from_string(THEME["green_900"].lstrip("#"))
+GREEN_200 = RGBColor.from_string(THEME["green_200"].lstrip("#"))
+GREEN_300 = RGBColor.from_string(THEME["green_300"].lstrip("#"))
 GREEN_700 = RGBColor.from_string(THEME["green_700"].lstrip("#"))
 TEXT = RGBColor.from_string(THEME["text"].lstrip("#"))
 MUTED = RGBColor.from_string(THEME["muted"].lstrip("#"))
 BG = RGBColor.from_string(THEME["bg"].lstrip("#"))
 ACCENT = RGBColor.from_string(THEME["accent"].lstrip("#"))
 WHITE = RGBColor(0xFF, 0xFF, 0xFF)
+
+
+def apply_theme(theme: dict) -> None:
+    global GREEN, GREEN_600, GREEN_700, GREEN_200, GREEN_300, TEXT, MUTED, BG, ACCENT
+    GREEN = RGBColor.from_string(theme["green_900"].lstrip("#"))
+    GREEN_600 = RGBColor.from_string(theme["green_600"].lstrip("#"))
+    GREEN_700 = RGBColor.from_string(theme["green_700"].lstrip("#"))
+    GREEN_200 = RGBColor.from_string(theme["green_200"].lstrip("#"))
+    GREEN_300 = RGBColor.from_string(theme["green_300"].lstrip("#"))
+    TEXT = RGBColor.from_string(theme["text"].lstrip("#"))
+    MUTED = RGBColor.from_string(theme["muted"].lstrip("#"))
+    BG = RGBColor.from_string(theme["bg"].lstrip("#"))
+    ACCENT = RGBColor.from_string(theme["accent"].lstrip("#"))
 
 
 def fill(shape, color: RGBColor):
@@ -93,9 +109,9 @@ def slide_title(prs, s, meta, number):
     accent = slide.shapes.add_shape(MSO_SHAPE.RECTANGLE, 0, 0, Inches(0.18), Inches(H))
     fill(accent, ACCENT)
     textbox(slide, 0.9, 1.45, 11.5, 1.7, s.get("title", meta.get("title", "")), 40, True, WHITE)
-    textbox(slide, 0.95, 3.25, 10.8, 1.0, s.get("subtitle", meta.get("subtitle", "")), 21, False, RGBColor(0xE8, 0xEE, 0xFF))
+    textbox(slide, 0.95, 3.25, 10.8, 1.0, s.get("subtitle", meta.get("subtitle", "")), 21, False, GREEN_200)
     textbox(slide, 0.95, 5.0, 10.8, 0.5, f"{meta.get('client', '')}  |  {meta.get('date', '')}", 14, False, WHITE)
-    textbox(slide, 0.95, 5.5, 10.8, 0.5, " • ".join(meta.get("authors", [])), 13, False, RGBColor(0xCA, 0xDC, 0xFC))
+    textbox(slide, 0.95, 5.5, 10.8, 0.5, " • ".join(meta.get("authors", [])), 13, False, GREEN_300)
     add_notes(slide, s)
     return slide
 
@@ -107,7 +123,7 @@ def slide_section(prs, s, meta, number):
     textbox(slide, 0.9, 2.4, 11.4, 0.4, s.get("kicker", "").upper(), 12, True, ACCENT)
     textbox(slide, 0.9, 2.9, 11.4, 1.6, s.get("title", ""), 36, True, WHITE)
     if s.get("subtitle"):
-        textbox(slide, 0.95, 4.55, 10.8, 0.8, s["subtitle"], 17, False, RGBColor(0xE8, 0xEE, 0xFF))
+        textbox(slide, 0.95, 4.55, 10.8, 0.8, s["subtitle"], 17, False, GREEN_200)
     add_notes(slide, s)
     return slide
 
@@ -154,7 +170,7 @@ def slide_chart(prs, s, meta, number):
         textbox(slide, 1.0, 2.2, 8.0, 1.0, "[figure manquante]", 20, True, MUTED)
     if s.get("takeaway"):
         box = slide.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, Inches(10.35), Inches(2.0), Inches(2.2), Inches(3.4))
-        fill(box, RGBColor(0xE8, 0xEE, 0xFF))
+        fill(box, GREEN_200)
         textbox(slide, 10.5, 2.2, 1.9, 3.0, s["takeaway"], 13, True, GREEN)
     add_notes(slide, s)
     return slide
@@ -165,8 +181,8 @@ def slide_matrix(prs, s, meta, number):
     chrome(slide, meta, number, s.get("source", ""))
     heading(slide, s.get("kicker", ""), s.get("title", ""), s.get("subtitle", ""))
     x0, y0, size = 1.0, 1.9, 5.0
-    colors = [RGBColor(0xE8, 0xEE, 0xFF), RGBColor(0xCA, 0xDC, 0xFC),
-              RGBColor(0xF7, 0xF4, 0xEE), RGBColor(0xC0, 0x6C, 0x4A)]
+    colors = [GREEN_200, GREEN_300,
+              BG, ACCENT]
     labels = ["Quick wins", "Projets structurants", "À éviter", "À planifier"]
     for i in range(2):
         for j in range(2):
@@ -202,7 +218,7 @@ def slide_timeline(prs, s, meta, number):
         left = 2.9 + (start / max_end) * 8.8
         width = max(0.3, ((end - start) / max_end) * 8.8)
         bar = slide.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, Inches(left), Inches(y + 0.02), Inches(width), Inches(0.28))
-        fill(bar, RGBColor.from_string(THEME["green_600"].lstrip("#")) if i % 2 == 0 else GREEN_700)
+        fill(bar, GREEN_600 if i % 2 == 0 else GREEN_700)
         textbox(slide, min(left + width + 0.1, 12.0), y, 1.2, 0.3, str(item.get("label", "")), 8.5, False, MUTED)
     add_notes(slide, s)
     return slide
@@ -211,7 +227,7 @@ def slide_timeline(prs, s, meta, number):
 def slide_quote(prs, s, meta, number):
     slide = prs.slides.add_slide(prs.slide_layouts[6])
     bg = slide.shapes.add_shape(MSO_SHAPE.RECTANGLE, 0, 0, Inches(W), Inches(H))
-    fill(bg, RGBColor(0xF7, 0xF4, 0xEE))
+    fill(bg, BG)
     textbox(slide, 0.9, 1.6, 0.8, 1.0, "“", 80, True, ACCENT)
     textbox(slide, 1.2, 2.2, 10.8, 2.6, s.get("quote", ""), 28, True, GREEN)
     textbox(slide, 1.25, 5.0, 10.5, 0.5, s.get("attribution", ""), 14, False, MUTED)
@@ -224,7 +240,7 @@ def slide_closing(prs, s, meta, number):
     bg = slide.shapes.add_shape(MSO_SHAPE.RECTANGLE, 0, 0, Inches(W), Inches(H))
     fill(bg, GREEN)
     textbox(slide, 0.9, 1.8, 11.4, 1.2, s.get("title", "Merci"), 42, True, WHITE)
-    textbox(slide, 0.95, 3.2, 10.8, 0.8, s.get("subtitle", "Questions et échanges"), 22, False, RGBColor(0xE8, 0xEE, 0xFF))
+    textbox(slide, 0.95, 3.2, 10.8, 0.8, s.get("subtitle", "Questions et échanges"), 22, False, GREEN_200)
     if s.get("bullets"):
         add_bullets(slide, s["bullets"][:3], top=4.2, height=2.0)
         for p in slide.shapes[-1].text_frame.paragraphs:
@@ -292,9 +308,13 @@ def main() -> int:
     ap.add_argument("--out", type=Path, required=True)
     ap.add_argument("--notes", type=Path)
     ap.add_argument("--pdf", action="store_true")
+    ap.add_argument("--design", type=Path)
     args = ap.parse_args()
     import yaml
     deck = yaml.safe_load(args.input.read_text(encoding="utf-8"))
+    design_path = args.design or (args.input.parent / "design.yml")
+    if design_path.exists():
+        apply_theme(theme_from_design(load_design(design_path)))
     report = build(deck, args.out, args.notes)
     print(f"OK PPTX {report['pptx']} ({report['slides']} slides, {report['notes_words']} mots de notes)")
     for w in report["warnings"]:

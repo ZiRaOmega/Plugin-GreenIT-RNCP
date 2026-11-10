@@ -82,6 +82,7 @@ def main() -> int:
             "--codebase", out / "codebase-audit.json",
             "--rgesn", out / "rgesn-score.csv",
             "--audit", audit,
+            "--project", project,
             "--out", out,
             "--figures", figures,
             "--dist", out,

@@ -20,10 +20,11 @@ from PIL import Image, ImageDraw, ImageFont
 
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
-from common import THEME, hex_to_rgb  # noqa: E402
+from common import THEME, hex_to_rgb, load_design, theme_from_design  # noqa: E402
 
 GREEN = RGBColor.from_string(THEME["green_900"].lstrip("#"))
 MUTED = RGBColor.from_string(THEME["muted"].lstrip("#"))
+CALLOUT_COLORS = {}
 CALLOUT_COLORS = {
     "info": "E8EEFF",
     "hypothese": "FFF3CD",
@@ -195,6 +196,17 @@ def add_callout(doc: Document, tone: str, title: str, body: list[str]) -> None:
             add_runs(p2, line.strip(), 10)
     set_cell_shading(cell, CALLOUT_COLORS.get(tone, "D8F3DC"))
     doc.add_paragraph()
+
+
+def apply_theme(theme: dict) -> None:
+    global GREEN, MUTED, CALLOUT_COLORS
+    GREEN = RGBColor.from_string(theme["green_900"].lstrip("#"))
+    MUTED = RGBColor.from_string(theme["muted"].lstrip("#"))
+    light = theme.get("green_200", "D8F3DC").lstrip("#")
+    CALLOUT_COLORS = {
+        "info": light, "hypothese": "FFF3CD", "limite": "F8D7DA",
+        "decision": "D1ECF1", "aretenir": light,
+    }
 
 
 def build(md_path: Path, metadata: dict, figures_dir: Path, out: Path) -> dict:
@@ -393,11 +405,15 @@ def main() -> int:
     ap.add_argument("--figures", type=Path)
     ap.add_argument("--out", type=Path, required=True)
     ap.add_argument("--pdf", action="store_true")
+    ap.add_argument("--design", type=Path)
     args = ap.parse_args()
     metadata = {}
     if args.metadata and args.metadata.exists():
         import yaml
         metadata = yaml.safe_load(args.metadata.read_text(encoding="utf-8")) or {}
+    design_path = args.design or (args.input.parent / "design.yml")
+    if design_path.exists():
+        apply_theme(theme_from_design(load_design(design_path)))
     result = build(args.input, metadata, args.figures or Path("figures"), args.out)
     print(f"OK DOCX {result['docx']} ({result['sections']} sections, {result['figures']} figures, {result['tables']} tableaux)")
     if "pdf" in result:
