@@ -6,7 +6,7 @@ Le bundle est exposé dans OMP par un skill managé unique :
 ~/.omp/agent/managed-skills/greenit-rncp39388/SKILL.md
 ```
 
-Ce skill d’orchestration contient la carte des 18 skills du bundle et les commandes absolues. Les skills détaillés restent dans :
+Ce skill d’orchestration contient la carte des 21 skills du bundle et les commandes absolues. Les skills détaillés restent dans :
 
 ```text
 $BUNDLE_ROOT/plugins/*/skills/*/SKILL.md
