@@ -14,4 +14,4 @@ Le skill `greenit-audit` orchestre le flux complet. Les skills `greenit-calculat
 
 ## Prérequis
 
-Python 3.10+, `openpyxl`, `PyYAML`, `jsonschema`, `matplotlib`, `python-docx` et `python-pptx`. Le plugin dépend de `greenit-studio` et `greenit-engineering`. `factors.local.example.csv` ne contient que l’en-tête : aucune valeur NegaOctet n’est publiée. La démonstration utilise `factors.local.csv`, ignoré par Git, à fournir sous licence pour évaluer GWP/ADPe/ADPf réseau.
+Python 3.10+, `openpyxl`, `PyYAML`, `jsonschema`, `matplotlib`, `python-docx` et `python-pptx`. Le plugin dépend de `greenit-studio`, `greenit-engineering` et `greenit-reviewer`. `factors.local.example.csv` ne contient que l’en-tête : aucune valeur NegaOctet n’est publiée. La démonstration utilise `factors.local.csv`, ignoré par Git, à fournir sous licence pour évaluer GWP/ADPe/ADPf réseau.

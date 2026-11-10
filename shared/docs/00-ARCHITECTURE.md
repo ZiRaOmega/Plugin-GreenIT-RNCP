@@ -11,7 +11,7 @@ Utilisateur
 
 ## Dépendances
 
-`greenit-audit` dépend de `greenit-studio` et `greenit-engineering`. Les deux autres plugins sont autonomes. Installer `greenit-audit` installe tout le bundle ; installer `greenit-engineering` seul reste possible.
+`greenit-audit` dépend de `greenit-studio`, `greenit-engineering` et `greenit-reviewer`. Les autres plugins sont autonomes. Installer `greenit-audit` installe tout le bundle ; installer `greenit-engineering` seul reste possible.
 
 ## Flux de données
 

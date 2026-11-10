@@ -9,14 +9,14 @@
 
 Bundle reproductible pour produire des livrables GreenIT et des preuves pour le titre **RNCP39388 — Responsable green IT** (niveau 6, Efficom, 4 blocs, 19 compétences).
 
-Il contient trois plugins :
+Il contient quatre plugins :
 
 - **greenit-studio** : rapports DOCX/PDF, diaporamas PPTX/PDF, vidéos MP4, figures PNG, analyse de codebase.
 - **greenit-audit** : RGESN 2024 (78 critères), GR491, RWEB, ACV ISO 14040/44, GWP/ADPe/ADPf, EcoIndex, SCI, rapport, soutenance, dossier RNCP39388.
 - **greenit-engineering** : refactor, fix, proposition, brainstorm, benchmark, revue de code GreenIT.
 - **greenit-reviewer** : revue indépendante design/PDF/PPTX, caractères IA, glossaire, données, graphiques et blocs RNCP39388.
 
-`greenit-audit` dépend de `greenit-studio` et `greenit-engineering`. Les deux autres plugins sont autonomes.
+`greenit-audit` dépend de `greenit-studio`, `greenit-engineering` et `greenit-reviewer`. Les autres plugins sont autonomes.
 
 ## Prérequis
 
@@ -99,6 +99,7 @@ plugins/
   greenit-studio/      # 5 skills, scripts DOCX/PPTX/vidéo/figures/scanner
   greenit-audit/       # 7 skills, références, calculs, schémas
   greenit-engineering/ # 6 skills, playbooks, mesure de delta
+  greenit-reviewer/    # 3 skills + agent indépendant de revue design/qualité
 shared/
   docs/                # architecture, sources, glossaire, calculs, RNCP, style, limites
   schemas/             # audit, deck, source
