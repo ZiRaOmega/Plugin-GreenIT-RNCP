@@ -52,4 +52,4 @@ Si le harness ne supporte pas les agents, lire `agents/independent-challenger.md
 
 ## Règle
 
-L’agent ne modifie aucun fichier. Il cite les passages et propose des questions, pas des réécritures complètes.
+L’agent ne modifie aucun fichier. Il cite les passages et propose des questions, pas des réécritures complètes. Si l’agent n’a pas pu être exécuté, écrire explicitement « challenge indépendant : non exécuté » et ne pas prétendre qu’il a validé les livrables.
