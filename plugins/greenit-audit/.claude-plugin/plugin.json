@@ -18,6 +18,7 @@
   ],
   "dependencies": [
     "greenit-studio",
-    "greenit-engineering"
+    "greenit-engineering",
+    "greenit-reviewer"
   ]
 }

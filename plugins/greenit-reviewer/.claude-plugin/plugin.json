@@ -1,0 +1,19 @@
+{
+  "name": "greenit-reviewer",
+  "displayName": "GreenIT Reviewer",
+  "version": "0.1.2",
+  "description": "Revue indépendante des livrables PDF/PPTX : design, chevauchements, palette projet, caractères IA, glossaire, graphiques, données et blocs RNCP39388.",
+  "author": {
+    "name": "ZiRaOmega"
+  },
+  "license": "ViewOnly-1.0",
+  "keywords": [
+    "greenit",
+    "review",
+    "design",
+    "pptx",
+    "pdf",
+    "rncp39388",
+    "quality"
+  ]
+}

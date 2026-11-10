@@ -180,7 +180,7 @@ def slide_matrix(prs, s, meta, number):
         top = y0 + (1 - impact) * size - 0.1
         dot = slide.shapes.add_shape(MSO_SHAPE.OVAL, Inches(left), Inches(top), Inches(0.2), Inches(0.2))
         fill(dot, GREEN)
-        textbox(slide, left + 0.15, top - 0.1, 1.4, 0.3, str(item.get("label", ""))[:22], 8, False, TEXT)
+        textbox(slide, left + 0.12, top - 0.12, 1.25, 0.25, str(item.get("label", ""))[:18], 8.0, False, TEXT)
     textbox(slide, 6.4, 2.0, 5.8, 4.5, s.get("takeaway", ""), 16, False, TEXT)
     add_notes(slide, s)
     return slide
@@ -203,7 +203,7 @@ def slide_timeline(prs, s, meta, number):
         width = max(0.3, ((end - start) / max_end) * 8.8)
         bar = slide.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, Inches(left), Inches(y + 0.02), Inches(width), Inches(0.28))
         fill(bar, RGBColor.from_string(THEME["green_600"].lstrip("#")) if i % 2 == 0 else GREEN_700)
-        textbox(slide, left + width + 0.1, y, 2.4, 0.3, str(item.get("label", "")), 9, False, MUTED)
+        textbox(slide, min(left + width + 0.1, 12.0), y, 1.2, 0.3, str(item.get("label", "")), 8.5, False, MUTED)
     add_notes(slide, s)
     return slide
 

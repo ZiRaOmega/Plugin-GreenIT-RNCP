@@ -222,7 +222,7 @@ def build(md_path: Path, metadata: dict, figures_dir: Path, out: Path) -> dict:
         style.paragraph_format.space_after = Pt(6)
 
     header = section.header.paragraphs[0]
-    header.text = metadata.get("header", "Audit Green IT")
+    header.text = metadata.get("header", "Audit Green IT").replace("—", "-").replace("–", "-")
     header.alignment = WD_ALIGN_PARAGRAPH.RIGHT
     header.runs[0].font.size = Pt(8.5)
     header.runs[0].font.color.rgb = MUTED

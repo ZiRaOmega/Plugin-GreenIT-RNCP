@@ -9,6 +9,7 @@ greenit-rncp39388
   greenit-audit       0.1.2  (7 skills)
   greenit-studio      0.1.2  (5 skills, dépendance)
   greenit-engineering 0.1.2  (6 skills, dépendance)
+greenit-reviewer    0.1.2  (3 skills, 1 agent)
 ```
 
 Vérifier :
@@ -85,6 +86,9 @@ Les autres skills :
 /greenit-engineering:brainstorm
 /greenit-engineering:benchmark
 /greenit-engineering:greenit-review
+/greenit-reviewer:design-review
+/greenit-reviewer:content-challenge
+/greenit-reviewer:sanitize-ai-text
 ```
 
 Certains skills ont `disable-model-invocation: true` : ils doivent être appelés explicitement, pas déclenchés par une phrase vague.
@@ -224,6 +228,9 @@ dist/
 
 ```text
 /greenit-engineering:greenit-review
+/greenit-reviewer:design-review
+/greenit-reviewer:content-challenge
+/greenit-reviewer:sanitize-ai-text
 ```
 
 ### Refactor ou correctif

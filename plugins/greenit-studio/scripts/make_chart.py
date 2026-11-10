@@ -194,7 +194,8 @@ def main() -> int:
         path = args.out / f"{spec['id']}.png"
         BUILDERS[kind](spec, path)
         manifest.append({"id": spec["id"], "path": str(path), "alt": spec.get("alt", spec.get("title", "")),
-                         "source": spec.get("source", ""), "bytes": path.stat().st_size})
+                         "purpose": spec.get("purpose", ""), "source": spec.get("source", ""),
+                         "bytes": path.stat().st_size})
     (args.out / "manifest.json").write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     alts = ["# Textes alternatifs", ""] + [f"- **{m['id']}** : {m['alt']}" for m in manifest]
     (args.out / "alt-text.md").write_text("\n".join(alts) + "\n", encoding="utf-8")

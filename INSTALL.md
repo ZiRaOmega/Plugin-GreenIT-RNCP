@@ -44,6 +44,10 @@ cp plugins/greenit-audit/references/factors.local.example.csv \
 claude plugin install greenit-audit \
   --marketplace /chemin/vers/Plugin-GreenIT-RNCP \
   --scope user -y
+
+claude plugin install greenit-reviewer \
+  --marketplace /chemin/vers/Plugin-GreenIT-RNCP \
+  --scope user -y
 ```
 
 Puis, dans Claude Code :
@@ -65,6 +69,8 @@ Invocation :
 
 ```text
 /greenit-audit:greenit-audit
+/greenit-reviewer:design-review
+/greenit-reviewer:content-challenge
 ```
 
 ## OMP

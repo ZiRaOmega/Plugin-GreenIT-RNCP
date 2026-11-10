@@ -23,6 +23,12 @@
       "source": "./plugins/greenit-engineering",
       "description": "Refactor, fix, proposition, brainstorm, benchmark et revue GreenIT.",
       "category": "engineering"
+    },
+    {
+      "name": "greenit-reviewer",
+      "source": "./plugins/greenit-reviewer",
+      "description": "Revue indépendante design, qualité, glossaire, données, graphiques et preuves RNCP.",
+      "category": "quality"
     }
   ]
 }

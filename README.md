@@ -14,6 +14,7 @@ Il contient trois plugins :
 - **greenit-studio** : rapports DOCX/PDF, diaporamas PPTX/PDF, vidéos MP4, figures PNG, analyse de codebase.
 - **greenit-audit** : RGESN 2024 (78 critères), GR491, RWEB, ACV ISO 14040/44, GWP/ADPe/ADPf, EcoIndex, SCI, rapport, soutenance, dossier RNCP39388.
 - **greenit-engineering** : refactor, fix, proposition, brainstorm, benchmark, revue de code GreenIT.
+- **greenit-reviewer** : revue indépendante design/PDF/PPTX, caractères IA, glossaire, données, graphiques et blocs RNCP39388.
 
 `greenit-audit` dépend de `greenit-studio` et `greenit-engineering`. Les deux autres plugins sont autonomes.
 

@@ -1,0 +1,32 @@
+# Termes obligatoires
+
+- ACV
+- ICV
+- UF
+- GWP100
+- ADPe
+- ADPf
+- PE
+- PUE
+- WUE
+- EcoIndex
+- SCI
+- RGESN
+- GR491
+- RWEB
+- NegaOctet
+- Boavizta
+- effet rebond
+- greenwashing
+- compensation
+- neutralité carbone
+- scope 1
+- scope 2
+- scope 3
+- BEGES
+- CSRD
+- ESRS
+- RGAA
+- RGPD
+- OWASP
+- ANSSI
