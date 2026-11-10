@@ -71,6 +71,8 @@ Invocation :
 /greenit-audit:greenit-audit
 /greenit-reviewer:design-review
 /greenit-reviewer:content-challenge
+/greenit-reviewer:discover-palette
+/greenit-reviewer:sanitize-ai-text
 ```
 
 ## OMP
